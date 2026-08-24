@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+# Sitemap will be added in STEP 04 once dynamic SEO location pages exist. 

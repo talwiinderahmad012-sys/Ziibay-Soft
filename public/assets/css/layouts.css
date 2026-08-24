@@ -1,0 +1,47 @@
+/* ==========================================================================
+   LAYOUTS — tokens + structural shell (header / main / footer)
+   ========================================================================== */
+
+.container {
+    width: min(var(--container-max), 100% - (var(--gutter) * 2));
+    margin-inline: auto;
+}
+
+.container--narrow {
+    width: min(var(--container-narrow), 100% - (var(--gutter) * 2));
+}
+
+/* Sticky-footer shell: <body> is a flex column. */
+@supports (min-height: 100dvh) {
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .site-main {
+        flex: 1 0 auto;
+    }
+}
+
+.site-main {
+    padding-block: var(--space-16) var(--space-24);
+}
+
+.page-section {
+    padding-block: var(--space-12);
+}
+
+.page-title {
+    margin-block-end: var(--space-4);
+}
+
+.page-lead {
+    font-size: var(--text-md);
+    color: var(--color-muted);
+    max-width: 60ch;
+    margin-block-end: var(--space-6);
+}
+
+.page-subtitle {
+    margin-block-end: var(--space-2);
+}
