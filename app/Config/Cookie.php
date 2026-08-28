@@ -14,7 +14,7 @@ class Cookie extends BaseConfig
      *
      * Set a cookie name prefix if you need to avoid collisions.
      */
-    public string $prefix = 'ziibay_';
+    public string $prefix = '';
 
     /**
      * --------------------------------------------------------------------------
@@ -56,13 +56,6 @@ class Cookie extends BaseConfig
      */
     public bool $secure = false;
 
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->secure = (bool) env('cookie.secure', false);
-    }
-
     /**
      * --------------------------------------------------------------------------
      * Cookie HTTPOnly
@@ -92,7 +85,7 @@ class Cookie extends BaseConfig
      * (empty string) means default SameSite attribute set by browsers (`Lax`)
      * will be set on cookies. If set to `None`, `$secure` must also be set.
      *
-     * @var ''|'Lax'|'None'|'Strict'
+     * @phpstan-var 'None'|'Lax'|'Strict'|''
      */
     public string $samesite = 'Lax';
 

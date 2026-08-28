@@ -18,15 +18,6 @@ class App extends BaseConfig
      */
     public string $baseURL = 'http://localhost:8080/';
 
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->baseURL                = rtrim((string) env('app.baseURL', $this->baseURL), '/') . '/';
-        $this->defaultLocale          = (string) env('app.defaultLocale', $this->defaultLocale);
-        $this->forceGlobalSecureRequests = filter_var((string) env('app.forceGlobalSecureRequests', 'false'), FILTER_VALIDATE_BOOL);
-    }
-
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
      * If you want to accept multiple Hostnames, set this.

@@ -1,34 +1,30 @@
-<?php
-/**
- * 404 — Page Not Found.
- *
- * Rendered directly by the framework's exception handler without the
- * application layout, so this file is intentionally self-contained and
- * never depends on helpers or services that could themselves fail.
- *
- * @var int    $code    HTTP status code (404)
- * @var string $message Exception message (only shown when display_errors is on)
- */
-$safeMessage = isset($message) && $message !== ''
-    ? htmlspecialchars((string) $message, ENT_QUOTES, 'UTF-8')
-    : 'The page you are looking for does not exist or has been moved.';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex, nofollow">
-    <title>404 — Page not found | Ziibay Soft</title>
-    <style><?= require __DIR__ . '/_error_styles.php' ?></style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Ziibay Soft</title>
+    <!-- Shared Theme System -->
+    <?= $this->include('components/theme_manager') ?>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+    </style>
 </head>
-<body>
-    <main>
-        <p class="error-code">404</p>
-        <h1>Page not found</h1>
-        <p class="lead"><?= $safeMessage ?></p>
-        <a class="home-link" href="/">Back to homepage</a>
-        <p class="brand">Ziibay Soft</p>
-    </main>
+<body class="antialiased flex items-center justify-center min-h-screen p-4">
+    <div class="text-center">
+        <h1 class="text-8xl font-bold text-primary mb-4">404</h1>
+        <h2 class="text-3xl font-semibold text-text mb-6">Page Not Found</h2>
+        <p class="text-text-muted mb-8 max-w-md mx-auto">
+            The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+        </p>
+        <a href="<?= base_url() ?>" class="inline-block bg-primary hover:bg-primary-hover text-text-onprimary px-8 py-3 rounded-lg text-base font-semibold transition-all duration-200">
+            Return to Homepage
+        </a>
+    </div>
 </body>
 </html>

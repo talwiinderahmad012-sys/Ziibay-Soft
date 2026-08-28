@@ -1,139 +1,60 @@
-# Ziibay Soft — Website
+# CodeIgniter 4 Framework
 
-Production foundation (STEP 01) for the Ziibay Soft international software-company
-website, built on **CodeIgniter 4.7** with a clean, dependency-light frontend.
+## What is CodeIgniter?
 
-Core business: Web Development · Software Development · App Development
-(plus SEO, SMM, UI/UX, Graphic Design and E-Commerce services in later steps).
+CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
+More information can be found at the [official site](https://codeigniter.com).
 
----
+This repository holds the distributable version of the framework.
+It has been built from the
+[development repository](https://github.com/codeigniter4/CodeIgniter4).
 
-## Requirements
+More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
 
-| Tool    | Version                        |
-|---------|--------------------------------|
-| PHP     | ^8.2 (tested on 8.4.15)        |
-| Composer| 2.x                            |
-| MySQL / MariaDB | 5.7+ / 10.4+ (STEP 02+) |
+You can read the [user guide](https://codeigniter.com/user_guide/)
+corresponding to the latest version of the framework.
 
-Required PHP extensions (all present in WAMP): mbstring, intl, mysqli /
-pdo_mysql, curl, json, openssl, libxml.
+## Important Change with index.php
 
-## Getting started
+`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
+for better security and separation of components.
 
-```bash
-# 1. Install dependencies
-composer install
+This means that you should configure your web server to "point" to your project's *public* folder, and
+not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
+framework are exposed.
 
-# 2. Create your local environment
-cp .env.example .env        # Windows PowerShell: Copy-Item .env.example .env
-# then edit .env — at minimum set app.baseURL and database credentials
+**Please** read the user guide for a better explanation of how CI4 works!
 
-# 3. Run locally (built-in server)
-php spark serve             # http://localhost:8080
-```
+## Repository Management
 
-### WAMP / Apache alternative
+We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
+We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
+FEATURE REQUESTS.
 
-The project lives in `d:/Wamp/www/Ziibay Soft`. Point a WAMP virtual host at the
-`public/` folder (never the project root) or enable WAMP's per-folder alias.
-With plain `http://localhost/Ziibay%20Soft/public/` the root `.htaccess` handles
-rewriting; for production always prefer a vhost whose `DocumentRoot` is `public/`.
+This repository is a "distribution" one, built by our release preparation script.
+Problems with it can be raised on our forum, or as issues in the main repository.
 
-## Routes (STEP 01)
+## Contributing
 
-| Route      | Controller        | Description            |
-|------------|-------------------|------------------------|
-| `/`        | `Pages::home`     | Placeholder homepage   |
-| `/about`   | `Pages::about`    | Placeholder about page |
-| `/contact` | `Pages::contact`  | Placeholder contact    |
+We welcome contributions from the community.
 
-Auto-routing is **disabled** (`Config\Routing::$autoRoute = false`). Every route
-must be declared explicitly in `app/Config/Routes.php`.
+Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
 
-## Running tests
+## Server Requirements
 
-```bash
-composer test                                  # fast run
-$env:XDEBUG_MODE='coverage'; composer test     # with coverage report
-```
+PHP version 8.1 or higher is required, with the following extensions installed:
 
-## Verifying the theme foundation
+- [intl](http://php.net/manual/en/intl.requirements.php)
+- [mbstring](http://php.net/manual/en/mbstring.installation.php)
 
-1. Open any page → the theme follows your OS setting on first visit
-   (`prefers-color-scheme`), applied by an inline boot script before first paint (no flash).
-2. Click the sun/moon button in the header → theme toggles instantly and is
-   stored in `localStorage` (`ziibay-theme`).
-3. Reload → your choice persists; OS changes no longer override it while a
-   stored preference exists.
-4. Implementation:
-   - tokens & palettes: `public/assets/css/base.css`
-     (`:root` = light, `[data-theme="dark"]` = dark)
-   - boot script + toggle logic: `app/Views/layouts/frontend.php`,
-     `public/assets/js/app.js`
+> [!WARNING]
+> - The end of life date for PHP 7.4 was November 28, 2022.
+> - The end of life date for PHP 8.0 was November 26, 2023.
+> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
+> - The end of life date for PHP 8.1 will be December 31, 2025.
 
-## Project structure
+Additionally, make sure that the following extensions are enabled in your PHP:
 
-```
-app/
-    Config/          App, Site (site settings/env), Routing, Filters, …
-    Controllers/     BaseController (+ renderPage()), Pages
-    Database/        Migrations/, Seeds/          (empty — STEP 02+)
-    Filters/         custom filters               (empty)
-    Helpers/         site_helper.php (site_config, app_url, asset_url, raw_json)
-    Language/en/     App.php strings catalog (i18n-ready)
-    Libraries/       reusable libraries           (empty)
-    Models/          models                       (empty)
-    Services/        service classes              (empty)
-    Views/
-        layouts/frontend.php      shared HTML shell
-        components/               seo-head, header, nav, footer,
-                                  theme-switch, language-switch, whatsapp-button
-        frontend/pages/           home, about, contact fragments
-        errors/html/              branded 400/403/404/500 pages
-        admin/                    reserved for STEP 02+
-public/
-    assets/css|js|images|icons|fonts/
-    favicon.svg  index.php  robots.txt  .htaccess
-tests/               PHPUnit suite (unit + feature)
-writable/            cache, logs, session, uploads
-```
-
-## Architecture notes (STEP 01)
-
-- **Layout composition** — controllers call `$this->renderPage($view, $page)`
-  (`BaseController`). The layout renders `<head>` SEO via `components/seo-head`
-  and includes the page fragment from `Views/frontend/pages/*`. Page views stay
-  pure content; SEO metadata stays in controllers.
-- **SEO-ready head** — every page defines title/description/canonical/robots;
-  Open Graph, Twitter cards and JSON-LD schema emit automatically
-  (`components/seo-head.php`). No fake content is generated.
-- **Theme system** — CSS custom properties only (no hard-coded colors in
-  components); `data-theme` attribute strategy; localStorage persistence;
-  `prefers-color-scheme` fallback; FOUC prevented by an inline head script.
-- **i18n-ready** — all UI copy flows through `lang('App.*')` with an English
-  catalog; `Config\Site::$supportedLocales` is the single switchboard. Only
-  English ships in STEP 01. IP-based language *suggestion* (never auto-redirect)
-  is planned as a later, opt-in UX feature — crawlers always get consistent HTML.
-- **WhatsApp button** — component included globally via the footer; it renders
-  only when `site.whatsapp` is configured in `.env`, so enabling it later needs
-  zero template changes.
-- **Security baseline** — CSRF filter global (state-changing requests),
-  invalid-chars filter, secure-headers filter, HttpOnly/Lax cookies with a
-  `ziibay_` prefix, cookie/session names product-prefixed, secrets only in
-  `.env` (gitignored), XSS-safe output via `esc()` everywhere.
-- **Error handling** — branded self-contained error views (they never depend on
-  helpers/services so they render even during failures); JSON responses for
-  non-HTML clients; debug details only outside production.
-- **Deliberate deviation** — the scaffold's `pre_system` handler flushed all
-  output buffers; that broke the first buffered response under PHPUnit, so it
-  was reduced to the zlib-compression guard (see `app/Config/Events.php`).
-
-## What comes next (not in this step)
-
-Database schema & settings module · admin panel · authentication/RBAC ·
-services catalogue · countries/states/cities · programmatic SEO location pages
-(`/services/web-development/united-states/california/los-angeles/`) · blog ·
-portfolio · case studies · leads · WhatsApp integration · multi-language ·
-XML sitemap · caching & performance tuning.
-
+- json (enabled by default - don't turn it off)
+- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
+- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library

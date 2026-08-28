@@ -1,28 +1,25 @@
-<?php
-/**
- * Generic production error page (5xx that has no dedicated view).
- *
- * Always shown to visitors when the app fails in production — no debug data.
- * See _error_styles.php for shared CSS.
- */
-$safeMessage = 'An unexpected error occurred. Please try again in a moment.';
-?>
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Something went wrong | Ziibay Soft</title>
-    <style><?= require __DIR__ . '/_error_styles.php' ?></style>
+    <meta name="robots" content="noindex">
+
+    <title><?= lang('Errors.whoops') ?></title>
+
+    <style>
+        <?= preg_replace('#[\r\n\t ]+#', ' ', file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'debug.css')) ?>
+    </style>
 </head>
 <body>
-    <main>
-        <p class="error-code">500</p>
-        <h1>Something went wrong</h1>
-        <p class="lead"><?= $safeMessage ?></p>
-        <a class="home-link" href="/">Back to homepage</a>
-        <p class="brand">Ziibay Soft</p>
-    </main>
+
+    <div class="container text-center">
+
+        <h1 class="headline"><?= lang('Errors.whoops') ?></h1>
+
+        <p class="lead"><?= lang('Errors.weHitASnag') ?></p>
+
+    </div>
+
 </body>
+
 </html>

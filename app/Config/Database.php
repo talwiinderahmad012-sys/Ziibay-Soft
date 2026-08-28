@@ -43,7 +43,6 @@ class Database extends Config
         'failover'     => [],
         'port'         => 3306,
         'numberNative' => false,
-        'foundRows'    => false,
         'dateFormat'   => [
             'date'     => 'Y-m-d',
             'datetime' => 'Y-m-d H:i:s',
@@ -65,7 +64,6 @@ class Database extends Config
     //        'failover'    => [],
     //        'foreignKeys' => true,
     //        'busyTimeout' => 1000,
-    //        'synchronous' => null,
     //        'dateFormat'  => [
     //            'date'     => 'Y-m-d',
     //            'datetime' => 'Y-m-d H:i:s',
@@ -140,7 +138,7 @@ class Database extends Config
     //     * @var array<string, mixed>
     //     */
     //    public array $default = [
-    //        'DSN'        => 'localhost:1521/FREEPDB1',
+    //        'DSN'        => 'localhost:1521/XEPDB1',
     //        'username'   => 'root',
     //        'password'   => 'root',
     //        'DBDriver'   => 'OCI8',
@@ -177,12 +175,11 @@ class Database extends Config
         'swapPre'     => '',
         'encrypt'     => false,
         'compress'    => false,
-        'strictOn'    => true,
+        'strictOn'    => false,
         'failover'    => [],
         'port'        => 3306,
         'foreignKeys' => true,
         'busyTimeout' => 1000,
-        'synchronous' => null,
         'dateFormat'  => [
             'date'     => 'Y-m-d',
             'datetime' => 'Y-m-d H:i:s',

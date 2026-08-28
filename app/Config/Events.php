@@ -23,21 +23,17 @@ use CodeIgniter\HotReloader\HotReloader;
  *      Events::on('create', [$myInstance, 'myMethod']);
  */
 
-Events::on('pre_system', static function (): void {
+Events::on('pre_system', static function () {
     if (ENVIRONMENT !== 'testing') {
-        $value = ini_get('zlib.output_compression');
-
-        if (filter_var($value, FILTER_VALIDATE_BOOLEAN) || (int) $value > 0) {
+        if (ini_get('zlib.output_compression')) {
             throw FrameworkException::forEnabledZlibOutputCompression();
         }
 
-    /*
-     * STEP 01 architecture decision: the stock scaffold also flushed every
-     * open output buffer here and re-opened its own. That corrupts buffered
-     * responses under PHPUnit (the first feature-test request rendered an
-     * empty body) and adds no protection beyond the zlib check above, so it
-     * was removed deliberately.
-     */
+        while (ob_get_level() > 0) {
+            ob_end_flush();
+        }
+
+        ob_start(static fn ($buffer) => $buffer);
     }
 
     /*
@@ -48,10 +44,10 @@ Events::on('pre_system', static function (): void {
      */
     if (CI_DEBUG && ! is_cli()) {
         Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');
-        service('toolbar')->respond();
+        Services::toolbar()->respond();
         // Hot Reload route - for framework use on the hot reloader.
         if (ENVIRONMENT === 'development') {
-            service('routes')->get('__hot-reload', static function (): void {
+            Services::routes()->get('__hot-reload', static function () {
                 (new HotReloader())->run();
             });
         }

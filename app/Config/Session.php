@@ -14,7 +14,6 @@ class Session extends BaseConfig
      * --------------------------------------------------------------------------
      *
      * The session storage driver to use:
-     * - `CodeIgniter\Session\Handlers\ArrayHandler` (for testing)
      * - `CodeIgniter\Session\Handlers\FileHandler`
      * - `CodeIgniter\Session\Handlers\DatabaseHandler`
      * - `CodeIgniter\Session\Handlers\MemcachedHandler`
@@ -31,16 +30,7 @@ class Session extends BaseConfig
      *
      * The session cookie name, must contain only [0-9a-z_-] characters
      */
-    public string $cookieName = 'ziibay_session';
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->cookieName = (string) env('session.cookieName', $this->cookieName);
-        $this->expiration = (int) env('session.expiration', $this->expiration);
-        $this->driver     = (string) env('session.driver', $this->driver);
-    }
+    public string $cookieName = 'ci_session';
 
     /**
      * --------------------------------------------------------------------------

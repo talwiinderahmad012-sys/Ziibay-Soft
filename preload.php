@@ -9,9 +9,6 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-use CodeIgniter\Boot;
-use Config\Paths;
-
 /*
  *---------------------------------------------------------------
  * Sample file for Preloading
@@ -41,26 +38,23 @@ class preload
         [
             'include' => __DIR__ . '/vendor/codeigniter4/framework/system', // Change this path if using manual installation
             'exclude' => [
+                '/system/bootstrap.php',
                 // Not needed if you don't use them.
                 '/system/Database/OCI8/',
                 '/system/Database/Postgre/',
                 '/system/Database/SQLite3/',
                 '/system/Database/SQLSRV/',
-                // Not needed for web apps.
+                // Not needed.
                 '/system/Database/Seeder.php',
                 '/system/Test/',
+                '/system/Language/',
                 '/system/CLI/',
                 '/system/Commands/',
                 '/system/Publisher/',
                 '/system/ComposerScripts.php',
-                // Not Class/Function files.
-                '/system/Config/Routes.php',
-                '/system/Language/',
-                '/system/bootstrap.php',
-                '/system/util_bootstrap.php',
-                '/system/rewrite.php',
                 '/Views/',
                 // Errors occur.
+                '/system/Config/Routes.php',
                 '/system/ThirdParty/',
             ],
         ],
@@ -73,10 +67,10 @@ class preload
 
     private function loadAutoloader(): void
     {
-        $paths = new Paths();
+        $paths = new Config\Paths();
         require rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'Boot.php';
 
-        Boot::preload($paths);
+        CodeIgniter\Boot::preload($paths);
     }
 
     /**
@@ -90,7 +84,7 @@ class preload
             $phpFiles  = new RegexIterator(
                 $fullTree,
                 '/.+((?<!Test)+\.php$)/i',
-                RecursiveRegexIterator::GET_MATCH,
+                RecursiveRegexIterator::GET_MATCH
             );
 
             foreach ($phpFiles as $key => $file) {
@@ -101,9 +95,7 @@ class preload
                 }
 
                 require_once $file[0];
-                // Uncomment only for debugging (to inspect which files are included).
-                // Never use this in production - preload scripts must not generate output.
-                // echo 'Loaded: ' . $file[0] . "\n";
+                echo 'Loaded: ' . $file[0] . "\n";
             }
         }
     }

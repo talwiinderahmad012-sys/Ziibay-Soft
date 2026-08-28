@@ -3,64 +3,56 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use CodeIgniter\HTTP\CLIRequest;
+use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
 /**
+ * Class BaseController
+ *
  * BaseController provides a convenient place for loading components
  * and performing functions that are needed by all your controllers.
- *
  * Extend this class in any new controllers:
- *
  *     class Home extends BaseController
  *
- * For security, be sure to declare any new methods as protected or private.
+ * For security be sure to declare any new methods as protected or private.
  */
 abstract class BaseController extends Controller
 {
+    /**
+     * Instance of the main Request object.
+     *
+     * @var CLIRequest|IncomingRequest
+     */
+    protected $request;
+
+    /**
+     * An array of helpers to be loaded automatically upon
+     * class instantiation. These helpers will be available
+     * to all other controllers that extend BaseController.
+     *
+     * @var list<string>
+     */
+    protected $helpers = ['url', 'form'];
+
+    /**
+     * Be sure to declare properties for any property fetch you initialized.
+     * The creation of dynamic property is deprecated in PHP 8.2.
+     */
+    // protected $session;
+
     /**
      * @return void
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
+        // Do Not Edit This Line
         parent::initController($request, $response, $logger);
-    }
 
-    /**
-     * Renders a page inside the shared frontend layout.
-     *
-     * Keeps controllers thin: page content fragments live in
-     * app/Views/frontend/pages/* and never repeat the HTML shell.
-     *
-     * @param array<string, mixed> $page SEO/head metadata + content fragment data.
-     *                                   Known keys:
-     *                                   - title, description, canonical, robots
-     *                                   - og:type, og:image, twitter:card
-     *                                   - schema: list<array> (JSON-LD payloads)
-     *                                   - contentData: array passed to the fragment view
-     */
-    protected function renderPage(string $viewName, array $page = []): string
-    {
-        $site = site_config();
+        // Preload any models, libraries, etc, here.
 
-        $defaults = [
-            'title'       => $site->name,
-            'description' => '',
-            'canonical'   => '',
-            'robots'      => 'index, follow',
-            'og'          => [],
-            'twitter'     => [],
-            'schema'      => [],
-            'contentData' => [],
-        ];
-
-        $page = array_merge($defaults, $page);
-
-        return view('layouts/frontend', [
-            'site'        => $site,
-            'page'        => $page,
-            'contentView' => $viewName,
-        ]);
+        // E.g.: $this->session = \Config\Services::session();
     }
 }

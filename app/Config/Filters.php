@@ -30,6 +30,8 @@ class Filters extends BaseFilters
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'auth'          => \App\Filters\AuthFilter::class,
+        'permission'    => \App\Filters\PermissionFilter::class,
         'cors'          => Cors::class,
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
@@ -65,21 +67,17 @@ class Filters extends BaseFilters
      * List of filter aliases that are always
      * applied before and after every request.
      *
-     * @var array{
-     *     before: array<string, array{except: list<string>|string}>|list<string>,
-     *     after: array<string, array{except: list<string>|string}>|list<string>
-     * }
+     * @var array<string, array<string, array<string, string>>>|array<string, list<string>>
      */
     public array $globals = [
         'before' => [
-            'csrf',          // Cross-Site Request Forgery protection on all state-changing requests
-            'invalidchars',  // Reject malformed/invalid request characters
             // 'honeypot',
+            'csrf',
+            // 'invalidchars',
         ],
         'after' => [
-            'toolbar',       // Debug Toolbar (development only)
-            'performance',   // Performance metrics collector
-            'secureheaders', // Applies security headers on responses
+            // 'honeypot',
+            'secureheaders',
         ],
     ];
 
