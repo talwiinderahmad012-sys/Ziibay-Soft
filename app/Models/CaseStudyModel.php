@@ -18,6 +18,28 @@ class CaseStudyModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
+    
+    protected $beforeUpdate = ['checkSlugChange'];
+
+    protected function checkSlugChange(array $data)
+    {
+        if (isset($data['data']['slug']) && isset($data['id'][0])) {
+            $id = $data['id'][0];
+            $oldRecord = $this->find($id);
+            if ($oldRecord && $oldRecord['slug'] !== $data['data']['slug']) {
+                $db = \Config\Database::connect();
+                $db->table('redirects')->insert([
+                    'old_url' => 'case-studies/' . $oldRecord['slug'],
+                    'new_url' => 'case-studies/' . $data['data']['slug'],
+                    'redirect_type' => 301,
+                    'status' => 'active',
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]);
+            }
+        }
+        return $data;
+    }
 
     // Validation rules could be added here later.
 }

@@ -1,6 +1,6 @@
 <footer class="bg-surface border-t border-border pt-20 pb-10 mt-auto">
     <div class="container mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
             <!-- Brand -->
             <div class="lg:col-span-2">
                 <a href="<?= url_to('home') ?>" class="text-2xl font-bold text-text tracking-tight mb-4 inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">
@@ -47,17 +47,27 @@
                 </ul>
             </div>
 
-            <!-- Global Reach -->
+            <!-- Explore -->
             <div>
-                <h4 class="text-text font-semibold mb-6">Global Reach</h4>
-                <ul class="space-y-4 text-sm text-text-muted">
-                    <li>USA &bull; UK &bull; Australia</li>
-                    <li>Germany &bull; Europe</li>
-                    <li class="pt-4">
-                        <a href="<?= url_to('contact') ?>" class="inline-flex items-center text-primary hover:text-primary-light font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">
-                            Start a project <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                        </a>
-                    </li>
+                <h4 class="text-text font-semibold mb-6">Explore</h4>
+                <ul class="space-y-4 text-sm">
+                    <li><a href="<?= url_to('industries') ?>" class="text-text-muted hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">Industries</a></li>
+                    <li><a href="<?= url_to('case-studies') ?>" class="text-text-muted hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">Case Studies</a></li>
+                    <li><a href="<?= url_to('blog') ?>" class="text-text-muted hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">Insights & Blog</a></li>
+                    <li><a href="<?= url_to('faq') ?>" class="text-text-muted hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">FAQ</a></li>
+                    <li><a href="<?= url_to('about') ?>" class="text-text-muted hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Locations -->
+            <div>
+                <h4 class="text-text font-semibold mb-6">Locations</h4>
+                <ul class="space-y-4 text-sm">
+                    <li><a href="<?= base_url('locations') ?>" class="text-text-muted hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">All Locations</a></li>
+                    <li><a href="<?= base_url('locations/united-states') ?>" class="text-text-muted hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">United States</a></li>
+                    <li><a href="<?= base_url('locations/united-kingdom') ?>" class="text-text-muted hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">United Kingdom</a></li>
+                    <li><a href="<?= base_url('locations/australia') ?>" class="text-text-muted hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">Australia</a></li>
+                    <li><a href="<?= url_to('contact') ?>" class="text-primary hover:text-primary-light font-semibold transition-colors">Start a project →</a></li>
                 </ul>
             </div>
         </div>

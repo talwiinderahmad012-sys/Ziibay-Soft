@@ -5,53 +5,84 @@
 <!-- Theme Variables (Light & Dark) -->
 <style type="text/tailwindcss">
     :root {
-        --bg-color: #f8fafc;
-        --surface-color: #ffffff;
-        --surface-hover: #f1f5f9;
-        --border-color: #e2e8f0;
+        /* LIGHT MODE - Soft off-white, cool-gray, blue-gray */
+        --bg-color: #f3f6f9;
+        --bg-color-alt: #e9eef5;
+        --surface-color: rgba(255, 255, 255, 0.85);
+        --surface-hover: rgba(240, 244, 248, 0.95);
+        --border-color: rgba(148, 163, 184, 0.25);
         
         --text-color: #0f172a;
-        --text-muted: #64748b;
+        --text-muted: #475569;
         --text-on-primary: #ffffff;
         
-        --primary-color: #0891b2; /* Slightly darker cyan for contrast in light mode */
-        --primary-hover: #0e7490;
-        --primary-light: #06b6d4;
-        --primary-glow: rgba(8, 145, 178, 0.2);
+        /* Accents - Controlled Cyan / Teal / Blue-Violet */
+        --primary-color: #0284c7; 
+        --primary-hover: #0369a1;
+        --primary-light: #38bdf8;
+        --primary-glow: rgba(2, 132, 199, 0.2);
+        
+        --accent-violet: #6366f1;
+        --accent-teal: #0d9488;
+        --accent-amber: #d97706; /* Sparingly */
 
         --glass-bg: rgba(255, 255, 255, 0.7);
-        --glass-border: rgba(0, 0, 0, 0.05);
+        --glass-border: rgba(148, 163, 184, 0.2);
 
-        --glass-heavy-bg: rgba(248, 250, 252, 0.85);
-        --glass-heavy-border: rgba(0, 0, 0, 0.1);
+        --glass-heavy-bg: rgba(243, 246, 249, 0.9);
+        --glass-heavy-border: rgba(148, 163, 184, 0.3);
     }
 
     .dark {
-        --bg-color: #0a0f18;
-        --surface-color: #111827;
-        --surface-hover: #1f2937;
-        --border-color: #374151;
+        /* DARK MODE - Cinematic, deep graphite, midnight navy */
+        --bg-color: #040914;
+        --bg-color-alt: #0a1120;
+        --surface-color: rgba(15, 23, 42, 0.6);
+        --surface-hover: rgba(30, 41, 59, 0.8);
+        --border-color: rgba(51, 65, 85, 0.5);
         
-        --text-color: #f9fafb;
-        --text-muted: #9ca3af;
-        --text-on-primary: #f9fafb;
+        --text-color: #f8fafc;
+        --text-muted: #94a3b8;
+        --text-on-primary: #ffffff;
         
+        /* Accents - Subtle cyan illumination */
         --primary-color: #06b6d4;
         --primary-hover: #0891b2;
         --primary-light: #22d3ee;
-        --primary-glow: rgba(6, 182, 212, 0.4);
+        --primary-glow: rgba(6, 182, 212, 0.3);
+        
+        --accent-violet: #818cf8;
+        --accent-teal: #14b8a6;
+        --accent-amber: #f59e0b;
 
-        --glass-bg: rgba(17, 24, 39, 0.7);
-        --glass-border: rgba(255, 255, 255, 0.05);
+        --glass-bg: rgba(15, 23, 42, 0.45);
+        --glass-border: rgba(51, 65, 85, 0.6);
 
-        --glass-heavy-bg: rgba(10, 15, 24, 0.85);
-        --glass-heavy-border: rgba(255, 255, 255, 0.05);
+        --glass-heavy-bg: rgba(4, 9, 20, 0.85);
+        --glass-heavy-border: rgba(51, 65, 85, 0.8);
     }
 
     /* Global Body resets based on theme */
     body {
         background-color: var(--bg-color);
         color: var(--text-color);
+        background-image: 
+            linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+        background-size: 100px 100px;
+        background-attachment: fixed;
+        background-position: center top;
+        position: relative;
+    }
+    
+    /* Ambient Glow Behind Body */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: radial-gradient(circle at 50% 0%, var(--primary-glow), transparent 60%);
+        z-index: -1;
+        pointer-events: none;
     }
 
     /* Glass Panels */
@@ -70,7 +101,7 @@
     }
 
     .glow-primary {
-        box-shadow: 0 0 20px var(--primary-glow);
+        box-shadow: 0 0 24px var(--primary-glow);
     }
 
     /* Focus rings for accessibility */
@@ -81,23 +112,234 @@
 
     /* Typography Levels */
     @layer components {
-        h1, .h1 { @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-text; }
+        h1, .h1 { @apply text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tighter text-text; }
         h2, .h2 { @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-text; }
         h3, .h3 { @apply text-2xl md:text-3xl font-semibold tracking-tight text-text; }
         h4, .h4 { @apply text-xl md:text-2xl font-semibold text-text; }
-        .text-body { @apply text-base md:text-lg text-text-muted; }
+        .text-body { @apply text-base md:text-lg text-text-muted leading-relaxed; }
         .text-small { @apply text-sm text-text-muted; }
-        .text-caption { @apply text-xs text-text-muted uppercase tracking-wider font-semibold; }
+        .text-caption { @apply text-xs text-text-muted uppercase tracking-[0.2em] font-bold; }
+        
+        /* Interactive Elements */
+        .tech-link { @apply relative inline-flex items-center text-primary font-medium hover:text-primary-light transition-colors duration-300; }
+        .tech-link::after { @apply content-[''] absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300; }
+        .tech-link:hover::after { @apply w-full; }
+    }
+
+    /* Subtle Animations */
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    @keyframes pulse-glow {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 0.4; }
+    }
+    @keyframes slide-up-fade {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes shimmer {
+        100% { transform: translateX(100%); }
+    }
+    
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+    .animate-slide-up { animation: slide-up-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-shimmer { animation: shimmer 1.5s infinite; }
+
+    /* Shining Text Effect */
+    .shining-text {
+        background: linear-gradient(110deg, var(--primary) 20%, var(--primary-light) 40%, var(--accent-violet) 60%, var(--primary) 80%);
+        background-size: 200% auto;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: shine 4s linear infinite;
+    }
+    @keyframes shine {
+        to { background-position: 200% center; }
+    }
+
+    /* --- 21st.dev Interaction Styles --- */
+    
+    /* 1. Spotlight Card */
+    .spotlight-card {
+        position: relative;
+        overflow: hidden;
+    }
+    .spotlight-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        background: radial-gradient(
+            600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(255,255,255,0.06),
+            transparent 40%
+        );
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+    .dark .spotlight-card::before {
+        background: radial-gradient(
+            600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(255,255,255,0.08),
+            transparent 40%
+        );
+    }
+    .spotlight-card:hover::before {
+        opacity: 1;
+    }
+
+    /* 2. Custom Cursor */
+    .custom-cursor {
+        position: fixed;
+        top: -15px;
+        left: -15px;
+        width: 30px;
+        height: 30px;
+        border: 1px solid var(--primary);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transition: width 0.3s, height 0.3s, top 0.3s, left 0.3s, background-color 0.3s;
+        mix-blend-mode: difference;
+    }
+    .custom-cursor-dot {
+        position: fixed;
+        top: -3px;
+        left: -3px;
+        width: 6px;
+        height: 6px;
+        background-color: var(--primary);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        transition: transform 0.1s;
+    }
+    .cursor-hover.custom-cursor {
+        width: 50px;
+        height: 50px;
+        top: -25px;
+        left: -25px;
+        background-color: rgba(255,255,255,0.1);
+        border-color: transparent;
+    }
+    .cursor-hover.custom-cursor-dot {
+        transform: scale(0);
+    }
+    /* Hide default cursor only on large screens */
+    @media (pointer: fine) {
+        body { cursor: none; }
+        a, button, input, select, textarea { cursor: none; }
+    }
+
+    /* 3. Scroll Choreography */
+    .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+    }
+    .reveal-on-scroll.is-revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    /* Staggered reveals */
+    .reveal-delay-100 { transition-delay: 100ms; }
+    .reveal-delay-200 { transition-delay: 200ms; }
+    .reveal-delay-300 { transition-delay: 300ms; }
+    .reveal-delay-400 { transition-delay: 400ms; }
+
+    /* 4. Tubelight Navbar (Scrolled state) */
+    .nav-scrolled {
+        background-color: var(--surface) !important;
+        box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.2);
+        border-color: var(--border-color);
+        top: 10px !important;
+    }
+    .dark .nav-scrolled {
+        background-color: rgba(10, 17, 32, 0.85) !important;
+        box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.8), inset 0 -1px 0 rgba(255,255,255,0.05);
+    }
+
+    /* Tubelight Nav Items */
+    .nav-item {
+        position: relative;
+    }
+    .nav-item::before {
+        content: "";
+        position: absolute;
+        top: -4px;
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        width: 30px;
+        height: 2px;
+        background: var(--primary);
+        box-shadow: 0 0 10px var(--primary-glow);
+        transition: transform 0.3s;
+        border-radius: 2px;
+    }
+    .nav-item:hover::before, .nav-item.active::before {
+        transform: translateX(-50%) scaleX(1);
+    }
+
+    /* 5. Liquid Button / Spotlight Button styles */
+    .btn-liquid {
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-liquid::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+        transform: rotate(30deg) translateX(-100%);
+        transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-liquid:hover::after {
+        transform: rotate(30deg) translateX(100%);
+    }
+
+    /* 6. Shimmer Button */
+    .btn-shimmer {
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-shimmer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+        transform: skewX(-20deg);
+        animation: shimmer-btn 3s infinite;
+    }
+    @keyframes shimmer-btn {
+        0% { left: -100%; }
+        20% { left: 200%; }
+        100% { left: 200%; }
     }
 
     /* Motion preferences */
     @media (prefers-reduced-motion: reduce) {
-        * {
+        *, ::before, ::after {
             animation-duration: 0.01ms !important;
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;
             scroll-behavior: auto !important;
         }
+        .reveal-on-scroll { opacity: 1; transform: none; transition: none; }
     }
 </style>
 
@@ -109,7 +351,7 @@
             container: {
                 center: true,
                 padding: {
-                    DEFAULT: '1rem',
+                    DEFAULT: '1.5rem',
                     sm: '2rem',
                     lg: '4rem',
                     xl: '5rem',
@@ -126,6 +368,7 @@
             extend: {
                 colors: {
                     background: 'var(--bg-color)',
+                    'background-alt': 'var(--bg-color-alt)',
                     surface: 'var(--surface-color)',
                     'surface-hover': 'var(--surface-hover)',
                     border: 'var(--border-color)',
@@ -135,22 +378,30 @@
                         light: 'var(--primary-light)',
                         glow: 'var(--primary-glow)'
                     },
-                    secondary: {
-                        DEFAULT: '#6366f1',
-                        hover: '#4f46e5'
+                    accent: {
+                        violet: 'var(--accent-violet)',
+                        teal: 'var(--accent-teal)',
+                        amber: 'var(--accent-amber)'
                     },
                     text: {
                         DEFAULT: 'var(--text-color)',
                         muted: 'var(--text-muted)',
                         onprimary: 'var(--text-on-primary)'
-                    },
-                    success: '#10b981',
-                    warning: '#f59e0b',
-                    danger: '#ef4444'
+                    }
                 },
                 fontFamily: {
                     sans: ['Inter', 'system-ui', 'sans-serif'],
                     display: ['Inter', 'system-ui', 'sans-serif'],
+                    mono: ['JetBrains Mono', 'Menlo', 'monospace'],
+                },
+                boxShadow: {
+                    'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.05)',
+                    'glass-dark': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                    'tech': '0 0 0 1px var(--border-color), 0 4px 12px var(--primary-glow)',
+                },
+                backgroundImage: {
+                    'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    'gradient-tech': 'linear-gradient(135deg, var(--bg-color) 0%, var(--bg-color-alt) 100%)',
                 }
             }
         }

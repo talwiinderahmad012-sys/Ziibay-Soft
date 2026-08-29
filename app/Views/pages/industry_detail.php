@@ -149,6 +149,24 @@
     </div>
 </section>
 
+<?php if (! empty($related_case_studies)): ?>
+<!-- Real case studies in this industry -->
+<?= $this->include('components/related_content', [
+    'related_title'   => $industry['name'] . ' Case Studies',
+    'related_items'   => $related_case_studies,
+    'related_columns' => 'md:grid-cols-3',
+]) ?>
+<?php endif; ?>
+
+<?php if (! empty($related_guides)): ?>
+<!-- Educational resources relevant to this industry -->
+<?= $this->include('components/related_content', [
+    'related_title'   => 'Guides for the ' . $industry['name'] . ' Sector',
+    'related_items'   => $related_guides,
+    'related_columns' => 'md:grid-cols-3',
+]) ?>
+<?php endif; ?>
+
 <!-- 5. Final CTA -->
 <section class="py-24 relative overflow-hidden bg-primary/10 border-t border-primary/20">
     <div class="container mx-auto relative z-10 text-center">

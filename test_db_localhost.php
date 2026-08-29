@@ -1,0 +1,1 @@
+<?php $mysqli = new mysqli("localhost", "root", "", "ziibay_soft"); if ($mysqli->connect_errno) { echo "Failed to connect to MySQL: " . $mysqli->connect_error; } else { echo "Connected successfully"; } ?>

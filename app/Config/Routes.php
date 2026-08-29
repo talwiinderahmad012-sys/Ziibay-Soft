@@ -9,11 +9,13 @@ $routes->get('/', 'Home::index', ['as' => 'home']);
 
 // Main Pages
 $routes->get('about', 'Pages::about', ['as' => 'about']);
+$routes->get('privacy', 'Pages::privacy', ['as' => 'privacy']);
+$routes->get('terms', 'Pages::terms', ['as' => 'terms']);
 $routes->get('contact', 'Contact::index', ['as' => 'contact']);
 $routes->post('contact', 'Contact::submit');
 
 $routes->get('search', 'Search::index');
-$routes->get('faq', 'Faq::index');
+$routes->get('faq', 'Faq::index', ['as' => 'faq']);
 // Portfolio
 $routes->get('portfolio', 'Portfolio::index', ['as' => 'portfolio']);
 $routes->get('portfolio/(:segment)', 'Portfolio::show/$1', ['as' => 'portfolio-detail']);
@@ -27,6 +29,7 @@ $routes->get('authors/(:segment)', 'Blog::author/$1');
 $routes->get('blog/(:segment)', 'Blog::show/$1', ['as' => 'blog-detail']);
 
 $routes->get('sitemap.xml', 'Sitemap::index', ['as' => 'sitemap']);
+$routes->get('robots.txt', 'Robots::index');
 
 // Industries
 $routes->get('industries', 'Industries::index', ['as' => 'industries']);
@@ -39,8 +42,12 @@ $routes->group('services', static function ($routes) {
 });
 
 // Location SEO Engine Routing (Programmatic)
-// URL pattern: /locations/{country}/{region}/{city}/{service}
-$routes->get('locations/(:segment)/(:segment)/(:segment)/(:segment)', 'LocationService::index/$1/$2/$3/$4');
+// Public Location Routes
+$routes->get('locations', 'Locations::index');
+$routes->get('locations/(:segment)', 'Locations::country/$1');
+$routes->get('locations/(:segment)/(:segment)', 'Locations::region/$1/$2');
+$routes->get('locations/(:segment)/(:segment)/(:segment)', 'Locations::city/$1/$2/$3');
+$routes->get('locations/(:segment)/(:segment)/(:segment)/(:segment)', 'Locations::service/$1/$2/$3/$4');
 
 // Admin Routes
 $routes->group('admin', static function ($routes) {
@@ -61,6 +68,33 @@ $routes->group('admin', static function ($routes) {
         $routes->get('services/edit/(:num)', 'Admin\Services::edit/$1');
         $routes->post('services/update/(:num)', 'Admin\Services::update/$1');
         $routes->post('services/toggle-status/(:num)', 'Admin\Services::toggleStatus/$1');
+
+        // Locations Management
+        $routes->get('locations', 'Admin\Locations::index');
+        $routes->get('locations/create', 'Admin\Locations::create');
+        $routes->post('locations', 'Admin\Locations::store');
+        $routes->get('locations/edit/(:num)', 'Admin\Locations::edit/$1');
+        $routes->post('locations/update/(:num)', 'Admin\Locations::update/$1');
+        $routes->post('locations/toggle-status/(:num)', 'Admin\Locations::toggleStatus/$1');
+        
+        $routes->get('location-services', 'Admin\LocationServices::index');
+        $routes->get('location-services/create', 'Admin\LocationServices::create');
+        $routes->post('location-services', 'Admin\LocationServices::store');
+        $routes->get('location-services/edit/(:num)', 'Admin\LocationServices::edit/$1');
+        $routes->post('location-services/update/(:num)', 'Admin\LocationServices::update/$1');
+        $routes->post('location-services/toggle-status/(:num)', 'Admin\LocationServices::toggleStatus/$1');
+
+        // Location Matrix Dashboard
+        $routes->get('location-matrix', 'Admin\LocationMatrix::index');
+
+        // Internal Link Audit (Phase #20)
+        $routes->get('internal-links', 'Admin\InternalLinks::index');
+        $routes->post('internal-links/set-priority', 'Admin\InternalLinks::setPriority');
+
+        // SEO & Schema Settings (Phase #21)
+        $routes->get('seo-settings', 'Admin\SeoSettings::index');
+        $routes->post('seo-settings/update', 'Admin\SeoSettings::update');
+        $routes->post('seo-settings/override', 'Admin\SeoSettings::overrideSchema');
 
         // Industries Management
         $routes->get('industries', 'Admin\Industries::index');
@@ -95,6 +129,45 @@ $routes->group('admin', static function ($routes) {
         $routes->post('blog/update/(:num)', 'Admin\Blog::update/$1');
         $routes->post('blog/toggle-status/(:num)', 'Admin\Blog::toggleStatus/$1');
         $routes->post('blog/toggle-featured/(:num)', 'Admin\Blog::toggleFeatured/$1');
+
+        // FAQ Management
+        $routes->get('faq', 'Admin\Faq::index');
+        $routes->get('faq/create', 'Admin\Faq::create');
+        $routes->post('faq', 'Admin\Faq::store');
+        $routes->get('faq/edit/(:num)', 'Admin\Faq::edit/$1');
+        $routes->post('faq/update/(:num)', 'Admin\Faq::update/$1');
+        $routes->post('faq/toggle-status/(:num)', 'Admin\Faq::toggleStatus/$1');
+
+        // SEO: Content Architecture Dashboard (Phase #23)
+        $routes->get('content-dashboard', 'Admin\ContentDashboard::index');
+    
+    // Technical SEO Audit
+    $routes->get('seo-audit', 'Admin\SeoAudit::index');
+
+        // SEO Keywords
+        $routes->get('seo-keywords', 'Admin\SeoKeywords::index');
+        $routes->get('seo-keywords/create', 'Admin\SeoKeywords::create');
+        $routes->post('seo-keywords', 'Admin\SeoKeywords::store');
+        
+        // Settings
+        $routes->get('settings', 'Admin\Settings::index');
+        $routes->post('settings/update', 'Admin\Settings::update');
+        
+        // Team Members
+        $routes->get('team', 'Admin\TeamMembers::index');
+        $routes->get('team/create', 'Admin\TeamMembers::create');
+        $routes->post('team', 'Admin\TeamMembers::store');
+        $routes->get('team/edit/(:num)', 'Admin\TeamMembers::edit/$1');
+        $routes->post('team/update/(:num)', 'Admin\TeamMembers::update/$1');
+        $routes->post('team/toggle-status/(:num)', 'Admin\TeamMembers::toggleStatus/$1');
+        $routes->get('seo-keywords/edit/(:num)', 'Admin\SeoKeywords::edit/$1');
+        $routes->post('seo-keywords/update/(:num)', 'Admin\SeoKeywords::update/$1');
+        $routes->get('seo-keywords/brief', 'Admin\SeoKeywords::brief');
+
+        // SEO: Internal Links (Phase #20 audit, no duplicate dashboard)
+        $routes->get('internal-links', 'Admin\InternalLinks::index');
+        $routes->post('internal-links/run', 'Admin\InternalLinks::run');
+        $routes->post('internal-links/priority', 'Admin\InternalLinks::updatePriority');
 
         // Blog Categories
         $routes->get('blog-categories', 'Admin\BlogCategories::index');

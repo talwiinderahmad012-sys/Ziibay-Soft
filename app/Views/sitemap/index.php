@@ -93,4 +93,21 @@
     <?php endforeach; ?>
     <?php endif; ?>
 
+    <?php if(isset($locationUrls)): foreach($locationUrls as $lu): ?>
+    <url>
+        <loc><?= esc($lu['url']) ?></loc>
+        <lastmod><?= date('Y-m-d', strtotime($lu['updated_at'])) ?></lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <?php endforeach; endif; ?>
+
+    <?php if(isset($locationServiceUrls)): foreach($locationServiceUrls as $lsu): ?>
+    <url>
+        <loc><?= esc($lsu['url']) ?></loc>
+        <lastmod><?= date('Y-m-d', strtotime($lsu['updated_at'])) ?></lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <?php endforeach; endif; ?>
 </urlset>

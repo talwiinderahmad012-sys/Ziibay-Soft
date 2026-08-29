@@ -249,6 +249,42 @@
 </section>
 <?php endif; ?>
 
+<!-- Continue with a related service (educational -> commercial transition) -->
+<?php if (!empty($relatedServices)): ?>
+<section class="py-16 bg-surface/50 transition-colors duration-300 border-t border-border">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="bg-surface border border-border rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div class="max-w-xl">
+                <span class="text-xs font-bold uppercase tracking-wider text-primary mb-3 block">Take the Next Step</span>
+                <h2 class="text-2xl font-bold text-text mb-2">Put this into practice with our team</h2>
+                <p class="text-text-muted text-sm">
+                    This guide relates to the work we do every day. Explore
+                    <?php foreach ($relatedServices as $i => $relService): ?>
+                        <a href="<?= base_url('services/' . esc($relService['public_slug'])) ?>" class="text-primary font-semibold hover:underline"><?= esc(strtolower($relService['name'])) ?> services</a><?= $i < count($relatedServices) - 1 ? (count($relatedServices) === 2 ? ' ' : ', ') : '' ?>
+                    <?php endforeach; ?>
+                    or talk to us about your specific situation.
+                </p>
+            </div>
+            <a href="<?= base_url('contact') ?>" class="shrink-0 inline-flex items-center px-6 py-3 rounded-xl bg-primary text-text-onprimary font-bold hover:bg-primary-hover transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                Get a Free Consultation
+                <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+        </div>
+
+        <?php if (!empty($relatedIndustries)): ?>
+            <div class="mt-6 flex flex-wrap items-center gap-2 text-sm">
+                <span class="text-text-muted font-medium mr-1">Relevant industries:</span>
+                <?php foreach ($relatedIndustries as $relIndustry): ?>
+                    <a href="<?= base_url('industries/' . esc($relIndustry['slug'])) ?>" class="px-3 py-1.5 rounded-full border border-border bg-surface text-text-muted hover:text-primary hover:border-primary/40 transition-colors">
+                        <?= esc($relIndustry['name']) ?>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</section>
+<?php endif; ?>
+
 <!-- Schema.org Article, BreadcrumbList, FAQ -->
 <script type="application/ld+json">
 [

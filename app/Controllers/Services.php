@@ -2,10 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Services\InternalLinkService;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Services extends BaseController
 {
+    protected InternalLinkService $internalLinks;
+
+    public function __construct()
+    {
+        $this->internalLinks = new InternalLinkService();
+        helper('internal_link');
+    }
+
     public function index()
     {
         $servicesData = $this->getMockServices();
@@ -23,11 +32,20 @@ class Services extends BaseController
             }
         }
 
+        $schema = new \App\Libraries\SchemaGenerator();
+        $schema->loadOverride('page', 0); // Need a proper page ID for Services Hub if it existed, for now 0
+        $schema->addWebPage('Digital Services & Solutions | Ziibay Soft', url_to('services'), 'Explore Ziibay Soft\'s digital services.')
+               ->addBreadcrumbs([
+                   ['name' => 'Home', 'url' => base_url()],
+                   ['name' => 'Services', 'url' => url_to('services')]
+               ]);
+
         $data = [
             'title' => 'Digital Services & Solutions | Ziibay Soft',
             'meta_description' => 'Explore Ziibay Soft\'s digital services. We offer custom Web Development, Software Development, App Development, SEO Services, and Social Media Management.',
             'canonical_url' => url_to('services'),
-            'categories' => $categories
+            'categories' => $categories,
+            'schema_json' => $schema->render(),
         ];
 
         return view('pages/services_hub', $data);
@@ -37,18 +55,96 @@ class Services extends BaseController
     {
         $servicesData = $this->getMockServices();
 
+        // Canonical URL consistency: DB slugs (e.g. seo-services) resolve
+        // to the single public page (e.g. /services/seo) via 301.
+        $canonicalSlug = $this->internalLinks->publicSlugFromDbSlug($slug);
+        if ($canonicalSlug !== $slug) {
+            return redirect()->to(url_to('service-detail', $canonicalSlug), 301);
+        }
+
         if (!array_key_exists($slug, $servicesData)) {
             throw PageNotFoundException::forPageNotFound("Service not found: $slug");
         }
 
         $service = $servicesData[$slug];
 
+        // Relationship-driven supporting content (Phase #20).
+        // Only real, published content is linked — blocks render nothing when empty.
+        $relatedCaseStudies = [];
+        $relatedGuides      = [];
+        $relatedIndustries  = [];
+        $priorityLocations  = [];
+
+        $dbService = $this->internalLinks->findServiceByPublicSlug($slug);
+
+        if ($dbService !== null) {
+            $serviceId = (int) $dbService['id'];
+
+            $relatedCaseStudies = array_map(
+                static fn (array $cs): array => [
+                    'url'     => internal_url('case_study', ['slug' => $cs['slug']]),
+                    'title'   => $cs['title'],
+                    'excerpt' => $cs['excerpt'],
+                    'badge'   => 'Case Study',
+                    'cta'     => 'View the project',
+                ],
+                $this->internalLinks->relatedCaseStudiesForService($serviceId, 3)
+            );
+
+            $relatedGuides = array_map(
+                static fn (array $guide): array => [
+                    'url'     => internal_url('blog_post', ['slug' => $guide['slug']]),
+                    'title'   => $guide['title'],
+                    'excerpt' => $guide['excerpt'],
+                    'badge'   => 'Guide',
+                    'cta'     => 'Read the guide',
+                ],
+                $this->internalLinks->relatedGuidesForService($serviceId, 3)
+            );
+
+            $relatedIndustries = array_map(
+                static fn (array $industry): array => [
+                    'url'     => internal_url('industry', ['slug' => $industry['slug']]),
+                    'title'   => $industry['name'],
+                    'excerpt' => $industry['short_description'],
+                    'badge'   => 'Industry',
+                ],
+                $this->internalLinks->relatedIndustriesForService($serviceId, 3)
+            );
+
+            $priorityLocations = $this->internalLinks->priorityLocationsForService($serviceId, 4);
+        }
+
+        $canonicalUrl = url_to('service-detail', $slug);
+
+        $schema = new \App\Libraries\SchemaGenerator();
+        $schema->loadOverride('service', $dbService ? $dbService['id'] : 0);
+        $schema->addWebPage($service['seo_title'], $canonicalUrl, $service['seo_description'])
+               ->addBreadcrumbs([
+                   ['name' => 'Home', 'url' => base_url()],
+                   ['name' => 'Services', 'url' => url_to('services')],
+                   ['name' => $service['name'], 'url' => $canonicalUrl]
+               ])
+               ->addService($service['name'], $service['seo_description'], $canonicalUrl);
+               
+        if (!empty($service['faqs'])) {
+            $schema->addFAQ($service['faqs']);
+        }
+
         $data = [
             'title' => $service['seo_title'],
             'meta_description' => $service['seo_description'],
-            'canonical_url' => url_to('service-detail', $slug),
-            'whatsapp_message' => $service['whatsapp_message'],
+            'canonical_url' => $canonicalUrl,
+            'whatsapp_message' => $service['whatsapp_message'] ?? '',
             'service' => $service,
+            
+            // Relationships
+            'relatedCaseStudies' => $relatedCaseStudies,
+            'relatedGuides'      => $relatedGuides,
+            'relatedIndustries'  => $relatedIndustries,
+            'priorityLocations'  => $priorityLocations,
+            
+            'schema_json'        => $schema->render(),
         ];
 
         return view('pages/service_detail', $data);

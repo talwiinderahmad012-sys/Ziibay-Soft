@@ -10,10 +10,19 @@
 <section class="pt-32 pb-16 bg-surface transition-colors duration-300 relative overflow-hidden">
     <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
     <div class="container mx-auto px-4 relative z-10 text-center">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text mb-6">Insights & <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-secondary">Knowledge</span></h1>
-        <p class="text-xl text-text-muted max-w-3xl mx-auto">
-            Expert strategies, technical deep-dives, and digital growth guides from the team at Ziibay Soft.
-        </p>
+        <?php if(isset($filters['category'])): ?>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text mb-6"><?= esc($filters['category']['name']) ?></h1>
+            <p class="text-xl text-text-muted max-w-3xl mx-auto"><?= esc($filters['category']['description'] ?? 'Explore articles in this category.') ?></p>
+        <?php elseif(isset($filters['tag'])): ?>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text mb-6">Topic: <span class="text-brand-primary">#<?= esc($filters['tag']['name']) ?></span></h1>
+            <p class="text-xl text-text-muted max-w-3xl mx-auto">Articles and guides related to <?= esc($filters['tag']['name']) ?>.</p>
+        <?php elseif(isset($filters['author'])): ?>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text mb-6">Articles by <span class="text-brand-primary"><?= esc($filters['author']['name']) ?></span></h1>
+            <p class="text-xl text-text-muted max-w-3xl mx-auto"><?= esc($filters['author']['short_bio'] ?? '') ?></p>
+        <?php else: ?>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text mb-6">Insights & <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-secondary">Knowledge</span></h1>
+            <p class="text-xl text-text-muted max-w-3xl mx-auto">Expert strategies, technical deep-dives, and digital growth guides from the team at Ziibay Soft.</p>
+        <?php endif; ?>
     </div>
 </section>
 

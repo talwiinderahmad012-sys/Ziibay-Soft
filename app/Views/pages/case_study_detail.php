@@ -50,11 +50,14 @@
                     </div>
                 <?php endif; ?>
 
+
                 <?php if (!empty($industries)): ?>
                     <div>
                         <span class="block text-xs text-text-muted uppercase tracking-wider font-bold mb-1">Industry</span>
-                        <span class="text-text font-medium text-lg">
-                            <?= implode(', ', array_map('esc', array_column($industries, 'name'))) ?>
+                        <span class="text-text font-medium text-lg flex flex-wrap gap-2">
+                            <?php foreach($industries as $ind): ?>
+                                <a href="<?= base_url('industries/' . esc($ind['slug'])) ?>" class="hover:text-brand-primary transition-colors underline decoration-dotted underline-offset-2"><?= esc($ind['name']) ?></a>
+                            <?php endforeach; ?>
                         </span>
                     </div>
                 <?php endif; ?>
@@ -62,8 +65,10 @@
                 <?php if (!empty($services)): ?>
                     <div>
                         <span class="block text-xs text-text-muted uppercase tracking-wider font-bold mb-1">Services</span>
-                        <span class="text-text font-medium text-lg">
-                            <?= implode(', ', array_map('esc', array_column($services, 'name'))) ?>
+                        <span class="text-text font-medium text-lg flex flex-wrap gap-2">
+                            <?php foreach($services as $svc): ?>
+                                <a href="<?= base_url('services/' . esc($svc['slug'])) ?>" class="hover:text-brand-primary transition-colors underline decoration-dotted underline-offset-2"><?= esc($svc['name']) ?></a>
+                            <?php endforeach; ?>
                         </span>
                     </div>
                 <?php endif; ?>
@@ -354,25 +359,7 @@
     </div>
 </section>
 
-<!-- FAQ Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    <?php foreach ($faqs as $i => $faq): ?>
-    {
-      "@type": "Question",
-      "name": <?= json_encode(strip_tags($faq['question'])) ?>,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": <?= json_encode(strip_tags($faq['answer'])) ?>
-      }
-    }<?= $i < count($faqs) - 1 ? ',' : '' ?>
-    <?php endforeach; ?>
-  ]
-}
-</script>
+
 <?php endif; ?>
 
 <!-- Related Case Studies -->
@@ -403,32 +390,8 @@
 </section>
 <?php endif; ?>
 
-<!-- Schema.org BreadcrumbList -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "<?= base_url() ?>"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Case Studies",
-      "item": "<?= base_url('case-studies') ?>"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "<?= esc($caseStudy['title']) ?>",
-      "item": "<?= esc($canonical_url) ?>"
-    }
-  ]
-}
-</script>
+
 
 <?= $this->endSection() ?>
+
+

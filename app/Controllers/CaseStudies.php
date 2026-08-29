@@ -181,6 +181,29 @@ class CaseStudies extends BaseController
         // Pre-fill WhatsApp message
         $whatsappMessage = "Hello Ziibay Soft, I saw the '" . $caseStudy['title'] . "' case study and would like to discuss a similar project.";
 
+        $canonicalUrl = $caseStudy['canonical_url'] ?? base_url("case-studies/" . $caseStudy['slug']);
+
+        $schema = new \App\Libraries\SchemaGenerator();
+        $schema->loadOverride('case_study', $caseStudy['id']);
+        $schema->addWebPage($caseStudy['seo_title'] ?? $caseStudy['title'], $canonicalUrl, $caseStudy['seo_description'] ?? $caseStudy['excerpt'])
+               ->addBreadcrumbs([
+                   ['name' => 'Home', 'url' => base_url()],
+                   ['name' => 'Case Studies', 'url' => base_url('case-studies')],
+                   ['name' => $caseStudy['title'], 'url' => $canonicalUrl]
+               ])
+               ->addArticle(
+                   $caseStudy['title'],
+                   $canonicalUrl,
+                   $caseStudy['published_at'] ?? $caseStudy['created_at'],
+                   $caseStudy['updated_at'],
+                   $caseStudy['seo_description'] ?? $caseStudy['excerpt'],
+                   $caseStudy['featured_image'] ? base_url($caseStudy['featured_image']) : ''
+               );
+               
+        if (!empty($faqs)) {
+            $schema->addFAQ($faqs);
+        }
+
         $data = [
             'caseStudy' => $caseStudy,
             'services' => $services,
@@ -192,8 +215,9 @@ class CaseStudies extends BaseController
             'whatsappMessage' => $whatsappMessage,
             'title' => $caseStudy['seo_title'] ?? $caseStudy['title'],
             'meta_description' => $caseStudy['seo_description'] ?? $caseStudy['excerpt'],
-            'canonical_url' => $caseStudy['canonical_url'] ?? base_url("case-studies/" . $caseStudy['slug']),
+            'canonical_url' => $canonicalUrl,
             'og_image' => $caseStudy['og_image'] ?? ($caseStudy['featured_image'] ? base_url($caseStudy['featured_image']) : null),
+            'schema_json' => $schema->render(),
         ];
 
         return view('pages/case_study_detail', $data);

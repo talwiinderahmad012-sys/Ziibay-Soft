@@ -239,6 +239,60 @@
     </div>
 </section>
 
+<?php if (! empty($related_guides)): ?>
+<!-- Supporting Guides (educational cluster for this service silo) -->
+<?= $this->include('components/related_content', [
+    'related_title'   => 'Guides & Resources',
+    'related_items'   => $related_guides,
+    'related_columns' => 'md:grid-cols-3',
+]) ?>
+<?php endif; ?>
+
+<?php if (! empty($related_case_studies)): ?>
+<!-- Relevant case studies for this service -->
+<?= $this->include('components/related_content', [
+    'related_title'   => 'Related ' . $service['name'] . ' Case Studies',
+    'related_items'   => $related_case_studies,
+    'related_columns' => 'md:grid-cols-3',
+]) ?>
+<?php endif; ?>
+
+<?php if (! empty($related_industries)): ?>
+<!-- Industries where this service is commonly applied -->
+<?= $this->include('components/related_content', [
+    'related_title'   => 'Industries We Serve with ' . $service['name'],
+    'related_items'   => $related_industries,
+    'related_columns' => 'md:grid-cols-3',
+]) ?>
+<?php endif; ?>
+
+<?php if (! empty($priority_locations)): ?>
+<!-- Selected priority locations for this service -->
+<section class="py-16 border-t border-border">
+    <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-10">
+            <div>
+                <h2 class="h3 text-text mb-2"><?= esc($service['name']) ?> by Location</h2>
+                <p class="text-body">Selected markets where we deliver this service remotely.</p>
+            </div>
+            <a href="<?= base_url('locations') ?>" class="inline-flex items-center text-primary font-semibold hover:text-primary-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">
+                All locations
+                <svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <?php foreach ($priority_locations as $loc): ?>
+            <a href="<?= esc($loc['url']) ?>" class="glass-panel rounded-xl border border-border p-5 text-center hover:border-primary/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                <span class="block text-text font-semibold group-hover:text-primary"><?= esc($loc['name']) ?></span>
+                <span class="block text-caption mt-1"><?= esc(str_replace('-', ' ', $loc['path'][0])) ?></span>
+            </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
 <!-- 10. Final CTA -->
 <section class="py-24 relative overflow-hidden bg-primary/10 border-t border-primary/20">
     <div class="container mx-auto relative z-10 text-center">

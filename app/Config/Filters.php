@@ -31,6 +31,7 @@ class Filters extends BaseFilters
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'auth'          => \App\Filters\AuthFilter::class,
+        'redirect'      => \App\Filters\RedirectFilter::class,
         'permission'    => \App\Filters\PermissionFilter::class,
         'cors'          => Cors::class,
         'forcehttps'    => ForceHTTPS::class,
@@ -74,6 +75,7 @@ class Filters extends BaseFilters
             // 'honeypot',
             'csrf',
             // 'invalidchars',
+            'redirect', // Phase 24: Global redirects
         ],
         'after' => [
             // 'honeypot',

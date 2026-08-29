@@ -28,19 +28,23 @@
         </div>
         <nav class="flex-1 overflow-y-auto p-4 space-y-2">
             <a href="<?= base_url('admin/dashboard') ?>" class="sidebar-link <?= (url_is('admin/dashboard')) ? 'active' : '' ?>">Dashboard</a>
-            <a href="#" class="sidebar-link">Services</a>
-            <a href="#" class="sidebar-link">Locations</a>
-            <a href="#" class="sidebar-link">Team</a>
+            <a href="<?= base_url('admin/services') ?>" class="sidebar-link <?= (url_is('admin/services*')) ? 'active' : '' ?>">Services</a>
+            <a href="<?= base_url('admin/industries') ?>" class="sidebar-link <?= (url_is('admin/industries*')) ? 'active' : '' ?>">Industries</a>
+            <a href="<?= base_url('admin/locations') ?>" class="sidebar-link <?= (url_is('admin/locations*') && !url_is('admin/location-services*') && !url_is('admin/location-matrix*')) ? 'active' : '' ?>">Locations</a>
+            <a href="<?= base_url('admin/location-services') ?>" class="sidebar-link <?= (url_is('admin/location-services*')) ? 'active' : '' ?>">Location Pages</a>
+            <a href="<?= base_url('admin/location-matrix') ?>" class="sidebar-link <?= (url_is('admin/location-matrix*')) ? 'active' : '' ?>">Location Matrix</a>
             <a href="<?= base_url('admin/portfolio') ?>" class="sidebar-link <?= (url_is('admin/portfolio*')) ? 'active' : '' ?>">Portfolio</a>
             <a href="<?= base_url('admin/case-studies') ?>" class="sidebar-link <?= (url_is('admin/case-studies*')) ? 'active' : '' ?>">Case Studies</a>
             <a href="<?= base_url('admin/blog') ?>" class="sidebar-link <?= (url_is('admin/blog*') && !url_is('admin/blog-categories*') && !url_is('admin/blog-tags*')) ? 'active' : '' ?>">Blog Posts</a>
             <a href="<?= base_url('admin/blog-categories') ?>" class="sidebar-link <?= (url_is('admin/blog-categories*')) ? 'active' : '' ?>">Blog Categories</a>
             <a href="<?= base_url('admin/blog-tags') ?>" class="sidebar-link <?= (url_is('admin/blog-tags*')) ? 'active' : '' ?>">Blog Tags</a>
-            <a href="#" class="sidebar-link">SEO</a>
+            <a href="<?= base_url('admin/content-dashboard') ?>" class="sidebar-link <?= (url_is('admin/content-dashboard*')) ? 'active' : '' ?>"><i class="bi bi-diagram-3"></i> Content Arch</a>
+            <a href="<?= base_url('admin/seo-audit') ?>" class="sidebar-link <?= (url_is('admin/seo-audit*')) ? 'active' : '' ?>"><i class="bi bi-heart-pulse"></i> Technical SEO</a>
+            <a href="<?= base_url('admin/seo-keywords') ?>" class="sidebar-link <?= (url_is('admin/seo-keywords*')) ? 'active' : '' ?>">SEO Keywords</a>
             <a href="<?= base_url('admin/leads') ?>" class="sidebar-link <?= (url_is('admin/leads*')) ? 'active' : '' ?>">Leads</a>
             <a href="<?= base_url('admin/faqs') ?>" class="sidebar-link <?= (url_is('admin/faqs*')) ? 'active' : '' ?>">FAQs</a>
-            <a href="#" class="sidebar-link">Settings</a>
-            <a href="#" class="sidebar-link">Users</a>
+            <a href="<?= base_url('admin/internal-links') ?>" class="sidebar-link <?= (url_is('admin/internal-links*')) ? 'active' : '' ?>">Link Audit</a>
+            <a href="<?= base_url('admin/seo-settings') ?>" class="sidebar-link <?= (url_is('admin/seo-settings*')) ? 'active' : '' ?>">Global SEO</a>
         </nav>
         <div class="p-4 border-t border-border">
             <a href="<?= base_url('admin/logout') ?>" class="sidebar-link text-red-400 hover:text-red-300">Logout</a>

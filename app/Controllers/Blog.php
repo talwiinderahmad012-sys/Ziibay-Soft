@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\BlogPostModel;
 use App\Models\BlogCategoryModel;
 use App\Models\BlogTagModel;
+use App\Services\InternalLinkService;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Blog extends BaseController
@@ -12,6 +13,7 @@ class Blog extends BaseController
     protected $categoryModel;
     protected $tagModel;
     protected $db;
+    protected InternalLinkService $internalLinks;
 
     public function __construct()
     {
@@ -19,7 +21,9 @@ class Blog extends BaseController
         $this->categoryModel = new BlogCategoryModel();
         $this->tagModel = new BlogTagModel();
         $this->db = \Config\Database::connect();
+        $this->internalLinks = new InternalLinkService();
         helper('toc');
+        helper('internal_link');
     }
 
     public function index()
@@ -156,6 +160,15 @@ class Blog extends BaseController
             ->where('f.status', 'active')
             ->get()->getResultArray();
 
+        // Related services and industries (Phase #20 internal linking silo).
+        $relatedServices = $this->internalLinks->relatedServicesForBlogPost((int) $post['id'], 2);
+        foreach ($relatedServices as &$relService) {
+            $relService['public_slug'] = $this->internalLinks->publicSlugFromDbSlug($relService['slug']);
+        }
+        unset($relService);
+
+        $relatedIndustries = $this->internalLinks->relatedIndustriesForBlogPost((int) $post['id'], 3);
+
         // Related Articles (from relationships table)
         $relatedPosts = $this->db->table('blog_posts p')
             ->select('p.*, c.name as category_name, c.slug as category_slug')
@@ -189,6 +202,32 @@ class Blog extends BaseController
         $post['content'] = $htmlContent;
         $readingTime = calculate_reading_time($htmlContent);
 
+        $canonicalUrl = $post['canonical_url'] ?: base_url("blog/" . $post['slug']);
+        $description = $post['meta_description'] ?: strip_tags($post['excerpt']);
+
+        $schema = new \App\Libraries\SchemaGenerator();
+        $schema->loadOverride('blog_post', $post['id']);
+        $schema->addWebPage($post['seo_title'] ?: $post['title'], $canonicalUrl, $description)
+               ->addBreadcrumbs([
+                   ['name' => 'Home', 'url' => base_url()],
+                   ['name' => 'Blog', 'url' => base_url('blog')],
+                   ['name' => $category ? $category['name'] : 'Article', 'url' => $category ? base_url('blog/category/' . $category['slug']) : base_url('blog')],
+                   ['name' => $post['title'], 'url' => $canonicalUrl]
+               ])
+               ->addArticle(
+                   $post['title'],
+                   $canonicalUrl,
+                   $post['published_at'],
+                   $post['updated_at'],
+                   $description,
+                   $post['featured_image'] ? base_url($post['featured_image']) : '',
+                   $author ? $author['name'] : 'Ziibay Soft'
+               );
+
+        if (!empty($faqs)) {
+            $schema->addFAQ($faqs);
+        }
+
         $data = [
             'post' => $post,
             'category' => $category,
@@ -198,18 +237,21 @@ class Blog extends BaseController
             'toc' => $toc,
             'readingTime' => $readingTime,
             'relatedPosts' => $relatedPosts,
+            'relatedServices' => $relatedServices,
+            'relatedIndustries' => $relatedIndustries,
             
             // Empty placeholders for legacy view compatibility just in case
             'services' => [],
             'industries' => [],
 
             'title' => $post['seo_title'] ?: $post['title'],
-            'meta_description' => $post['meta_description'] ?: strip_tags($post['excerpt']),
-            'canonical_url' => $post['canonical_url'] ?: base_url("blog/" . $post['slug']),
+            'meta_description' => $description,
+            'canonical_url' => $canonicalUrl,
             'og_title' => $post['og_title'] ?: $post['title'],
             'og_description' => $post['og_description'] ?: strip_tags($post['excerpt']),
             'og_image' => $post['og_image'] ?: ($post['featured_image'] ? base_url($post['featured_image']) : null),
             'robots' => $post['indexable'] ? 'index, follow' : 'noindex, follow',
+            'schema_json' => $schema->render(),
         ];
 
         return view('pages/blog_article', $data);
