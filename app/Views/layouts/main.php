@@ -74,6 +74,12 @@
     <!-- 21st.dev Inspired Interaction System -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Heading Blur-in Reveal (runs globally on all pages)
+            const hio = new IntersectionObserver(es => es.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('in'); hio.unobserve(e.target); }
+            }), { threshold: .25 });
+            document.querySelectorAll('h1, h2').forEach(el => hio.observe(el));
+
             // 1. Scroll Choreography (Intersection Observer)
             const observerOptions = {
                 root: null,
@@ -107,56 +113,7 @@
                 });
             });
 
-            // 3. Custom Subtle Cursor (Disabled on mobile)
-            if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                const cursor = document.createElement('div');
-                cursor.className = 'custom-cursor';
-                const cursorDot = document.createElement('div');
-                cursorDot.className = 'custom-cursor-dot';
-                
-                document.body.appendChild(cursor);
-                document.body.appendChild(cursorDot);
-
-                let mouseX = 0;
-                let mouseY = 0;
-                let cursorX = 0;
-                let cursorY = 0;
-
-                document.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                    
-                    // Dot follows instantly
-                    cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-                });
-
-                // Ring follows with easing
-                const animateCursor = () => {
-                    const dx = mouseX - cursorX;
-                    const dy = mouseY - cursorY;
-                    cursorX += dx * 0.15;
-                    cursorY += dy * 0.15;
-                    
-                    cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
-                    requestAnimationFrame(animateCursor);
-                };
-                requestAnimationFrame(animateCursor);
-
-                // Add hover states for interactive elements
-                const interactables = document.querySelectorAll('a, button, .spotlight-card');
-                interactables.forEach(el => {
-                    el.addEventListener('mouseenter', () => {
-                        cursor.classList.add('cursor-hover');
-                        cursorDot.classList.add('cursor-hover');
-                    });
-                    el.addEventListener('mouseleave', () => {
-                        cursor.classList.remove('cursor-hover');
-                        cursorDot.classList.remove('cursor-hover');
-                    });
-                });
-            }
-            
-            // 4. Navbar Scroll Transform
+            // 3. Navbar Scroll Transform
             const navbar = document.getElementById('main-navbar');
             if (navbar) {
                 window.addEventListener('scroll', () => {

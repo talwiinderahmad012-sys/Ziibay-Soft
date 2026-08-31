@@ -11,6 +11,8 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background: var(--canvas);
     color: var(--ink);
     font-family: var(--sans);
@@ -22,9 +24,9 @@ body {
 body::after {
     content: "";
     position: fixed;
-    inset: -60%;
-    width: 220%;
-    height: 220%;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 2147483647;
     opacity: .07;
@@ -50,6 +52,18 @@ h1, h2, h3, h4, h5, h6, .serif-heading {
 }
 h1, h2, .hero-title, .section-title, .serif-heading{
     text-transform: capitalize;
+}
+h1, h2{
+  opacity:0;
+  filter:blur(10px);
+  transform:translateY(24px);
+  transition:opacity .9s cubic-bezier(.2,.7,.2,1),
+             filter .9s cubic-bezier(.2,.7,.2,1),
+             transform .9s cubic-bezier(.2,.7,.2,1);
+}
+h1.in, h2.in{opacity:1;filter:blur(0);transform:none}
+@media (prefers-reduced-motion:reduce){
+  h1,h2{opacity:1;filter:none;transform:none;transition:none}
 }
 .serif-display {
     font-size: clamp(2.5rem, 6vw, 4.5rem);

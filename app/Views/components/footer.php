@@ -1,4 +1,4 @@
-<footer class="dark-panel" style="margin-top:32px; padding:64px 24px 32px 24px;">
+<footer class="dark-panel" style="margin:32px 14px 0 14px; padding:64px 24px 32px 24px;">
     <!-- CTA section -->
     <div style="text-align:center; margin-bottom:40px;" data-rv="blur-rise">
         <div class="eyebrow" style="margin-bottom:12px;">TURN AMBITIOUS IDEAS INTO POWERFUL SOFTWARE</div>

@@ -9,7 +9,7 @@
 
 <?= $this->section('content') ?>
 
-<section class="pt-28 pb-20 min-h-screen">
+<section class="pt-28 pb-20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-8">
             <div class="text-caption text-primary mb-2">INDEX QUERY</div>
