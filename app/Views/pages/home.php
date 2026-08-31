@@ -1,488 +1,542 @@
 <?= $this->extend('layouts/main') ?>
 
-<?= $this->section('head') ?>
-    <style>
-        /* Home Specific Styles */
-    </style>
-<?= $this->endSection() ?>
-
 <?= $this->section('content') ?>
 
-<!-- S1. HERO (paper) -->
-<section class="section-frame min-h-[90vh] flex flex-col items-center justify-center relative overflow-hidden mt-24">
-    <div class="corner-stat tl">
-        <div class="val">( 05 )</div>
-        <div class="lbl">core services offered</div>
+<!-- S1. HERO -->
+<section class="light-panel" style="margin:14px auto; padding:80px 24px 32px; text-align:center; min-height:auto; display:flex; flex-direction:column; align-items:center; position:relative;">
+    <div class="stat-corner tl">
+        <div class="stat-val">( 05 )</div>
+        <div class="stat-lbl">core services offered</div>
     </div>
-    <div class="corner-stat tr">
-        <div class="val">( 03 )</div>
-        <div class="lbl">countries served &mdash; US &middot; UK &middot; AU</div>
+    <div class="stat-corner tr">
+        <div class="stat-val">( 03 )</div>
+        <div class="stat-lbl">countries served</div>
     </div>
-    <div class="corner-stat bl">
-        <div class="val">( v2.0 )</div>
-        <div class="lbl">engineering system</div>
+    <div class="stat-corner bl">
+        <div class="stat-val">( v2.0 )</div>
+        <div class="stat-lbl">engineering system</div>
     </div>
-    <div class="corner-stat br">
-        <div class="val">( 100% )</div>
-        <div class="lbl">scalable &amp; secure builds</div>
-    </div>
-    
-    <!-- 3D Retro Computer -->
-    <div class="mb-16 relative z-10 w-64 h-64 mx-auto rise" style="perspective: 1000px;">
-        <!-- Simulated clay Macintosh -->
-        <div class="w-full h-full bg-[#E2E2DF] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1),inset_0_2px_5px_rgba(255,255,255,0.7)] flex flex-col p-4 border border-[#D1D1CE] transform rotate-y-[-10deg] rotate-x-[5deg]">
-            <div class="flex-grow bg-navy rounded-lg p-3 overflow-hidden relative shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] border-4 border-[#C1C1BE]">
-                <div class="crt-text text-[9px] leading-relaxed font-mono-tag lowercase" id="hero-typing"></div>
-                <div class="absolute inset-0 bg-mist opacity-[0.03] pointer-events-none"></div>
-            </div>
-            <div class="h-4 mt-3 flex justify-between items-center px-2">
-                <div class="flex space-x-1"><div class="w-1 h-3 bg-mist opacity-30 rounded-full"></div><div class="w-1 h-3 bg-mist opacity-30 rounded-full"></div></div>
-                <div class="w-2 h-2 rounded-full bg-crt shadow-[0_0_5px_var(--crt)]"></div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="w-full max-w-4xl mx-auto hairline-b relative mb-12">
-        <div class="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-paper px-4 font-mono-tag text-[10px] tracking-widest text-ink">
-            DISCOVER HOW ZIIBAY SOFT ENGINEERS GROWTH
-        </div>
-    </div>
-    
-    <div class="text-center reveal-blur px-4 max-w-3xl mx-auto z-10">
-        <div class="chip mb-8">DIGITAL ENGINEERING STUDIO</div>
-        <h1 class="mb-8">architecting high-performance<br>software solutions</h1>
-        <p class="font-sans text-ink opacity-80 mb-10 leading-relaxed text-lg">
-            We build scalable, secure, and modern digital platforms for ambitious international brands. From complex enterprise software to engaging mobile applications.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="<?= url_to('contact') ?>" class="btn">
-                <span class="arrow mr-2">&rarr;</span> GET A FREE CONSULTATION
-            </a>
-            <a href="<?= url_to('services') ?>" class="btn">
-                EXPLORE CAPABILITIES
-            </a>
-        </div>
-    </div>
-    
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <svg class="w-6 h-6 text-ink opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-    </div>
-</section>
-
-<!-- S2. WHY CHOOSE (paper) -->
-<section class="py-32 relative">
-    <!-- Connected boxes top -->
-    <div class="max-w-7xl mx-auto px-6 relative mb-24">
-        <div class="absolute top-0 left-6 right-6 hairline-t"></div>
-        <div class="flex justify-between -mt-3">
-            <div class="bg-paper px-4 flex items-center gap-2">
-                <div class="w-1 h-4 hairline-r"></div>
-                <span class="font-mono-tag text-xs">( Scalable )</span>
-                <span class="font-sans text-[10px] uppercase tracking-widest opacity-60 mt-0.5">future-proof codebases</span>
-            </div>
-            <div class="bg-paper px-4 flex items-center gap-2">
-                <span class="font-sans text-[10px] uppercase tracking-widest opacity-60 mt-0.5">Core Web Vitals</span>
-                <span class="font-mono-tag text-xs">( Optimized )</span>
-                <div class="w-1 h-4 hairline-l"></div>
-            </div>
-        </div>
+    <div class="stat-corner br">
+        <div class="stat-val">( 100% )</div>
+        <div class="stat-lbl">scalable & secure builds</div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-20 reveal-blur">
-            <div class="eyebrow">WHERE AND HOW WE ENGINEER VALUE</div>
-            <h2>built for performance</h2>
-        </div>
+    <div class="mac-wrap" data-rv>
+        <svg class="mac-img" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 635">
+  <defs>
+    <!-- Base Grain -->
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" result="noise" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0" in="noise" result="coloredNoise" />
+      <feComposite operator="in" in="coloredNoise" in2="SourceGraphic" result="composite" />
+      <feBlend mode="multiply" in="composite" in2="SourceGraphic" />
+    </filter>
+    
+    <!-- Body Gradient -->
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f7f5" />
+      <stop offset="100%" stop-color="#c6c9cb" />
+    </linearGradient>
+
+    <!-- Side Gradients for 3D depth -->
+    <linearGradient id="highlight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="shade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.15" />
+    </linearGradient>
+
+    <!-- Screen Glow -->
+    <radialGradient id="screenGlass" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#10202e" />
+      <stop offset="60%" stop-color="#1d4d78" />
+      <stop offset="100%" stop-color="#5fb0e6" />
+    </radialGradient>
+
+    <radialGradient id="screenGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5fb0e6" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#5fb0e6" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Scanlines -->
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#000000" fill-opacity="0.12" />
+    </pattern>
+
+    <!-- Ambient Occlusion / Shadows -->
+    <filter id="blurShadow">
+      <feGaussianBlur stdDeviation="8" />
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="24" />
+    </filter>
+  </defs>
+
+  <!-- Ground Shadow attached directly under Mac base (y=540) -->
+  <ellipse cx="320" cy="575" rx="190" ry="18" fill="rgba(30,52,72,0.22)" filter="url(#blurShadow)" />
+
+  <!-- Main Body -->
+  <g filter="url(#grain)">
+    <!-- Base Chassis -->
+    <rect x="140" y="80" width="360" height="460" rx="32" fill="url(#bodyGrad)" />
+    <!-- Highlight Left -->
+    <rect x="140" y="80" width="40" height="460" rx="32" fill="url(#highlight)" />
+    <!-- Shade Right -->
+    <rect x="460" y="80" width="40" height="460" rx="32" fill="url(#shade)" />
+    
+    <!-- Top Ridge & Vents -->
+    <rect x="160" y="70" width="320" height="20" rx="8" fill="#e0e0de" />
+    <rect x="280" y="65" width="80" height="10" rx="2" fill="#b0b3b5" />
+    <rect x="290" y="66" width="60" height="2" fill="#808385" />
+    <rect x="290" y="70" width="60" height="2" fill="#808385" />
+    <rect x="290" y="74" width="60" height="2" fill="#808385" />
+
+    <!-- Ambient Occlusion Bezel Shadow -->
+    <rect x="170" y="140" width="300" height="240" rx="16" fill="#000" opacity="0.3" filter="url(#blurShadow)" />
+
+    <!-- Recessed Screen Bezel -->
+    <rect x="170" y="130" width="300" height="240" rx="20" fill="#1a1d20" />
+    
+    <!-- Outer Glow behind glass -->
+    <rect x="190" y="150" width="260" height="200" rx="12" fill="url(#screenGlow)" filter="url(#softGlow)" />
+
+    <!-- Glass Screen -->
+    <rect x="190" y="150" width="260" height="200" rx="12" fill="url(#screenGlass)" />
+    <!-- Vignette -->
+    <rect x="190" y="150" width="260" height="200" rx="12" fill="#000" opacity="0.4" />
+    <!-- Scanlines Overlay -->
+    <rect x="190" y="150" width="260" height="200" rx="12" fill="url(#scanlines)" />
+    
+    <!-- Inner Glass reflection -->
+    <path d="M 195 155 Q 320 180 445 155 L 445 200 Q 320 220 195 200 Z" fill="#ffffff" opacity="0.05" />
+
+    <!-- Terminal Live Text & Cursor inside SVG -->
+    <g id="crt-terminal-group">
+      <text id="crt" font-family="'Space Mono', monospace" font-size="11.5" fill="#cfe3f4" x="202" y="172" style="letter-spacing:0.5px; text-shadow:0 0 6px rgba(140,200,240,0.7);"></text>
+      <rect id="crt-cursor" x="202" y="162" width="6" height="11" fill="#cfe3f4" style="animation: blink 1s steps(1) infinite;"></rect>
+    </g>
+
+    <!-- Bottom Drive Area -->
+    <rect x="360" y="440" width="100" height="8" rx="2" fill="#000" opacity="0.15" filter="url(#blurShadow)" />
+    <rect x="360" y="440" width="100" height="8" rx="2" fill="#303335" />
+    <rect x="365" y="442" width="90" height="2" fill="#101315" />
+    
+    <!-- Eject Lever -->
+    <rect x="465" y="440" width="12" height="8" rx="1" fill="#a0a3a5" />
+
+    <!-- Logo Emboss -->
+    <rect x="180" y="440" width="20" height="20" rx="4" fill="#d0d3d5" />
+    <!-- Rainbow Logo -->
+    <rect x="184" y="444" width="12" height="3" fill="#61BB46" />
+    <rect x="184" y="447" width="12" height="3" fill="#FDB827" />
+    <rect x="184" y="450" width="12" height="3" fill="#F5821F" />
+    <rect x="184" y="453" width="12" height="3" fill="#E03A3E" />
+  </g>
+</svg>
+    </div>
+
+    <div style="margin:20px auto 20px; position:relative; width:100%; max-width:600px;">
+        <div style="position:absolute; top:50%; left:0; width:100%; height:1px; background:var(--line); z-index:-1;"></div>
+        <span style="font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.12em; background:var(--canvas); padding:0 12px; color:var(--ink);">DISCOVER HOW ZIIBAY SOFT ENGINEERS GROWTH</span>
+    </div>
+
+    <div data-rv="blur-rise">
+        <div class="chip" style="margin-bottom:12px;">DIGITAL ENGINEERING STUDIO</div>
+        <h1 class="serif-heading serif-display" style="margin-bottom:14px;">architecting high-performance<br>software solutions</h1>
+        <p style="max-width:600px; margin:0 auto 20px; font-size:15px; opacity:0.7; line-height:1.6;">We build scalable, secure, and modern digital platforms for ambitious international brands. From complex enterprise software to engaging mobile applications.</p>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Card 1 -->
-            <div class="section-frame p-10 flex flex-col rise" style="transition-delay: 100ms;">
-                <div class="w-20 h-20 mb-8 bg-[#E2E2DF] rounded-lg shadow-inner flex items-center justify-center border border-[#D1D1CE]">
-                    <!-- Abstract Server Stack -->
-                    <div class="w-10 h-10 flex flex-col gap-1 justify-center items-center">
-                        <div class="w-8 h-2 bg-mist rounded-sm"></div>
-                        <div class="w-8 h-2 bg-mist rounded-sm"></div>
-                        <div class="w-8 h-2 bg-mist rounded-sm"></div>
-                    </div>
-                </div>
-                <h3 class="font-sans font-semibold text-xl mb-4 text-ink">Scalable Architecture</h3>
-                <p class="font-sans text-sm opacity-70 mb-12 flex-grow leading-relaxed">
-                    Future-proof codebases designed to grow with your business, handling increased traffic and complexity seamlessly.
-                </p>
-                <div class="font-serif-display text-6xl text-ink opacity-20">01</div>
-            </div>
-            
-            <!-- Card 2 -->
-            <div class="section-frame p-10 flex flex-col rise" style="transition-delay: 250ms;">
-                <div class="w-20 h-20 mb-8 bg-[#E2E2DF] rounded-lg shadow-inner flex items-center justify-center border border-[#D1D1CE]">
-                    <!-- Abstract Speed Gauge/Bolt -->
-                    <div class="w-8 h-10 border-2 border-mist rounded flex items-center justify-center rotate-12">
-                        <div class="w-1 h-6 bg-crt"></div>
-                    </div>
-                </div>
-                <h3 class="font-sans font-semibold text-xl mb-4 text-ink">High Performance</h3>
-                <p class="font-sans text-sm opacity-70 mb-12 flex-grow leading-relaxed">
-                    Optimized for Core Web Vitals, blazing-fast load times, and seamless user experiences across all devices.
-                </p>
-                <div class="font-serif-display text-6xl text-ink opacity-20">02</div>
-            </div>
-            
-            <!-- Card 3 -->
-            <div class="section-frame p-10 flex flex-col rise" style="transition-delay: 400ms;">
-                <div class="w-20 h-20 mb-8 bg-[#E2E2DF] rounded-lg shadow-inner flex items-center justify-center border border-[#D1D1CE]">
-                    <!-- Abstract Chip Stack -->
-                    <div class="w-10 h-10 border-2 border-mist rounded relative">
-                        <div class="absolute inset-2 border border-mist"></div>
-                    </div>
-                </div>
-                <h3 class="font-sans font-semibold text-xl mb-4 text-ink">Modern Tech Stack</h3>
-                <p class="font-sans text-sm opacity-70 mb-12 flex-grow leading-relaxed">
-                    Leveraging the latest frameworks and secure technologies to deliver robust, maintainable digital products.
-                </p>
-                <div class="font-serif-display text-6xl text-ink opacity-20">03</div>
-            </div>
+        <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+            <a href="<?= url_to('contact') ?>" class="chip">→ GET A FREE CONSULTATION</a>
+            <a href="<?= url_to('services') ?>" class="chip">EXPLORE CAPABILITIES</a>
+        </div>
+    </div>
+    
+    <div style="margin-top:24px;">
+        <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; opacity:0.6; margin-bottom:6px;">SCROLL DOWN</div>
+        <div style="animation:bounce 2s infinite;">↓</div>
+    </div>
+</section>
+
+<!-- S2. WHY CHOOSE -->
+<section style="padding:64px 24px; max-width:1200px; margin:0 auto;">
+    <div class="connected-boxes">
+        <div style="background:var(--canvas); padding-right:16px;">
+            <div class="stat-val">( Scalable )</div>
+            <div class="stat-lbl">future-proof codebases</div>
+        </div>
+        <div style="background:var(--canvas); padding-left:16px; text-align:right;">
+            <div class="stat-val">( Optimized )</div>
+            <div class="stat-lbl">Core Web Vitals</div>
+        </div>
+    </div>
+
+    <div style="text-align:center; margin-bottom:32px;" data-rv="blur-rise">
+        <div class="eyebrow" style="margin-bottom:12px;">WHERE AND HOW WE ENGINEER VALUE</div>
+        <h2 class="serif-heading section-title">built for performance</h2>
+    </div>
+
+    <div style="display:flex; gap:24px; flex-wrap:wrap; justify-content:center;">
+        <!-- Card 1 -->
+        <div data-rv="deck-rise" style="flex:1; min-width:300px; border:1px solid var(--line); border-radius:8px; padding:28px; position:relative;">
+            <svg class="clay-icon" viewBox="0 0 96 96"><defs>
+            <linearGradient id="zi1a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient>
+            <linearGradient id="zi1b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef1f2"/><stop offset="1" stop-color="#c2c7cb"/></linearGradient>
+            </defs>
+            <g stroke="rgba(30,52,72,.18)" stroke-width="1">
+            <rect x="22" y="60" width="52" height="13" rx="5" fill="url(#zi1b)"/>
+            <rect x="27" y="44" width="42" height="13" rx="5" fill="url(#zi1a)"/>
+            <rect x="32" y="28" width="32" height="13" rx="5" fill="url(#zi1b)"/>
+            </g>
+            <path d="M48 20 V8 M48 8 l-5 6 M48 8 l5 6" stroke="#5d84a0" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3 style="font-weight:600; font-size:18px; margin-bottom:10px;">Scalable Architecture</h3>
+            <p style="opacity:0.7; line-height:1.6; margin-bottom:32px;">Future-proof codebases designed to grow with your business, handling increased traffic and complexity seamlessly.</p>
+            <div class="serif-heading" style="font-size:40px; opacity:0.2; position:absolute; bottom:16px; left:28px;">01</div>
+        </div>
+        <!-- Card 2 -->
+        <div data-rv="deck-rise" style="flex:1; min-width:300px; border:1px solid var(--line); border-radius:8px; padding:28px; position:relative; transform:translateY(12px); transition-delay:0.15s;">
+            <svg class="clay-icon" viewBox="0 0 96 96"><defs>
+            <linearGradient id="zi2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient>
+            </defs>
+            <circle cx="48" cy="50" r="30" fill="url(#zi2)" stroke="rgba(30,52,72,.18)"/>
+            <path d="M28 56 a20 20 0 0 1 40 0" fill="none" stroke="#9db8cc" stroke-width="5" stroke-linecap="round"/>
+            <path d="M30 52 l3 1 M48 36 v3 M66 52 l-3 1" stroke="#7d94a8" stroke-width="2" stroke-linecap="round"/>
+            <line x1="48" y1="56" x2="60" y2="40" stroke="#1E3448" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="48" cy="56" r="3.5" fill="#1E3448"/></svg>
+            <h3 style="font-weight:600; font-size:18px; margin-bottom:10px;">High Performance</h3>
+            <p style="opacity:0.7; line-height:1.6; margin-bottom:32px;">Optimized for Core Web Vitals, blazing-fast load times, and seamless user experiences across all devices.</p>
+            <div class="serif-heading" style="font-size:40px; opacity:0.2; position:absolute; bottom:16px; left:28px;">02</div>
+        </div>
+        <!-- Card 3 -->
+        <div data-rv="deck-rise" style="flex:1; min-width:300px; border:1px solid var(--line); border-radius:8px; padding:28px; position:relative; transform:translateY(24px); transition-delay:0.3s;">
+            <svg class="clay-icon" viewBox="0 0 96 96"><defs>
+            <linearGradient id="zi3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient>
+            </defs>
+            <g fill="#c2c7cb">
+            <rect x="36" y="16" width="5" height="10" rx="2"/><rect x="46" y="16" width="5" height="10" rx="2"/><rect x="56" y="16" width="5" height="10" rx="2"/>
+            <rect x="36" y="70" width="5" height="10" rx="2"/><rect x="46" y="70" width="5" height="10" rx="2"/><rect x="56" y="70" width="5" height="10" rx="2"/>
+            <rect x="16" y="36" width="10" height="5" rx="2"/><rect x="16" y="46" width="10" height="5" rx="2"/><rect x="16" y="56" width="10" height="5" rx="2"/>
+            <rect x="70" y="36" width="10" height="5" rx="2"/><rect x="70" y="46" width="10" height="5" rx="2"/><rect x="70" y="56" width="10" height="5" rx="2"/>
+            </g>
+            <rect x="24" y="24" width="48" height="48" rx="9" fill="url(#zi3)" stroke="rgba(30,52,72,.18)"/>
+            <rect x="37" y="37" width="22" height="22" rx="5" fill="#eef1f3" stroke="rgba(30,52,72,.15)"/>
+            <circle cx="48" cy="48" r="3" fill="#5d84a0"/></svg>
+            <h3 style="font-weight:600; font-size:18px; margin-bottom:10px;">Modern Tech Stack</h3>
+            <p style="opacity:0.7; line-height:1.6; margin-bottom:32px;">Leveraging the latest frameworks and secure technologies to deliver robust, maintainable digital products.</p>
+            <div class="serif-heading" style="font-size:40px; opacity:0.2; position:absolute; bottom:16px; left:28px;">03</div>
         </div>
     </div>
 </section>
 
-<!-- S3. GLOBAL DELIVERY (navy) -->
-<section class="bg-navy section-frame overflow-hidden relative min-h-[90vh] flex flex-col items-center justify-center py-32">
-    <div class="corner-stat tr text-mist">
-        <div class="val">( 03 )</div>
-        <div class="lbl">international delivery hubs</div>
+<!-- S3. GLOBAL DELIVERY -->
+<section class="dark-panel" style="padding:64px 24px; text-align:center; overflow:hidden;">
+    <div class="stat-corner tl">
+        <div class="stat-val">( 03 )</div>
+        <div class="stat-lbl">international delivery hubs</div>
     </div>
     
-    <div class="text-center relative z-20 reveal-blur mb-16 mt-16">
-        <div class="eyebrow text-mist">WHERE ZIIBAY SOFT DELIVERS &mdash; 2026</div>
-        <h2 class="text-mist">global delivery</h2>
+    <div data-rv="blur-rise" style="margin-bottom:24px;">
+        <div class="eyebrow" style="margin-bottom:12px;">WHERE ZIIBAY SOFT DELIVERS — 2026</div>
+        <h2 class="serif-heading" style="font-size:clamp(2.5rem,6vw,4.5rem);">global delivery</h2>
     </div>
-    
-    <!-- 3D Orbit -->
-    <div class="relative w-full max-w-3xl aspect-square mx-auto flex items-center justify-center my-10 z-10 rise">
-        <div class="w-40 h-40 bg-gradient-to-br from-mist to-crt rounded-full shadow-[0_0_60px_rgba(89,167,220,0.4)] relative z-20 flex items-center justify-center">
-            <!-- Globe lines -->
-            <div class="absolute inset-0 border border-white/20 rounded-full rotate-45 scale-90"></div>
-            <div class="absolute inset-0 border border-white/20 rounded-full -rotate-45 scale-90"></div>
+
+    <div class="globe-wrap" data-rv>
+      <div class="globe-clip">
+        <div class="globe-spin">
+          <img src="<?= base_url('assets/img/earth.png') ?>" alt="Ziibay Soft global delivery">
         </div>
-        
-        <div class="orbit-ring">
-            <div class="orbit-chip-wrapper" style="animation-delay: -0s;">
-                <div class="orbit-chip chip text-[10px] text-white !border-mist/50">UNITED STATES</div>
-            </div>
-            <div class="orbit-chip-wrapper" style="animation-delay: -5s;">
-                <div class="orbit-chip chip text-[10px] text-white !border-mist/50">UNITED KINGDOM</div>
-            </div>
-            <div class="orbit-chip-wrapper" style="animation-delay: -10s;">
-                <div class="orbit-chip chip text-[10px] text-white !border-mist/50">AUSTRALIA</div>
-            </div>
-            <div class="orbit-chip-wrapper" style="animation-delay: -15s;">
-                <div class="orbit-chip chip text-[10px] text-white !border-mist/50">WORLDWIDE</div>
-            </div>
-        </div>
+      </div>
+      <div class="orbit back"></div>
+      <div class="orbit front"></div>
+      <i class="sat" data-label="UNITED STATES"></i>
+      <i class="sat" data-label="UNITED KINGDOM"></i>
+      <i class="sat" data-label="AUSTRALIA"></i>
+      <i class="sat" data-label="WORLDWIDE"></i>
     </div>
-    
-    <div class="relative z-20 mt-8 reveal-blur">
-        <a href="<?= base_url('locations') ?>" class="btn">
-            <span class="arrow mr-2">&rarr;</span> EXPLORE LOCATIONS
-        </a>
+
+    <div style="margin-top:24px;">
+        <a href="<?= base_url('locations') ?>" class="chip">→ EXPLORE LOCATIONS</a>
     </div>
 </section>
 
-<!-- S4. CORE CAPABILITIES (navy) -->
-<section class="bg-navy section-frame py-32 px-6 flex flex-col">
-    <div class="text-center mb-20 reveal-blur">
-        <div class="eyebrow text-mist">CORE CAPABILITIES</div>
-        <h2 class="text-mist mb-6">premium development services</h2>
-        <p class="font-sans text-mist opacity-80 max-w-2xl mx-auto">
-            End-to-end development services tailored to your operational needs.
-        </p>
+<!-- S4. CORE CAPABILITIES -->
+<section class="dark-panel" style="padding:64px 24px;">
+    <div style="text-align:center; margin-bottom:32px;" data-rv="blur-rise">
+        <div class="eyebrow" style="margin-bottom:12px;">CORE CAPABILITIES</div>
+        <h2 class="serif-heading section-title">premium development services</h2>
+        <p style="opacity:0.7; max-width:500px; margin:0 auto;">End-to-end development services tailored to your operational needs.</p>
     </div>
-    
-    <div class="flex flex-col md:flex-row h-[600px] w-full max-w-7xl mx-auto hairline rounded-lg overflow-hidden rise">
+
+    <div class="xrow">
         <!-- 1 -->
-        <div class="expand-card p-6 flex flex-col relative group">
-            <div class="chip text-mist border-mist/30 w-fit mb-auto">WEB</div>
-            
-            <div class="expand-content absolute inset-x-6 top-24 bottom-32 flex flex-col items-center justify-center">
-                <div class="w-32 h-32 bg-[#E2E2DF] rounded border border-[#D1D1CE] mb-6 flex items-center justify-center opacity-80 mix-blend-luminosity">
-                    <div class="w-16 h-12 border-2 border-navy rounded flex flex-col">
-                        <div class="h-3 border-b-2 border-navy"></div>
+        <div class="xcard">
+            <div class="chip tag" style="align-self:flex-start;">WEB DEVELOPMENT</div>
+            <div class="xcontent" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                <rect x="18" y="24" width="60" height="48" rx="7" fill="url(#zw1)" stroke="rgba(30,52,72,.18)"/>
+                <line x1="18" y1="36" x2="78" y2="36" stroke="rgba(30,52,72,.18)"/>
+                <circle cx="26" cy="30" r="2" fill="#c2c7cb"/><circle cx="32" cy="30" r="2" fill="#c2c7cb"/><circle cx="38" cy="30" r="2" fill="#5d84a0"/>
+                <rect x="24" y="42" width="22" height="16" rx="3" fill="#dfe7ec"/>
+                <rect x="50" y="43" width="22" height="3" rx="1.5" fill="#c2c7cb"/><rect x="50" y="50" width="18" height="3" rx="1.5" fill="#c2c7cb"/><rect x="50" y="57" width="12" height="3" rx="1.5" fill="#c2c7cb"/></svg>
+                <p style="font-size:12px; opacity:0.8; margin-bottom:16px;">Custom, high-performance web applications, enterprise portals, and robust backend systems built for scale and security. From lightning-fast marketing sites to complex SaaS platforms, we engineer every layer — UI, API, database and DevOps — for reliability, SEO-readiness and Core Web Vitals.</p>
+                <a href="<?= url_to('service-detail', 'web-development') ?>" style="color:var(--crt); font-family:var(--mono); font-size:10px; text-decoration:none;">EXPLORE SERVICE →</a>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:auto;">
+                <div style="width:20px; height:1px; background:var(--ink); transform:rotate(45deg); transform-origin:left bottom;"></div>
+                <div class="serif-heading" style="font-size:3rem;">01</div>
+            </div>
+        </div>
+        <!-- 2 -->
+        <div class="xcard">
+            <div class="chip tag" style="align-self:flex-start;">SOFTWARE DEVELOPMENT</div>
+            <div class="xcontent" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                <g fill="#c2c7cb"><rect x="45" y="18" width="6" height="10" rx="2"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(45 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(90 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(135 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(180 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(225 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(270 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(315 48 48)"/></g>
+                <circle cx="48" cy="48" r="22" fill="url(#zw2)" stroke="rgba(30,52,72,.18)"/>
+                <circle cx="48" cy="48" r="8" fill="#eef1f3" stroke="rgba(30,52,72,.15)"/></svg>
+                <p style="font-size:12px; opacity:0.8; margin-bottom:16px;">Bespoke software solutions tailored to automate your workflows, manage data securely, and solve complex business challenges. We deliver ERPs, CRMs, dashboards and automation pipelines with role-based access, audit trails and seamless third-party integrations.</p>
+                <a href="<?= url_to('service-detail', 'software-development') ?>" style="color:var(--crt); font-family:var(--mono); font-size:10px; text-decoration:none;">EXPLORE SERVICE →</a>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:auto;">
+                <div style="width:20px; height:1px; background:var(--ink); transform:rotate(45deg); transform-origin:left bottom;"></div>
+                <div class="serif-heading" style="font-size:3rem;">02</div>
+            </div>
+        </div>
+        <!-- 3 -->
+        <div class="xcard">
+            <div class="chip tag" style="align-self:flex-start;">APP DEVELOPMENT</div>
+            <div class="xcontent" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                <rect x="32" y="18" width="32" height="60" rx="8" fill="url(#zw3)" stroke="rgba(30,52,72,.18)"/>
+                <rect x="36" y="28" width="24" height="38" rx="3" fill="#dfe7ec"/>
+                <rect x="42" y="22" width="12" height="2.5" rx="1.25" fill="#c2c7cb"/>
+                <circle cx="48" cy="72" r="2.5" fill="#5d84a0"/></svg>
+                <p style="font-size:12px; opacity:0.8; margin-bottom:16px;">Native and cross-platform mobile applications designed for intuitive user experiences and high performance on iOS and Android. One codebase, app-store-ready builds, offline-first data, push notifications and buttery 60fps interactions.</p>
+                <a href="<?= url_to('service-detail', 'app-development') ?>" style="color:var(--crt); font-family:var(--mono); font-size:10px; text-decoration:none;">EXPLORE SERVICE →</a>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:auto;">
+                <div style="width:20px; height:1px; background:var(--ink); transform:rotate(45deg); transform-origin:left bottom;"></div>
+                <div class="serif-heading" style="font-size:3rem;">03</div>
+            </div>
+        </div>
+        <!-- 4 -->
+        <div class="xcard">
+            <div class="chip tag" style="align-self:flex-start;">SEO SERVICES</div>
+            <div class="xcontent" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                <rect x="24" y="52" width="8" height="16" rx="2" fill="#c2c7cb"/>
+                <rect x="36" y="44" width="8" height="24" rx="2" fill="url(#zw4)"/>
+                <rect x="48" y="36" width="8" height="32" rx="2" fill="#c2c7cb"/>
+                <circle cx="60" cy="38" r="13" fill="#eef1f3" stroke="rgba(30,52,72,.25)" stroke-width="3"/>
+                <line x1="69" y1="48" x2="79" y2="58" stroke="#5d84a0" stroke-width="5" stroke-linecap="round"/></svg>
+                <p style="font-size:12px; opacity:0.8; margin-bottom:16px;">Data-driven SEO strategies to dominate search engine results and drive high-quality organic traffic. Technical audits, keyword architecture, content strategy and authority building — measured in rankings, clicks and revenue.</p>
+                <a href="<?= url_to('service-detail', 'seo') ?>" style="color:var(--crt); font-family:var(--mono); font-size:10px; text-decoration:none;">EXPLORE SERVICE →</a>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:auto;">
+                <div style="width:20px; height:1px; background:var(--ink); transform:rotate(45deg); transform-origin:left bottom;"></div>
+                <div class="serif-heading" style="font-size:3rem;">04</div>
+            </div>
+        </div>
+        <!-- 5 -->
+        <div class="xcard">
+            <div class="chip tag" style="align-self:flex-start;">SOCIAL MEDIA MANAGEMENT</div>
+            <div class="xcontent" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                <rect x="48" y="44" width="30" height="22" rx="8" fill="#dfe7ec" stroke="rgba(30,52,72,.15)"/>
+                <path d="M70 66 l4 7 -8 -2 z" fill="#dfe7ec"/>
+                <rect x="18" y="26" width="38" height="26" rx="8" fill="url(#zw5)" stroke="rgba(30,52,72,.18)"/>
+                <path d="M28 52 l-4 8 9 -3 z" fill="url(#zw5)"/>
+                <circle cx="29" cy="39" r="2.5" fill="#5d84a0"/><circle cx="37" cy="39" r="2.5" fill="#5d84a0"/><circle cx="45" cy="39" r="2.5" fill="#5d84a0"/></svg>
+                <p style="font-size:12px; opacity:0.8; margin-bottom:16px;">Engaging social media campaigns that build brand authority and foster community growth. Content calendars, creative production, paid amplification and analytics that turn followers into customers.</p>
+                <a href="<?= url_to('service-detail', 'social-media-management') ?>" style="color:var(--crt); font-family:var(--mono); font-size:10px; text-decoration:none;">EXPLORE SERVICE →</a>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:auto;">
+                <div style="width:20px; height:1px; background:var(--ink); transform:rotate(45deg); transform-origin:left bottom;"></div>
+                <div class="serif-heading" style="font-size:3rem;">05</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S5. GROWTH CAROUSEL -->
+<section class="light-panel" style="padding:64px 24px; overflow:hidden;">
+    <div style="text-align:center; margin-bottom:32px;" data-rv="blur-rise">
+        <div class="eyebrow" style="margin-bottom:12px;">NEW STANDARDS FOR GROWTH</div>
+        <h2 class="serif-heading section-title">growth & innovation</h2>
+    </div>
+
+    <div style="position:relative; width:100%; max-width:1160px; margin:0 auto; overflow:hidden; padding:20px 0;">
+        <div id="carousel-track" style="display:flex; gap:24px; justify-content:center; align-items:center; transition:transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);">
+            <!-- CARD A: SEO SERVICES -->
+            <div class="c-card side">
+                <div class="os-header">↗ GROWTH SERVICE</div>
+                <div style="padding:24px 20px; flex:1; display:flex; flex-direction:column;">
+                    <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw4_car" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                    <rect x="24" y="52" width="8" height="16" rx="2" fill="#c2c7cb"/>
+                    <rect x="36" y="44" width="8" height="24" rx="2" fill="url(#zw4_car)"/>
+                    <rect x="48" y="36" width="8" height="32" rx="2" fill="#c2c7cb"/>
+                    <circle cx="60" cy="38" r="13" fill="#eef1f3" stroke="rgba(30,52,72,.25)" stroke-width="3"/>
+                    <line x1="69" y1="48" x2="79" y2="58" stroke="#5d84a0" stroke-width="5" stroke-linecap="round"/></svg>
+                    <h3 style="font-family:var(--serif); font-size:22px; margin-bottom:10px; color:var(--ink); text-align:center;">SEO Services</h3>
+                    <p style="font-size:13px; line-height:1.6; color:var(--ink); opacity:0.85; margin-bottom:18px; text-align:center;">Organic growth architecture and search performance. We build technically flawless, content-rich websites that climb rankings and keep climbing.</p>
+                    <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:20px;">
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Technical SEO audits & Core Web Vitals tuning</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Keyword architecture & content strategy</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Authority building & digital PR</div>
                     </div>
                 </div>
-                <p class="font-sans text-xs text-mist opacity-80 text-center leading-relaxed">
-                    Custom, high-performance web applications, enterprise portals, and robust backend systems built for scale and security.
-                </p>
-                <a href="<?= url_to('service-detail', 'web-development') ?>" class="font-mono-tag text-[10px] text-crt mt-6 hover:underline">EXPLORE SERVICE &rarr;</a>
-            </div>
-            
-            <div class="expand-card-title mt-auto text-mist font-serif-display text-5xl">/01</div>
-        </div>
-        
-        <!-- 2 -->
-        <div class="expand-card p-6 flex flex-col relative group">
-            <div class="chip text-mist border-mist/30 w-fit mb-auto">SOFTWARE</div>
-            
-            <div class="expand-content absolute inset-x-6 top-24 bottom-32 flex flex-col items-center justify-center">
-                <div class="w-32 h-32 bg-[#E2E2DF] rounded border border-[#D1D1CE] mb-6 flex items-center justify-center opacity-80 mix-blend-luminosity">
-                    <div class="w-12 h-12 border-2 border-navy flex flex-wrap"><div class="w-1/2 h-1/2 border-r-2 border-b-2 border-navy"></div></div>
+                <div style="border-top:1px solid var(--line); padding:14px 20px; display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:11px; color:var(--muted); font-family:var(--mono);">Rankings, clicks, revenue — measured.</span>
+                    <a href="<?= url_to('service-detail', 'seo') ?>" style="font-family:var(--mono); font-size:11px; font-weight:700; text-decoration:none; color:var(--ink);">→ EXPLORE</a>
                 </div>
-                <p class="font-sans text-xs text-mist opacity-80 text-center leading-relaxed">
-                    Bespoke software solutions tailored to automate your workflows, manage data securely, and solve complex business challenges.
-                </p>
-                <a href="<?= url_to('service-detail', 'software-development') ?>" class="font-mono-tag text-[10px] text-crt mt-6 hover:underline">EXPLORE SERVICE &rarr;</a>
             </div>
-            
-            <div class="expand-card-title mt-auto text-mist font-serif-display text-5xl">/02</div>
-        </div>
-        
-        <!-- 3 -->
-        <div class="expand-card p-6 flex flex-col relative group">
-            <div class="chip text-mist border-mist/30 w-fit mb-auto">APP</div>
-            
-            <div class="expand-content absolute inset-x-6 top-24 bottom-32 flex flex-col items-center justify-center">
-                <div class="w-32 h-32 bg-[#E2E2DF] rounded border border-[#D1D1CE] mb-6 flex items-center justify-center opacity-80 mix-blend-luminosity">
-                    <div class="w-10 h-16 border-2 border-navy rounded-md flex justify-center items-end p-1"><div class="w-2 h-2 rounded-full bg-navy"></div></div>
+
+            <!-- CARD B: SOCIAL MEDIA MANAGEMENT -->
+            <div class="c-card center">
+                <div class="os-header">↗ GROWTH SERVICE</div>
+                <div style="padding:24px 20px; flex:1; display:flex; flex-direction:column;">
+                    <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw5_car" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                    <rect x="48" y="44" width="30" height="22" rx="8" fill="#dfe7ec" stroke="rgba(30,52,72,.15)"/>
+                    <path d="M70 66 l4 7 -8 -2 z" fill="#dfe7ec"/>
+                    <rect x="18" y="26" width="38" height="26" rx="8" fill="url(#zw5_car)"/>
+                    <path d="M28 52 l-4 8 9 -3 z" fill="url(#zw5_car)"/>
+                    <circle cx="29" cy="39" r="2.5" fill="#5d84a0"/><circle cx="37" cy="39" r="2.5" fill="#5d84a0"/><circle cx="45" cy="39" r="2.5" fill="#5d84a0"/></svg>
+                    <h3 style="font-family:var(--serif); font-size:22px; margin-bottom:10px; color:var(--ink); text-align:center;">Social Media Management</h3>
+                    <p style="font-size:13px; line-height:1.6; color:var(--ink); opacity:0.85; margin-bottom:18px; text-align:center;">Audience engagement and brand distribution channels. We run your brand's voice across every platform that matters.</p>
+                    <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:20px;">
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Content calendars & creative production</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Community management & paid amplification</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Monthly analytics & growth reports</div>
+                    </div>
                 </div>
-                <p class="font-sans text-xs text-mist opacity-80 text-center leading-relaxed">
-                    Native and cross-platform mobile applications designed for intuitive user experiences and high performance on iOS and Android.
-                </p>
-                <a href="<?= url_to('service-detail', 'app-development') ?>" class="font-mono-tag text-[10px] text-crt mt-6 hover:underline">EXPLORE SERVICE &rarr;</a>
+                <div style="border-top:1px solid var(--line); padding:14px 20px; display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:11px; color:var(--muted); font-family:var(--mono);">Followers turned customers.</span>
+                    <a href="<?= url_to('service-detail', 'social-media-management') ?>" style="font-family:var(--mono); font-size:11px; font-weight:700; text-decoration:none; color:var(--ink);">→ EXPLORE</a>
+                </div>
             </div>
-            
-            <div class="expand-card-title mt-auto text-mist font-serif-display text-5xl">/03</div>
-        </div>
-        
-        <!-- 4 -->
-        <div class="expand-card p-6 flex flex-col relative group">
-            <div class="chip text-mist border-mist/30 w-fit mb-auto">SEO</div>
-            <div class="expand-content absolute inset-x-6 top-24 bottom-32 flex flex-col items-center justify-center">
-                <p class="font-sans text-xs text-mist opacity-80 text-center leading-relaxed">
-                    Data-driven SEO strategies to dominate search engine results and drive high-quality organic traffic.
-                </p>
-                <a href="<?= url_to('service-detail', 'seo') ?>" class="font-mono-tag text-[10px] text-crt mt-6 hover:underline">EXPLORE SERVICE &rarr;</a>
+
+            <!-- CARD C: ALL CAPABILITIES -->
+            <div class="c-card side">
+                <div class="os-header">↗ GROWTH SERVICE</div>
+                <div style="padding:24px 20px; flex:1; display:flex; flex-direction:column;">
+                    <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw6" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                    <g stroke="rgba(30,52,72,.18)">
+                    <rect x="20" y="20" width="26" height="26" rx="6" fill="url(#zw6)"/>
+                    <rect x="50" y="20" width="26" height="26" rx="6" fill="#dfe7ec"/>
+                    <rect x="20" y="50" width="26" height="26" rx="6" fill="#dfe7ec"/>
+                    <rect x="50" y="50" width="26" height="26" rx="6" fill="url(#zw6)"/>
+                    </g></svg>
+                    <h3 style="font-family:var(--serif); font-size:22px; margin-bottom:10px; color:var(--ink); text-align:center;">All Capabilities</h3>
+                    <p style="font-size:13px; line-height:1.6; color:var(--ink); opacity:0.85; margin-bottom:18px; text-align:center;">Full spectrum of our engineering & growth offerings — one team, one roadmap, one accountable partner.</p>
+                    <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:20px;">
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Web / Software / App Development</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>SEO Services & Social Media Management</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Dedicated engineering + growth pods</div>
+                    </div>
+                </div>
+                <div style="border-top:1px solid var(--line); padding:14px 20px; display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:11px; color:var(--muted); font-family:var(--mono);">Explore the complete capability index.</span>
+                    <a href="<?= url_to('services') ?>" style="font-family:var(--mono); font-size:11px; font-weight:700; text-decoration:none; color:var(--ink);">→ EXPLORE</a>
+                </div>
             </div>
-            <div class="expand-card-title mt-auto text-mist font-serif-display text-5xl">/04</div>
         </div>
-        
-        <!-- 5 -->
-        <div class="expand-card p-6 flex flex-col relative group">
-            <div class="chip text-mist border-mist/30 w-fit mb-auto">SOCIAL</div>
-            <div class="expand-content absolute inset-x-6 top-24 bottom-32 flex flex-col items-center justify-center">
-                <p class="font-sans text-xs text-mist opacity-80 text-center leading-relaxed">
-                    Engaging social media campaigns that build brand authority and foster community growth.
-                </p>
-                <a href="<?= url_to('service-detail', 'social-media-management') ?>" class="font-mono-tag text-[10px] text-crt mt-6 hover:underline">EXPLORE SERVICE &rarr;</a>
-            </div>
-            <div class="expand-card-title mt-auto text-mist font-serif-display text-5xl">/05</div>
+
+        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:min(100%, 800px); display:flex; justify-content:space-between; z-index:10; pointer-events:none; padding:0 8px;">
+            <button id="car-prev" style="pointer-events:auto; width:40px; height:40px; border:1px solid var(--line); cursor:pointer; background:#fff; border-radius:50%; box-shadow:0 4px 12px rgba(30,52,72,0.1); font-weight:700;">←</button>
+            <button id="car-next" style="pointer-events:auto; width:40px; height:40px; border:1px solid var(--line); cursor:pointer; background:#fff; border-radius:50%; box-shadow:0 4px 12px rgba(30,52,72,0.1); font-weight:700;">→</button>
         </div>
+    </div>
+    
+    <div style="text-align:center; margin-top:24px;">
+        <a href="<?= url_to('services') ?>" class="chip">+ VIEW ALL SERVICES</a>
     </div>
 </section>
 
-<!-- S5. GROWTH & INNOVATION (paper) -->
-<section class="py-32 overflow-hidden bg-paper section-frame">
-    <div class="text-center mb-16 reveal-blur">
-        <div class="eyebrow">NEW STANDARDS FOR GROWTH</div>
-        <h2>growth &amp; innovation</h2>
+<!-- S6. ECOSYSTEM TREE -->
+<section style="padding:64px 24px; position:relative; overflow:hidden;">
+    <div style="text-align:center; margin-bottom:28px;" data-rv="blur-rise">
+        <div class="eyebrow" style="margin-bottom:12px;">THE ECOSYSTEM</div>
+        <h2 class="serif-heading section-title">where software gets its answers</h2>
     </div>
-    
-    <div class="max-w-6xl mx-auto relative h-[500px]" x-data="{ slide: 1 }">
-        <!-- Cards Container -->
-        <div class="absolute inset-0 flex items-center justify-center perspective-1000">
-            <!-- Left Card -->
-            <div class="absolute w-[340px] h-[400px] bg-white hairline rounded-lg p-6 shadow-sm transition-all duration-500 flex flex-col"
-                 :class="slide === 0 ? 'z-20 scale-100 translate-x-0 opacity-100' : (slide === 1 ? 'z-10 scale-90 -translate-x-[240px] opacity-40 cursor-pointer' : 'z-0 scale-75 -translate-x-[400px] opacity-0')"
-                 @click="slide = 0">
-                <div class="flex items-center gap-2 mb-6 font-mono-tag text-[10px] hairline-b pb-2"><span class="text-crt">&#8599;</span> GROWTH SERVICE</div>
-                <h3 class="font-sans text-xl font-semibold text-ink mb-2">SEO Services</h3>
-                <p class="font-sans text-xs text-ink opacity-70 flex-grow">Organic growth architecture and search performance.</p>
-                <div class="w-full h-32 bg-mist/20 rounded mb-6 flex items-center justify-center">
-                    <div class="w-16 h-16 bg-mist rounded-full rounded-tr-none rotate-45 mix-blend-multiply opacity-50"></div>
-                </div>
-                <a href="<?= url_to('service-detail', 'seo') ?>" class="font-mono-tag text-[10px] text-ink hover:text-crt hairline-t pt-4 block w-full">&rarr; EXPLORE SERVICE</a>
-            </div>
-            
-            <!-- Center Card -->
-            <div class="absolute w-[340px] h-[400px] bg-white hairline rounded-lg p-6 shadow-xl transition-all duration-500 flex flex-col"
-                 :class="slide === 1 ? 'z-20 scale-100 translate-x-0 opacity-100' : (slide === 2 ? 'z-10 scale-90 -translate-x-[240px] opacity-40 cursor-pointer' : (slide === 0 ? 'z-10 scale-90 translate-x-[240px] opacity-40 cursor-pointer' : 'z-0 opacity-0'))"
-                 @click="slide = 1">
-                <div class="flex items-center gap-2 mb-6 font-mono-tag text-[10px] hairline-b pb-2"><span class="text-crt">&#8599;</span> GROWTH SERVICE</div>
-                <h3 class="font-sans text-xl font-semibold text-ink mb-2">Social Media Management</h3>
-                <p class="font-sans text-xs text-ink opacity-70 flex-grow">Audience engagement and brand distribution channels.</p>
-                <div class="w-full h-32 bg-mist/20 rounded mb-6 flex items-center justify-center">
-                    <div class="w-16 h-16 bg-mist rounded-tl-full rounded-br-full rotate-12 mix-blend-multiply opacity-50"></div>
-                </div>
-                <a href="<?= url_to('service-detail', 'social-media-management') ?>" class="font-mono-tag text-[10px] text-ink hover:text-crt hairline-t pt-4 block w-full">&rarr; EXPLORE SERVICE</a>
-            </div>
-            
-            <!-- Right Card -->
-            <div class="absolute w-[340px] h-[400px] bg-white hairline rounded-lg p-6 shadow-sm transition-all duration-500 flex flex-col"
-                 :class="slide === 2 ? 'z-20 scale-100 translate-x-0 opacity-100' : (slide === 1 ? 'z-10 scale-90 translate-x-[240px] opacity-40 cursor-pointer' : 'z-0 scale-75 translate-x-[400px] opacity-0')"
-                 @click="slide = 2">
-                <div class="flex items-center gap-2 mb-6 font-mono-tag text-[10px] hairline-b pb-2"><span class="text-crt">&#8599;</span> GROWTH SERVICE</div>
-                <h3 class="font-sans text-xl font-semibold text-ink mb-2">All Capabilities</h3>
-                <p class="font-sans text-xs text-ink opacity-70 flex-grow">Full spectrum of our engineering & growth offerings.</p>
-                <div class="w-full h-32 bg-mist/20 rounded mb-6 flex items-center justify-center flex-wrap gap-2 p-4">
-                    <div class="w-6 h-6 bg-mist rounded-full opacity-50"></div>
-                    <div class="w-6 h-6 bg-mist rounded opacity-50"></div>
-                    <div class="w-6 h-6 bg-mist rounded-tl-full opacity-50"></div>
-                </div>
-                <a href="<?= url_to('services') ?>" class="font-mono-tag text-[10px] text-ink hover:text-crt hairline-t pt-4 block w-full">&rarr; EXPLORE SERVICE</a>
-            </div>
-        </div>
-        
-        <!-- Controls -->
-        <div class="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-10 pointer-events-none z-30">
-            <button @click="slide = Math.max(0, slide - 1)" :class="slide === 0 ? 'opacity-20' : 'hover:bg-ink hover:text-paper'" class="w-10 h-10 hairline bg-paper rounded flex items-center justify-center font-mono pointer-events-auto transition-colors">&larr;</button>
-            <button @click="slide = Math.min(2, slide + 1)" :class="slide === 2 ? 'opacity-20' : 'hover:bg-ink hover:text-paper'" class="w-10 h-10 hairline bg-paper rounded flex items-center justify-center font-mono pointer-events-auto transition-colors">&rarr;</button>
-        </div>
-    </div>
-    
-    <div class="text-center mt-8 relative z-30">
-        <a href="<?= url_to('services') ?>" class="btn">
-            <span class="mr-2">+</span> VIEW ALL SERVICES
-        </a>
-    </div>
-</section>
 
-<!-- S6. ECOSYSTEM TREE (paper) -->
-<section class="py-32 relative bg-paper overflow-hidden">
-    <div class="text-center mb-24 reveal-blur relative z-20">
-        <div class="eyebrow">THE ECOSYSTEM</div>
-        <h2>where software gets its answers</h2>
-    </div>
-    
-    <div class="max-w-5xl mx-auto relative h-[400px] flex flex-col items-center rise">
-        <!-- Background ellipses -->
-        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[300px] border border-mist/30 rounded-[100%]"></div>
-        <div class="absolute top-24 left-1/2 -translate-x-1/2 w-[600px] h-[220px] border border-mist/20 rounded-[100%]"></div>
+    <div style="position:relative; width:100%; max-width:800px; margin:0 auto; height:280px;">
+        <!-- Elliptical rings -->
+        <div style="position:absolute; top:20px; left:50%; transform:translateX(-50%); width:600px; height:200px; border:1px solid var(--line); border-radius:50%; opacity:0.5;"></div>
+        <div style="position:absolute; top:40px; left:50%; transform:translateX(-50%); width:400px; height:120px; border:1px solid var(--line); border-radius:50%; opacity:0.5;"></div>
         
-        <!-- Top Node -->
-        <div class="chip bg-white z-20 mb-[120px]">ZS</div>
+        <div class="chip" style="position:absolute; top:0; left:50%; transform:translateX(-50%); z-index:2;">ZS</div>
         
-        <!-- Dashed connectors SVG -->
-        <svg class="absolute top-8 left-0 w-full h-[300px] pointer-events-none z-10" viewBox="0 0 1000 300" preserveAspectRatio="none">
-            <path class="eco-curve stroke-dash-draw" d="M500,20 Q200,150 100,200" />
-            <path class="eco-curve stroke-dash-draw" d="M500,20 Q350,150 300,200" />
-            <path class="eco-curve stroke-dash-draw" d="M500,20 L500,200" />
-            <path class="eco-curve stroke-dash-draw" d="M500,20 Q650,150 700,200" />
-            <path class="eco-curve stroke-dash-draw" d="M500,20 Q800,150 900,200" />
+        <svg style="position:absolute; top:15px; left:0; width:100%; height:230px; pointer-events:none;" preserveAspectRatio="none">
+            <path class="draw-path" d="M 400 0 Q 200 120 100 200" fill="none" stroke="var(--line)" stroke-width="1" stroke-dasharray="4,4" />
+            <path class="draw-path" d="M 400 0 Q 300 120 250 200" fill="none" stroke="var(--line)" stroke-width="1" stroke-dasharray="4,4" />
+            <path class="draw-path" d="M 400 0 L 400 200" fill="none" stroke="var(--line)" stroke-width="1" stroke-dasharray="4,4" />
+            <path class="draw-path" d="M 400 0 Q 500 120 550 200" fill="none" stroke="var(--line)" stroke-width="1" stroke-dasharray="4,4" />
+            <path class="draw-path" d="M 400 0 Q 600 120 700 200" fill="none" stroke="var(--line)" stroke-width="1" stroke-dasharray="4,4" />
         </svg>
-        
-        <!-- Bottom Nodes -->
-        <div class="flex justify-between w-full px-4 md:px-12 z-20">
-            <div class="flex flex-col items-center">
-                <div class="w-10 h-10 bg-white hairline rounded flex items-center justify-center mb-4"><span class="text-xs">&lt;/&gt;</span></div>
-                <div class="font-mono-tag text-[10px]">WEB DEV</div>
-            </div>
-            <div class="flex flex-col items-center">
-                <div class="w-10 h-10 bg-white hairline rounded flex items-center justify-center mb-4"><span class="text-xs">{}</span></div>
-                <div class="font-mono-tag text-[10px]">SOFTWARE</div>
-            </div>
-            <div class="flex flex-col items-center">
-                <div class="w-10 h-10 bg-white hairline rounded flex items-center justify-center mb-4"><span class="text-xs">[]</span></div>
-                <div class="font-mono-tag text-[10px]">APP DEV</div>
-            </div>
-            <div class="flex flex-col items-center">
-                <div class="w-10 h-10 bg-white hairline rounded flex items-center justify-center mb-4"><span class="text-xs">%%</span></div>
-                <div class="font-mono-tag text-[10px]">SEO</div>
-            </div>
-            <div class="flex flex-col items-center">
-                <div class="w-10 h-10 bg-white hairline rounded flex items-center justify-center mb-4"><span class="text-xs">@@</span></div>
-                <div class="font-mono-tag text-[10px]">SOCIAL</div>
-            </div>
+
+        <div style="position:absolute; bottom:0; width:100%; display:flex; justify-content:space-between; padding:0 40px;">
+            <div class="chip">WEB DEV</div>
+            <div class="chip">SOFTWARE</div>
+            <div class="chip">APP DEV</div>
+            <div class="chip">SEO</div>
+            <div class="chip">SOCIAL</div>
         </div>
     </div>
     
-    <div class="text-center mt-12 relative z-20 reveal-blur">
-        <a href="<?= url_to('services') ?>" class="btn">
-            <span class="mr-2">+</span> EXPLORE ALL CAPABILITIES
-        </a>
+    <div style="text-align:center; margin-top:28px;">
+        <a href="<?= url_to('services') ?>" class="chip">+ EXPLORE ALL CAPABILITIES</a>
     </div>
-    
-    <!-- Bottom connected boxes -->
-    <div class="max-w-7xl mx-auto px-6 relative mt-32">
-        <div class="absolute bottom-4 left-6 right-6 hairline-t"></div>
-        <div class="flex justify-between relative z-10">
-            <div class="bg-paper px-4 flex items-center gap-2">
-                <div class="w-1 h-4 hairline-r"></div>
-                <span class="font-mono-tag text-xs">( Portfolio )</span>
-                <span class="font-sans text-[10px] uppercase tracking-widest opacity-60 mt-0.5">proof of engineering</span>
-            </div>
-            <div class="bg-paper px-4 flex items-center gap-2">
-                <span class="font-sans text-[10px] uppercase tracking-widest opacity-60 mt-0.5">results in detail</span>
-                <span class="font-mono-tag text-xs">( Case Studies )</span>
-                <div class="w-1 h-4 hairline-l"></div>
-            </div>
+
+    <div class="connected-boxes" style="max-width:1200px; margin:32px auto 0;">
+        <div style="background:var(--canvas); padding-right:16px;">
+            <div class="stat-val">( Portfolio )</div>
+            <div class="stat-lbl">proof of engineering</div>
+        </div>
+        <div style="background:var(--canvas); padding-left:16px; text-align:right;">
+            <div class="stat-lbl">results in detail</div>
+            <div class="stat-val">( Case Studies )</div>
         </div>
     </div>
 </section>
 
-<!-- S7. CAPABILITIES CHART (paper) -->
-<section class="py-32 bg-paper section-frame">
-    <div class="text-center mb-24 reveal-blur">
-        <div class="eyebrow">PRODUCTIVITY AND INNOVATION</div>
-        <h2>services that power growth</h2>
+<!-- S7. CAPABILITIES CHART -->
+<section class="light-panel" style="padding:64px 24px; margin-bottom:32px;">
+    <div style="text-align:center; margin-bottom:32px;" data-rv="blur-rise">
+        <div class="eyebrow" style="margin-bottom:12px;">PRODUCTIVITY AND INNOVATION</div>
+        <h2 class="serif-heading section-title">services that power growth</h2>
     </div>
-    
-    <div class="max-w-5xl mx-auto px-6 h-[400px] flex items-end justify-between gap-4 hairline-b border-l border-hairline-light pb-0 relative overflow-x-auto rise">
-        
-        <!-- Y-axis marks -->
-        <div class="absolute left-0 top-0 bottom-0 w-full flex flex-col justify-between pointer-events-none opacity-20">
-            <div class="w-full hairline-b"></div>
-            <div class="w-full hairline-b"></div>
-            <div class="w-full hairline-b"></div>
-            <div class="w-full hairline-b"></div>
-            <div class="w-full hairline-b"></div>
+
+    <div class="bars">
+        <div class="bar-col highlight" style="height:90%;" data-rv="scale-y">
+            <div style="font-weight:600; font-size:12px; margin-bottom:8px;">Web Development</div>
+            <div style="font-family:var(--mono); font-size:10px; opacity:0.5;">/ 01 /</div>
+            <div style="width:10px; height:1px; background:var(--line); margin:8px 0;"></div>
+            <a href="<?= url_to('service-detail', 'web-development') ?>" class="chip" style="font-size:9px; padding:4px 8px; margin-top:auto; margin-bottom:16px;">+ DETAILS</a>
         </div>
-        
-        <div class="chart-col w-full h-[90%] bg-mist/10 flex flex-col items-center pt-4 group">
-            <div class="font-sans text-xs font-semibold mb-2 text-center hidden md:block">Web Development</div>
-            <div class="font-sans text-[10px] text-center md:hidden break-words w-full px-1">Web</div>
-            <div class="font-mono-tag text-xs text-ink/50">/ 01 /</div>
-            <div class="w-4 h-px bg-ink/30 my-2"></div>
-            <div class="font-sans text-[9px] uppercase tracking-widest opacity-60 text-center hidden md:block">enterprise portals</div>
-            
-            <a href="<?= url_to('service-detail', 'web-development') ?>" class="mt-auto mb-6 opacity-0 group-hover:opacity-100 transition-opacity font-mono-tag text-[10px] bg-white px-2 py-1 hairline rounded">+ DETAILS</a>
+        <div class="bar-col" style="height:70%;" data-rv="scale-y">
+            <div style="font-weight:600; font-size:12px; margin-bottom:8px;">Software</div>
+            <div style="font-family:var(--mono); font-size:10px; opacity:0.5;">/ 02 /</div>
+            <div style="width:10px; height:1px; background:var(--line); margin:8px 0;"></div>
+            <a href="<?= url_to('service-detail', 'software-development') ?>" class="chip" style="font-size:9px; padding:4px 8px; margin-top:auto; margin-bottom:16px;">+ DETAILS</a>
         </div>
-        
-        <div class="chart-col w-full h-[70%] flex flex-col items-center pt-4 group">
-            <div class="font-sans text-xs font-semibold mb-2 text-center hidden md:block">Software</div>
-            <div class="font-sans text-[10px] text-center md:hidden break-words w-full px-1">Soft</div>
-            <div class="font-mono-tag text-xs text-ink/50">/ 02 /</div>
-            <div class="w-4 h-px bg-ink/30 my-2"></div>
-            <div class="font-sans text-[9px] uppercase tracking-widest opacity-60 text-center hidden md:block">bespoke automation</div>
-            
-            <a href="<?= url_to('service-detail', 'software-development') ?>" class="mt-auto mb-6 opacity-0 group-hover:opacity-100 transition-opacity font-mono-tag text-[10px] bg-white px-2 py-1 hairline rounded">+ DETAILS</a>
+        <div class="bar-col" style="height:100%;" data-rv="scale-y">
+            <div style="font-weight:600; font-size:12px; margin-bottom:8px;">App</div>
+            <div style="font-family:var(--mono); font-size:10px; opacity:0.5;">/ 03 /</div>
+            <div style="width:10px; height:1px; background:var(--line); margin:8px 0;"></div>
+            <a href="<?= url_to('service-detail', 'app-development') ?>" class="chip" style="font-size:9px; padding:4px 8px; margin-top:auto; margin-bottom:16px;">+ DETAILS</a>
         </div>
-        
-        <div class="chart-col w-full h-[60%] flex flex-col items-center pt-4 group">
-            <div class="font-sans text-xs font-semibold mb-2 text-center hidden md:block">App Dev</div>
-            <div class="font-sans text-[10px] text-center md:hidden break-words w-full px-1">App</div>
-            <div class="font-mono-tag text-xs text-ink/50">/ 03 /</div>
-            <div class="w-4 h-px bg-ink/30 my-2"></div>
-            <div class="font-sans text-[9px] uppercase tracking-widest opacity-60 text-center hidden md:block">iOS & Android</div>
-            
-            <a href="<?= url_to('service-detail', 'app-development') ?>" class="mt-auto mb-6 opacity-0 group-hover:opacity-100 transition-opacity font-mono-tag text-[10px] bg-white px-2 py-1 hairline rounded">+ DETAILS</a>
+        <div class="bar-col" style="height:55%;" data-rv="scale-y">
+            <div style="font-weight:600; font-size:12px; margin-bottom:8px;">SEO</div>
+            <div style="font-family:var(--mono); font-size:10px; opacity:0.5;">/ 04 /</div>
+            <div style="width:10px; height:1px; background:var(--line); margin:8px 0;"></div>
+            <a href="<?= url_to('service-detail', 'seo') ?>" class="chip" style="font-size:9px; padding:4px 8px; margin-top:auto; margin-bottom:16px;">+ DETAILS</a>
         </div>
-        
-        <div class="chart-col w-full h-[40%] flex flex-col items-center pt-4 group">
-            <div class="font-sans text-xs font-semibold mb-2 text-center hidden md:block">SEO</div>
-            <div class="font-sans text-[10px] text-center md:hidden break-words w-full px-1">SEO</div>
-            <div class="font-mono-tag text-xs text-ink/50">/ 04 /</div>
-            <div class="w-4 h-px bg-ink/30 my-2"></div>
-            <div class="font-sans text-[9px] uppercase tracking-widest opacity-60 text-center hidden md:block">organic growth</div>
-            
-            <a href="<?= url_to('service-detail', 'seo') ?>" class="mt-auto mb-6 opacity-0 group-hover:opacity-100 transition-opacity font-mono-tag text-[10px] bg-white px-2 py-1 hairline rounded">+ DETAILS</a>
-        </div>
-        
-        <div class="chart-col w-full h-[50%] flex flex-col items-center pt-4 group">
-            <div class="font-sans text-xs font-semibold mb-2 text-center hidden md:block">Social</div>
-            <div class="font-sans text-[10px] text-center md:hidden break-words w-full px-1">Social</div>
-            <div class="font-mono-tag text-xs text-ink/50">/ 05 /</div>
-            <div class="w-4 h-px bg-ink/30 my-2"></div>
-            <div class="font-sans text-[9px] uppercase tracking-widest opacity-60 text-center hidden md:block">brand engagement</div>
-            
-            <a href="<?= url_to('service-detail', 'social-media-management') ?>" class="mt-auto mb-6 opacity-0 group-hover:opacity-100 transition-opacity font-mono-tag text-[10px] bg-white px-2 py-1 hairline rounded">+ DETAILS</a>
+        <div class="bar-col" style="height:60%;" data-rv="scale-y">
+            <div style="font-weight:600; font-size:12px; margin-bottom:8px;">Social</div>
+            <div style="font-family:var(--mono); font-size:10px; opacity:0.5;">/ 05 /</div>
+            <div style="width:10px; height:1px; background:var(--line); margin:8px 0;"></div>
+            <a href="<?= url_to('service-detail', 'social-media-management') ?>" class="chip" style="font-size:9px; padding:4px 8px; margin-top:auto; margin-bottom:16px;">+ DETAILS</a>
         </div>
     </div>
 </section>
@@ -492,66 +546,217 @@
 <?= $this->section('scripts') ?>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // Typing effect for CRT Hero
-    const crtEl = document.getElementById('hero-typing');
+    // prefers-reduced-motion check
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Intersection Observer for reveals
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (!prefersReducedMotion) {
+                    entry.target.classList.add('in');
+                } else {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'none';
+                    entry.target.style.filter = 'none';
+                }
+                
+                // SVG dashed paths draw
+                if (entry.target.querySelector('.draw-path')) {
+                    const paths = entry.target.querySelectorAll('.draw-path');
+                    paths.forEach((p, i) => {
+                        if (prefersReducedMotion) return;
+                        const len = p.getTotalLength();
+                        p.style.strokeDasharray = len;
+                        p.style.strokeDashoffset = len;
+                        p.animate([
+                            { strokeDashoffset: len },
+                            { strokeDashoffset: 0 }
+                        ], { duration: 1500, delay: i * 150, fill: 'forwards', easing: 'ease-out' });
+                    });
+                }
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('[data-rv], section').forEach(el => observer.observe(el));
+    if(prefersReducedMotion) {
+        document.querySelectorAll('[data-rv]').forEach(el => {
+            el.style.opacity = 1; el.style.transform = 'none'; el.style.filter = 'none';
+        });
+    }
+
+    // CRT Typing inside SVG
+    const textEl = document.getElementById('crt');
+    const cursorEl = document.getElementById('crt-cursor');
     const logs = [
         "Ziibay Boot ... OK",
         "Architecture Check ... OK",
         "Loading Services ... OK",
         "Extensions ... Loaded",
-        "> INIT studio sequence",
-        "> USER login: client",
-        "> SYSTEM: ready for commands",
-        ">> echo 'High-Performance Software Solutions'",
-        "Ziibay Soft Ready_"
+        "",
+        " > INIT studio sequence",
+        " > USER login: client",
+        " > SYSTEM: ready for commands",
+        "",
+        " >> echo 'High-Performance Software'",
+        "Ziibay Soft Ready"
     ];
-    let i = 0;
-    let j = 0;
-    let currentLog = "";
-    
-    function typeCrt() {
-        if(i < logs.length) {
-            if(j < logs[i].length) {
-                currentLog += logs[i].charAt(j);
-                crtEl.innerHTML = currentLog.replace(/\n/g, '<br>');
-                j++;
-                setTimeout(typeCrt, Math.random() * 30 + 10);
-            } else {
-                currentLog += "\n";
-                crtEl.innerHTML = currentLog.replace(/\n/g, '<br>');
-                i++;
-                j = 0;
-                setTimeout(typeCrt, Math.random() * 200 + 100);
+    const startX = 202;
+    const startY = 172;
+    const dy = 15.5;
+    const charWidth = 6.9;
+
+    if (prefersReducedMotion) {
+        if (textEl) {
+            textEl.innerHTML = logs.map((line, i) => {
+                if (i === 0) return `<tspan x="${startX}">${line || ' '}</tspan>`;
+                return `<tspan x="${startX}" dy="${dy}">${line || ' '}</tspan>`;
+            }).join('');
+            if (cursorEl) {
+                const lastLine = logs[logs.length - 1];
+                cursorEl.setAttribute('x', startX + lastLine.length * charWidth + 2);
+                cursorEl.setAttribute('y', startY + (logs.length - 1) * dy - 10);
             }
         }
-    }
-    
-    setTimeout(typeCrt, 500);
+    } else if (textEl) {
+        let lineIdx = 0;
+        let charIdx = 0;
+        let linesRendered = [""];
 
-    // Scroll reveal observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                entry.target.classList.add('is-revealed');
-                
-                // If it has stroke-dash-draw SVG animation
-                const paths = entry.target.querySelectorAll('.stroke-dash-draw');
-                paths.forEach((p, i) => {
-                    p.style.strokeDasharray = p.getTotalLength();
-                    p.style.strokeDashoffset = p.getTotalLength();
-                    p.style.animation = `draw 2s ease-out ${i*0.2}s forwards`;
-                });
+        function render() {
+            textEl.innerHTML = linesRendered.map((line, i) => {
+                if (i === 0) return `<tspan x="${startX}">${line || ' '}</tspan>`;
+                return `<tspan x="${startX}" dy="${dy}">${line || ' '}</tspan>`;
+            }).join('');
+            if (cursorEl) {
+                const currentLineText = linesRendered[lineIdx] || "";
+                cursorEl.setAttribute('x', startX + currentLineText.length * charWidth + 2);
+                cursorEl.setAttribute('y', startY + lineIdx * dy - 10);
+            }
+        }
+
+        function type() {
+            if (lineIdx < logs.length) {
+                const targetLine = logs[lineIdx];
+                if (charIdx < targetLine.length) {
+                    linesRendered[lineIdx] += targetLine.charAt(charIdx);
+                    charIdx++;
+                    render();
+                    setTimeout(type, 18);
+                } else {
+                    lineIdx++;
+                    if (lineIdx < logs.length) {
+                        linesRendered.push("");
+                        charIdx = 0;
+                        render();
+                        setTimeout(type, 250);
+                    }
+                }
+            }
+        }
+        render();
+        setTimeout(type, 500);
+    }
+
+    // Orbit rAF
+    const sats = document.querySelectorAll('.sat');
+    sats.forEach(sat => sat.innerText = sat.dataset.label);
+    if (!prefersReducedMotion) {
+        let start = null;
+        function step(timestamp) {
+            if (!start) start = timestamp;
+            const t = (timestamp - start) / 40000 * 2 * Math.PI; // ~40s rev
+            sats.forEach((sat, i) => {
+                const a = t + i * (2 * Math.PI / sats.length);
+                const x = 50 + 66 * Math.cos(a);
+                const y = 57 + 17 * Math.sin(a);
+                sat.style.left = x + '%';
+                sat.style.top = y + '%';
+                if (Math.sin(a) > 0) {
+                    sat.classList.add('front');
+                    sat.classList.remove('back');
+                } else {
+                    sat.classList.add('back');
+                    sat.classList.remove('front');
+                }
+            });
+            requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    } else {
+        sats.forEach((sat, i) => {
+            const a = i * (2 * Math.PI / sats.length);
+            sat.style.left = (50 + 66 * Math.cos(a)) + '%';
+            sat.style.top = (57 + 17 * Math.sin(a)) + '%';
+            if (Math.sin(a) > 0) {
+                sat.classList.add('front');
+            } else {
+                sat.classList.add('back');
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+    }
+
+    // Carousel
+    let curSlide = 1;
+    const cards = document.querySelectorAll('.c-card');
+    const track = document.getElementById('carousel-track');
     
-    document.querySelectorAll('.reveal-blur, .rise, .chart-col').forEach(el => observer.observe(el));
+    function updateCarousel() {
+        cards.forEach((card, i) => {
+            if (i === curSlide) {
+                card.className = 'c-card center';
+                card.style.opacity = '';
+                card.style.transform = '';
+                card.style.zIndex = '';
+                card.style.boxShadow = '';
+            } else {
+                card.className = 'c-card side';
+                card.style.opacity = '';
+                card.style.transform = '';
+                card.style.zIndex = '';
+                card.style.boxShadow = '';
+            }
+        });
+        track.style.transform = `translateX(${(1 - curSlide) * 384}px)`;
+    }
+    document.getElementById('car-prev').addEventListener('click', () => {
+        if (curSlide > 0) curSlide--;
+        updateCarousel();
+    });
+    document.getElementById('car-next').addEventListener('click', () => {
+        if (curSlide < cards.length - 1) curSlide++;
+        updateCarousel();
+    });
+    
+    // Numbers count-up
+    if(!prefersReducedMotion) {
+        document.querySelectorAll('.stat-val').forEach(el => {
+            const text = el.innerText;
+            const numMatch = text.match(/(\d+)/);
+            if(numMatch) {
+                const target = parseInt(numMatch[1]);
+                let start = 0;
+                const update = setInterval(() => {
+                    start += Math.ceil(target / 20);
+                    if(start >= target) {
+                        el.innerText = text.replace(numMatch[1], target);
+                        clearInterval(update);
+                    } else {
+                        let padded = start.toString();
+                        if(numMatch[1].startsWith('0')) padded = padded.padStart(numMatch[1].length, '0');
+                        el.innerText = text.replace(numMatch[1], padded);
+                    }
+                }, 50);
+            }
+        });
+    }
 });
 </script>
-
 <style>
-@keyframes draw {
-    to { stroke-dashoffset: 0; }
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
 }
 </style>
 <?= $this->endSection() ?>

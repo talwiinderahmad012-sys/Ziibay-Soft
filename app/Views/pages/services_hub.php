@@ -167,15 +167,6 @@
     </div>
 </section>
 
-<?= $this->endSection() ?>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- 4. Why Ziibay Soft & Process -->
 <section class="py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

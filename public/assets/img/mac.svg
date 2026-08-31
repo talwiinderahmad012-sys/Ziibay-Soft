@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 635">
+  <defs>
+    <!-- Base Grain -->
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" result="noise" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0" in="noise" result="coloredNoise" />
+      <feComposite operator="in" in="coloredNoise" in2="SourceGraphic" result="composite" />
+      <feBlend mode="multiply" in="composite" in2="SourceGraphic" />
+    </filter>
+    
+    <!-- Body Gradient -->
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f7f5" />
+      <stop offset="100%" stop-color="#c6c9cb" />
+    </linearGradient>
+
+    <!-- Side Gradients for 3D depth -->
+    <linearGradient id="highlight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="shade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.15" />
+    </linearGradient>
+
+    <!-- Screen Glow -->
+    <radialGradient id="screenGlass" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#10202e" />
+      <stop offset="60%" stop-color="#1d4d78" />
+      <stop offset="100%" stop-color="#5fb0e6" />
+    </radialGradient>
+
+    <radialGradient id="screenGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5fb0e6" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#5fb0e6" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Scanlines -->
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#000000" fill-opacity="0.12" />
+    </pattern>
+
+    <!-- Ambient Occlusion / Shadows -->
+    <filter id="blurShadow">
+      <feGaussianBlur stdDeviation="8" />
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="24" />
+    </filter>
+  </defs>
+
+  <!-- Ground Shadow attached right below Mac base (y=540) -->
+  <ellipse cx="320" cy="575" rx="190" ry="18" fill="rgba(30,52,72,0.22)" filter="url(#blurShadow)" />
+
+  <!-- Main Body -->
+  <g filter="url(#grain)">
+    <!-- Base Chassis -->
+    <rect x="140" y="80" width="360" height="460" rx="32" fill="url(#bodyGrad)" />
+    <!-- Highlight Left -->
+    <rect x="140" y="80" width="40" height="460" rx="32" fill="url(#highlight)" />
+    <!-- Shade Right -->
+    <rect x="460" y="80" width="40" height="460" rx="32" fill="url(#shade)" />
+    
+    <!-- Top Ridge & Vents -->
+    <rect x="160" y="70" width="320" height="20" rx="8" fill="#e0e0de" />
+    <rect x="280" y="65" width="80" height="10" rx="2" fill="#b0b3b5" />
+    <rect x="290" y="66" width="60" height="2" fill="#808385" />
+    <rect x="290" y="70" width="60" height="2" fill="#808385" />
+    <rect x="290" y="74" width="60" height="2" fill="#808385" />
+
+    <!-- Ambient Occlusion Bezel Shadow -->
+    <rect x="170" y="140" width="300" height="240" rx="16" fill="#000" opacity="0.3" filter="url(#blurShadow)" />
+
+    <!-- Recessed Screen Bezel -->
+    <rect x="170" y="130" width="300" height="240" rx="20" fill="#1a1d20" />
+    
+    <!-- Outer Glow behind glass -->
+    <rect x="190" y="150" width="260" height="200" rx="12" fill="url(#screenGlow)" filter="url(#softGlow)" />
+
+    <!-- Glass Screen -->
+    <rect x="190" y="150" width="260" height="200" rx="12" fill="url(#screenGlass)" />
+    <!-- Vignette -->
+    <rect x="190" y="150" width="260" height="200" rx="12" fill="#000" opacity="0.4" />
+    <!-- Scanlines Overlay -->
+    <rect x="190" y="150" width="260" height="200" rx="12" fill="url(#scanlines)" />
+    
+    <!-- Inner Glass reflection -->
+    <path d="M 195 155 Q 320 180 445 155 L 445 200 Q 320 220 195 200 Z" fill="#ffffff" opacity="0.05" />
+
+    <!-- Terminal Live Text & Cursor inside SVG -->
+    <g id="crt-terminal-group">
+      <text id="crt" font-family="'Space Mono', monospace" font-size="11.5" fill="#cfe3f4" x="202" y="172" style="letter-spacing:0.5px; text-shadow:0 0 6px rgba(140,200,240,0.7);"></text>
+      <rect id="crt-cursor" x="202" y="162" width="6" height="11" fill="#cfe3f4" style="animation: blink 1s steps(1) infinite;"></rect>
+    </g>
+
+    <!-- Bottom Drive Area -->
+    <rect x="360" y="440" width="100" height="8" rx="2" fill="#000" opacity="0.15" filter="url(#blurShadow)" />
+    <rect x="360" y="440" width="100" height="8" rx="2" fill="#303335" />
+    <rect x="365" y="442" width="90" height="2" fill="#101315" />
+    
+    <!-- Eject Lever -->
+    <rect x="465" y="440" width="12" height="8" rx="1" fill="#a0a3a5" />
+
+    <!-- Logo Emboss -->
+    <rect x="180" y="440" width="20" height="20" rx="4" fill="#d0d3d5" />
+    <!-- Rainbow Logo -->
+    <rect x="184" y="444" width="12" height="3" fill="#61BB46" />
+    <rect x="184" y="447" width="12" height="3" fill="#FDB827" />
+    <rect x="184" y="450" width="12" height="3" fill="#F5821F" />
+    <rect x="184" y="453" width="12" height="3" fill="#E03A3E" />
+  </g>
+</svg>
