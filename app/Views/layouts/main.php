@@ -48,6 +48,8 @@
 
     <?= $this->include('components/theme_manager') ?>
     
+    <?= $this->include('components/premium_interactions') ?>
+    
     <?= $this->renderSection('head') ?>
 </head>
 <body class="flex flex-col min-h-screen">

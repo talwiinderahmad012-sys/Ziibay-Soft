@@ -2,35 +2,37 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+<!-- Premium Design System -->
+<?= $this->include('components/design_system') ?>
+
 <!-- Theme Variables (Light & Dark) -->
 <style type="text/tailwindcss">
     :root {
-        /* LIGHT MODE - Soft off-white, cool-gray, blue-gray */
-        --bg-color: #f3f6f9;
-        --bg-color-alt: #e9eef5;
-        --surface-color: rgba(255, 255, 255, 0.85);
-        --surface-hover: rgba(240, 244, 248, 0.95);
-        --border-color: rgba(148, 163, 184, 0.25);
+        /* LIGHT MODE - soft, editorial, premium neutral */
+        --bg-color: #eef2f5;
+        --bg-color-alt: #e5eaef;
+        --surface-color: rgba(255, 255, 255, 0.7);
+        --surface-hover: rgba(248, 250, 252, 0.95);
+        --border-color: rgba(100, 116, 139, 0.18);
         
         --text-color: #0f172a;
         --text-muted: #475569;
         --text-on-primary: #ffffff;
         
-        /* Accents - Controlled Cyan / Teal / Blue-Violet */
-        --primary-color: #0284c7; 
-        --primary-hover: #0369a1;
-        --primary-light: #38bdf8;
-        --primary-glow: rgba(2, 132, 199, 0.2);
+        --primary-color: #0ea5e9;
+        --primary-hover: #0284c7;
+        --primary-light: #7dd3fc;
+        --primary-glow: rgba(14, 165, 233, 0.18);
         
         --accent-violet: #6366f1;
-        --accent-teal: #0d9488;
-        --accent-amber: #d97706; /* Sparingly */
+        --accent-teal: #38bdf8;
+        --accent-amber: #d97706;
 
-        --glass-bg: rgba(255, 255, 255, 0.7);
+        --glass-bg: rgba(255, 255, 255, 0.65);
         --glass-border: rgba(148, 163, 184, 0.2);
 
-        --glass-heavy-bg: rgba(243, 246, 249, 0.9);
-        --glass-heavy-border: rgba(148, 163, 184, 0.3);
+        --glass-heavy-bg: rgba(255, 255, 255, 0.8);
+        --glass-heavy-border: rgba(148, 163, 184, 0.22);
     }
 
     .dark {
@@ -64,23 +66,23 @@
 
     /* Global Body resets based on theme */
     body {
-        background-color: var(--bg-color);
+        background-color: #edf3f5;
         color: var(--text-color);
-        background-image: 
-            linear-gradient(to right, var(--border-color) 1px, transparent 1px),
-            linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
-        background-size: 100px 100px;
+        background-image:
+            radial-gradient(circle at 50% 0%, rgba(255,255,255,0.8), transparent 30%),
+            linear-gradient(to right, rgba(136,146,160,0.16) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(136,146,160,0.16) 1px, transparent 1px);
+        background-size: auto, 96px 96px, 96px 96px;
         background-attachment: fixed;
-        background-position: center top;
+        background-position: center top, center top, center top;
         position: relative;
     }
     
-    /* Ambient Glow Behind Body */
     body::before {
         content: '';
         position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: radial-gradient(circle at 50% 0%, var(--primary-glow), transparent 60%);
+        inset: 0;
+        background: radial-gradient(circle at 50% 22%, rgba(14,165,233,0.08), transparent 28%);
         z-index: -1;
         pointer-events: none;
     }
@@ -98,6 +100,18 @@
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
         border-bottom: 1px solid var(--glass-heavy-border);
+    }
+
+    .hero-matrix-soft {
+        background:
+            radial-gradient(circle at center, rgba(14, 165, 233, 0.08), transparent 25%),
+            linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.0));
+    }
+
+    .hero-editorial {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-weight: 500;
+        letter-spacing: -0.05em;
     }
 
     .glow-primary {
@@ -124,6 +138,12 @@
         .tech-link { @apply relative inline-flex items-center text-primary font-medium hover:text-primary-light transition-colors duration-300; }
         .tech-link::after { @apply content-[''] absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300; }
         .tech-link:hover::after { @apply w-full; }
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        border-radius: 9999px !important;
+        letter-spacing: -0.02em;
     }
 
     /* Subtle Animations */
@@ -258,8 +278,8 @@
 
     /* 4. Tubelight Navbar (Scrolled state) */
     .nav-scrolled {
-        background-color: var(--surface) !important;
-        box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.2);
+        background-color: rgba(255, 255, 255, 0.82) !important;
+        box-shadow: 0 10px 30px -15px rgba(15, 23, 42, 0.18);
         border-color: var(--border-color);
         top: 10px !important;
     }
@@ -411,11 +431,9 @@
 <!-- Theme initialization script (prevents FOUC) -->
 <script>
     (function() {
-        // Read theme from localStorage or system preference
         const storedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
+
+        if (storedTheme === 'dark') {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');

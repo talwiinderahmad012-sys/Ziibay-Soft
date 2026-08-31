@@ -7,54 +7,54 @@
 <?= $this->section('content') ?>
 
 <!-- Hero Section -->
-<section class="pt-32 pb-16 bg-surface transition-colors duration-300 relative overflow-hidden">
-    <div class="absolute top-0 left-0 w-1/2 h-1/2 bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
-    <div class="container mx-auto px-4 relative z-10 text-center max-w-4xl">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text mb-6">Frequently Asked <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-secondary">Questions</span></h1>
-        <p class="text-xl text-text-muted mb-8">
+<section class="pt-24 pb-16 bg-surface/30 border-b border-border/70 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-4xl">
+        <div class="text-caption text-primary mb-3">KNOWLEDGE PROTOCOLS</div>
+        <h1 class="h1 text-text mb-6">Frequently Asked <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-blue">Questions</span></h1>
+        <p class="text-body text-lg text-text-muted mb-8 max-w-2xl mx-auto">
             Everything you need to know about working with Ziibay Soft.
         </p>
         
         <!-- Search -->
         <form action="<?= base_url('faq') ?>" method="GET" class="max-w-xl mx-auto relative">
-            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-text-muted">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-text-dim text-xs">
                 <i class="fa-solid fa-search"></i>
             </div>
-            <input type="text" name="q" value="<?= esc($search) ?>" placeholder="Search FAQs..." class="w-full pl-12 pr-4 py-3 bg-surface-secondary border border-border rounded-full text-text focus:outline-none focus:ring-2 focus:ring-brand-primary transition-all shadow-sm">
+            <input type="text" name="q" value="<?= esc($search) ?>" placeholder="Search FAQs..." class="w-full pl-10 pr-4 py-3 bg-surface border border-border rounded-lg text-text text-sm focus:outline-none focus:border-primary transition-all shadow-tech">
         </form>
     </div>
 </section>
 
 <!-- FAQs Section -->
-<section class="py-12 bg-surface transition-colors duration-300 min-h-[400px]">
-    <div class="container mx-auto px-4 max-w-4xl">
+<section class="py-16 min-h-[400px]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <?php if (!empty($search)): ?>
-            <div class="mb-8 text-center text-text-muted">
-                <p>Showing results for "<strong><?= esc($search) ?></strong>"</p>
-                <a href="<?= base_url('faq') ?>" class="text-brand-primary hover:underline text-sm font-bold mt-2 inline-block">Clear Search</a>
+            <div class="mb-8 text-center text-text-muted text-sm">
+                <p>Showing results for "<strong class="text-text"><?= esc($search) ?></strong>"</p>
+                <a href="<?= base_url('faq') ?>" class="tech-link text-xs font-mono mt-2 inline-block">Clear Search &rarr;</a>
             </div>
         <?php endif; ?>
 
         <?php if (empty($faqs)): ?>
-            <div class="text-center py-12 bg-surface-secondary rounded-2xl border border-border">
-                <i class="fa-regular fa-circle-question text-4xl text-text-muted mb-4"></i>
-                <h3 class="text-xl font-bold text-text mb-2">No FAQs found</h3>
-                <p class="text-text-muted mb-6">We couldn't find any questions matching your criteria.</p>
-                <a href="<?= base_url('contact') ?>" class="btn-primary py-3 px-6">Ask us directly</a>
+            <div class="text-center py-16 tech-panel border-dashed border-2 border-border/70 rounded-xl">
+                <i class="fa-regular fa-circle-question text-3xl text-text-dim mb-3"></i>
+                <h3 class="text-lg font-bold text-text mb-1">No FAQs found</h3>
+                <p class="text-small text-text-muted mb-6">We couldn't find any questions matching your criteria.</p>
+                <a href="<?= base_url('contact') ?>" class="btn-primary py-3 px-6 text-xs">Ask us directly</a>
             </div>
         <?php else: ?>
-            <div class="space-y-4" x-data="{ activeAccordion: null }">
+            <div class="space-y-3" x-data="{ activeAccordion: null }">
                 <?php foreach ($faqs as $index => $faq): ?>
-                    <div class="bg-surface border border-border rounded-2xl overflow-hidden shadow-sm transition-all duration-200 hover:border-brand-primary/50">
+                    <div class="tech-card rounded-xl overflow-hidden transition-all duration-200">
                         <button 
                             @click="activeAccordion = activeAccordion === <?= $index ?> ? null : <?= $index ?>"
-                            class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none focus-visible:bg-surface-secondary"
+                            class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                             :aria-expanded="activeAccordion === <?= $index ?>"
                             aria-controls="faq-<?= $index ?>"
                         >
-                            <span class="font-bold text-lg text-text pr-4"><?= esc($faq['question']) ?></span>
-                            <span class="text-brand-primary transform transition-transform duration-300 flex-shrink-0" :class="{ 'rotate-180': activeAccordion === <?= $index ?> }">
+                            <span class="font-bold text-sm md:text-base text-text pr-4"><?= esc($faq['question']) ?></span>
+                            <span class="text-primary transform transition-transform duration-200 flex-shrink-0 text-xs" :class="{ 'rotate-180': activeAccordion === <?= $index ?> }">
                                 <i class="fa-solid fa-chevron-down"></i>
                             </span>
                         </button>
@@ -64,8 +64,8 @@
                             x-collapse
                             style="display: none;"
                         >
-                            <div class="px-6 pb-6 text-text-muted prose prose-sm dark:prose-invert max-w-none">
-                                <?= $faq['answer'] // Safe HTML from admin ?>
+                            <div class="px-6 pb-5 text-text-muted text-sm border-t border-border/40 pt-3 leading-relaxed">
+                                <?= $faq['answer'] ?>
                             </div>
                         </div>
                     </div>
@@ -74,13 +74,14 @@
         <?php endif; ?>
 
         <!-- Contact CTA -->
-        <div class="mt-16 text-center bg-surface-secondary p-8 rounded-3xl border border-border">
-            <h3 class="text-2xl font-bold text-text mb-2">Still have questions?</h3>
-            <p class="text-text-muted mb-6">Can't find the answer you're looking for? Please chat to our friendly team.</p>
-            <div class="flex justify-center gap-4">
-                <a href="<?= base_url('contact') ?>" class="btn-primary py-3 px-8">Get in Touch</a>
-                <a href="https://wa.me/<?= esc(config('App')->whatsappNumber ?? '1234567890') ?>" target="_blank" class="px-8 py-3 bg-[#25D366] text-white font-bold rounded-full hover:bg-[#1DA851] transition-colors shadow-lg shadow-green-500/20 flex items-center">
-                    <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp
+        <div class="mt-16 text-center tech-panel p-8 rounded-xl">
+            <div class="text-caption text-primary mb-1">NEED ASSISTANCE?</div>
+            <h3 class="h3 text-text mb-2">Still have questions?</h3>
+            <p class="text-small text-text-muted mb-6">Can't find the answer you're looking for? Please chat to our engineering team.</p>
+            <div class="flex justify-center gap-3">
+                <a href="<?= base_url('contact') ?>" class="btn-primary py-3 px-6 text-xs">Get in Touch</a>
+                <a href="https://wa.me/<?= esc(config('App')->whatsappNumber ?? '1234567890') ?>" target="_blank" class="btn-secondary py-3 px-6 text-xs flex items-center">
+                    <i class="fa-brands fa-whatsapp text-emerald-500 mr-2 text-sm"></i> WhatsApp
                 </a>
             </div>
         </div>
