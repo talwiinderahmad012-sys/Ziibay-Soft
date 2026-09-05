@@ -44,6 +44,7 @@ class Contact extends BaseController
             'company' => 'permit_empty|max_length[100]',
             'country' => 'permit_empty|max_length[100]',
             'services' => 'permit_empty', // can be an array
+            'service'  => 'permit_empty|max_length[100]',
             'project_type' => 'permit_empty|max_length[100]',
             'budget'  => 'permit_empty|max_length[50]',
             'timeline' => 'permit_empty|max_length[50]',
@@ -67,7 +68,7 @@ class Contact extends BaseController
             'phone'      => strip_tags($this->request->getPost('phone')),
             'company'    => strip_tags($this->request->getPost('company')),
             'country'    => strip_tags($this->request->getPost('country')),
-            'project_type'=> strip_tags($this->request->getPost('project_type')),
+            'project_type'=> strip_tags($this->request->getPost('service') ?: ($this->request->getPost('project_type') ?? '')),
             'budget'     => strip_tags($this->request->getPost('budget')),
             'timeline'   => strip_tags($this->request->getPost('timeline')),
             'message'    => strip_tags($this->request->getPost('message')),

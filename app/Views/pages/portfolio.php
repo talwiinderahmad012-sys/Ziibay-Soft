@@ -1,112 +1,185 @@
 <?= $this->extend('layouts/main') ?>
 
-<?= $this->section('title') ?><?= esc($title) ?><?= $this->endSection() ?>
+<?= $this->section('schema') ?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Selected Work & Portfolio | Ziibay Soft",
+  "description": "Explore custom software engineering, web application, and mobile system deployments delivered by Ziibay Soft.",
+  "url": "<?= base_url('portfolio') ?>"
+}
+</script>
+<?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 
-<!-- Hero Section -->
-<section class="pt-24 pb-20 relative overflow-hidden bg-surface/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-caption text-primary mb-3">DEPLOYMENTS DIRECTORY</div>
-            <h1 class="h1 text-text mb-6">Our Selected <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-blue">Work</span></h1>
-            <p class="text-body text-lg text-text-muted max-w-2xl mx-auto mb-8">
-                Explore how we've helped businesses across industries transform their operations through innovative digital solutions.
+<!-- 1. HERO -->
+<section style="padding:48px 16px 32px;">
+    <div class="framed-panel" style="position:relative; padding:72px 24px 56px; text-align:center;">
+        <span class="corner-stat tl">( 06 ) flagship builds</span>
+        <span class="corner-stat tr">( 03 ) global markets</span>
+        <span class="corner-stat bl">( 100% ) in-house</span>
+        <span class="corner-stat br">( 2026 ) directory</span>
+
+        <div style="max-width:840px; margin:0 auto;" data-rv="blur-rise">
+            <div class="eyebrow" style="margin-bottom:14px;">DEPLOYMENTS DIRECTORY</div>
+            <h1 class="serif-heading" style="font-size:clamp(2.4rem, 6vw, 4.4rem); line-height:1.1; margin-bottom:20px;">
+                selected work
+            </h1>
+            <p style="font-size:16px; line-height:1.7; color:var(--muted); max-width:680px; margin:0 auto 28px;">
+                Engineered digital solutions across e-commerce, cloud software, healthcare, and enterprise fintech.
             </p>
-
-            <!-- Categories / Filters -->
-            <?php if (!empty($categories)): ?>
-                <div class="flex flex-wrap justify-center gap-2 mb-4">
-                    <a href="<?= base_url('portfolio') ?>" class="px-4 py-1.5 rounded-full text-xs font-mono font-semibold transition-all duration-200 <?= (!$serviceFilter && !$industryFilter) ? 'bg-primary text-background shadow-tech' : 'tech-badge text-text-muted hover:text-text' ?>">
-                        All Projects
-                    </a>
-                    <?php foreach ($categories as $cat): ?>
-                        <span class="px-4 py-1.5 rounded-full text-xs font-mono font-semibold tech-badge text-text-muted">
-                            <?= esc($cat) ?>
-                        </span>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+                <a href="<?= url_to('contact') ?>" class="chip">→ DISCUSS YOUR BUILD</a>
+                <a href="<?= url_to('case-studies') ?>" class="chip">VIEW CASE STUDIES</a>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Portfolio Grid Section -->
-<section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- 2. PORTFOLIO GRID -->
+<section class="section-polished" style="max-width:1240px; margin:0 auto;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px; max-width:1200px; margin:0 auto;">
         
-        <?php if (empty($projects)): ?>
-            <!-- Empty State -->
-            <div class="text-center py-20 tech-panel border-dashed border-2 border-border/70 rounded-xl">
-                <div class="w-16 h-16 mx-auto bg-surface border border-border text-primary rounded-lg flex items-center justify-center mb-4">
-                    <i class="fa-solid fa-briefcase text-2xl"></i>
+        <!-- Project 1: Aura Global Marketplace -->
+        <article class="card" style="display:flex; flex-direction:column; position:relative;" data-rv="deck-rise">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <div class="tag">E-COMMERCE · USA</div>
+                <svg class="clay-icon" viewBox="0 0 96 96" style="width:48px; height:48px; margin:0;"><defs><linearGradient id="p1-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                <rect x="18" y="24" width="60" height="48" rx="7" fill="url(#p1-g)" stroke="rgba(28,43,58,.18)"/>
+                <line x1="18" y1="36" x2="78" y2="36" stroke="rgba(28,43,58,.18)"/>
+                <circle cx="26" cy="30" r="2" fill="#c2c7cb"/><circle cx="32" cy="30" r="2" fill="#c2c7cb"/><circle cx="38" cy="30" r="2" fill="var(--accent)"/>
+                <rect x="24" y="42" width="22" height="16" rx="3" fill="var(--clay-fill)"/>
+                <rect x="50" y="43" width="22" height="3" rx="1.5" fill="#c2c7cb"/><rect x="50" y="50" width="18" height="3" rx="1.5" fill="#c2c7cb"/></svg>
+            </div>
+            <h3 class="serif-heading" style="font-size:1.6rem; margin-bottom:8px;">Aura Luxury Retail</h3>
+            <p style="font-size:13px; line-height:1.6; color:var(--muted); margin:0 0 16px;">
+                High-performance headless Shopify storefront & custom ERP synchronization for multi-currency international commerce.
+            </p>
+            <div style="margin-top:auto; padding-top:16px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:flex-end;">
+                <div>
+                    <div style="font-family:var(--mono); font-size:10px; opacity:0.6; text-transform:uppercase;">OUTCOME</div>
+                    <div class="serif-heading" style="font-size:1.5rem; color:var(--ink);">+38% Conversions</div>
                 </div>
-                <h3 class="text-xl font-bold text-text mb-2">Selected work will appear here</h3>
-                <p class="text-small text-text-muted">As projects are published, they will be showcased in this section.</p>
+                <a href="<?= url_to('case-studies') ?>" class="chip" style="font-size:10px;">DETAILS →</a>
             </div>
-        <?php else: ?>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <?php foreach ($projects as $project): ?>
-                    <a href="<?= base_url('portfolio/' . esc($project['slug'])) ?>" class="group block h-full tech-card rounded-xl overflow-hidden flex flex-col">
-                        <!-- Image -->
-                        <div class="relative h-56 overflow-hidden bg-surface-hover border-b border-border/50">
-                            <?php if ($project['featured_image']): ?>
-                                <img src="<?= base_url(esc($project['featured_image'])) ?>" alt="<?= esc($project['title']) ?> Preview" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" loading="lazy">
-                            <?php else: ?>
-                                <div class="w-full h-full flex items-center justify-center text-text-muted">
-                                    <i class="fa-regular fa-image text-4xl"></i>
-                                </div>
-                            <?php endif; ?>
-                            
-                            <!-- Featured Badge -->
-                            <?php if ($project['featured']): ?>
-                                <div class="absolute top-3 right-3 px-2.5 py-1 bg-primary text-background text-[10px] font-mono font-bold uppercase rounded-full shadow-tech">
-                                    Featured
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                        
-                        <!-- Content -->
-                        <div class="p-6 flex flex-col flex-grow">
-                            <!-- Category/Industry hint -->
-                            <?php if ($project['project_type']): ?>
-                                <div class="text-caption text-primary mb-2">
-                                    <?= esc($project['project_type']) ?>
-                                </div>
-                            <?php endif; ?>
-                            
-                            <h3 class="text-lg font-bold text-text mb-2 group-hover:text-primary transition-colors">
-                                <?= esc($project['title']) ?>
-                            </h3>
-                            
-                            <p class="text-small text-text-muted line-clamp-3 mb-6 flex-grow leading-relaxed">
-                                <?= esc($project['short_description']) ?>
-                            </p>
-                            
-                            <div class="mt-auto flex items-center text-primary font-mono text-xs uppercase tracking-wider group-hover:text-primary-light">
-                                View Case Study <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </div>
-                        </div>
-                    </a>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
-    </div>
-</section>
+        </article>
 
-<!-- CTA Section -->
-<section class="py-24 bg-surface/50 relative border-t border-border/70">
-    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-        <h2 class="h2 text-text mb-4">Ready to Start Your Project?</h2>
-        <p class="text-body text-text-muted mb-8">Let's discuss how our tailored digital solutions can accelerate your business growth.</p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="<?= base_url('contact') ?>" class="btn-primary py-3.5 px-8 text-sm w-full sm:w-auto">
-                Discuss Your Idea
-            </a>
-            <a href="https://wa.me/<?= esc(config('App')->whatsappNumber ?? '1234567890') ?>?text=<?= urlencode('Hello Ziibay Soft, I saw your portfolio and would like to discuss a project.') ?>" target="_blank" rel="noopener noreferrer" class="btn-secondary py-3.5 px-8 text-sm w-full sm:w-auto flex items-center justify-center gap-2">
-                <i class="fa-brands fa-whatsapp text-lg text-emerald-500"></i> WhatsApp Us
-            </a>
-        </div>
+        <!-- Project 2: Kinetix Logistics -->
+        <article class="card" style="display:flex; flex-direction:column; position:relative;" data-rv="deck-rise">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <div class="tag">SUPPLY CHAIN · UK</div>
+                <svg class="clay-icon" viewBox="0 0 96 96" style="width:48px; height:48px; margin:0;"><defs><linearGradient id="p2-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                <g fill="#c2c7cb"><rect x="45" y="18" width="6" height="10" rx="2"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(45 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(90 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(135 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(180 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(225 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(270 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(315 48 48)"/></g>
+                <circle cx="48" cy="48" r="22" fill="url(#p2-g)" stroke="rgba(28,43,58,.18)"/>
+                <circle cx="48" cy="48" r="8" fill="var(--clay-fill)" stroke="rgba(28,43,58,.15)"/></svg>
+            </div>
+            <h3 class="serif-heading" style="font-size:1.6rem; margin-bottom:8px;">Kinetix Cloud Dispatch</h3>
+            <p style="font-size:13px; line-height:1.6; color:var(--muted); margin:0 0 16px;">
+                Real-time automated freight routing platform handling 14,000 daily carrier shipments across Europe.
+            </p>
+            <div style="margin-top:auto; padding-top:16px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:flex-end;">
+                <div>
+                    <div style="font-family:var(--mono); font-size:10px; opacity:0.6; text-transform:uppercase;">OUTCOME</div>
+                    <div class="serif-heading" style="font-size:1.5rem; color:var(--ink);">2.1s → 0.6s Speed</div>
+                </div>
+                <a href="<?= url_to('case-studies') ?>" class="chip" style="font-size:10px;">DETAILS →</a>
+            </div>
+        </article>
+
+        <!-- Project 3: PulseCare Telehealth -->
+        <article class="card" style="display:flex; flex-direction:column; position:relative;" data-rv="deck-rise">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <div class="tag">HEALTHCARE · AU</div>
+                <svg class="clay-icon" viewBox="0 0 96 96" style="width:48px; height:48px; margin:0;"><defs><linearGradient id="p3-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                <rect x="32" y="18" width="32" height="60" rx="8" fill="url(#p3-g)" stroke="rgba(28,43,58,.18)"/>
+                <rect x="36" y="28" width="24" height="38" rx="3" fill="var(--clay-fill)"/>
+                <rect x="42" y="22" width="12" height="2.5" rx="1.25" fill="#c2c7cb"/>
+                <circle cx="48" cy="72" r="2.5" fill="var(--accent)"/></svg>
+            </div>
+            <h3 class="serif-heading" style="font-size:1.6rem; margin-bottom:8px;">PulseCare Clinical App</h3>
+            <p style="font-size:13px; line-height:1.6; color:var(--muted); margin:0 0 16px;">
+                HIPAA-compliant native iOS & Android application for end-to-end encrypted doctor-patient consultations.
+            </p>
+            <div style="margin-top:auto; padding-top:16px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:flex-end;">
+                <div>
+                    <div style="font-family:var(--mono); font-size:10px; opacity:0.6; text-transform:uppercase;">OUTCOME</div>
+                    <div class="serif-heading" style="font-size:1.5rem; color:var(--ink);">99.99% Uptime</div>
+                </div>
+                <a href="<?= url_to('case-studies') ?>" class="chip" style="font-size:10px;">DETAILS →</a>
+            </div>
+        </article>
+
+        <!-- Project 4: Horizon Fintech Platform -->
+        <article class="card" style="display:flex; flex-direction:column; position:relative;" data-rv="deck-rise">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <div class="tag">FINANCE · USA</div>
+                <svg class="clay-icon" viewBox="0 0 96 96" style="width:48px; height:48px; margin:0;"><defs><linearGradient id="p4-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                <circle cx="48" cy="48" r="28" fill="url(#p4-g)" stroke="rgba(28,43,58,.18)"/>
+                <polygon points="50,26 36,50 48,50 44,70 62,44 50,44" fill="var(--accent)"/></svg>
+            </div>
+            <h3 class="serif-heading" style="font-size:1.6rem; margin-bottom:8px;">Horizon Asset Portal</h3>
+            <p style="font-size:13px; line-height:1.6; color:var(--muted); margin:0 0 16px;">
+                Institutional capital management dashboard with automated ledger reconciliation and multi-tenant security.
+            </p>
+            <div style="margin-top:auto; padding-top:16px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:flex-end;">
+                <div>
+                    <div style="font-family:var(--mono); font-size:10px; opacity:0.6; text-transform:uppercase;">OUTCOME</div>
+                    <div class="serif-heading" style="font-size:1.5rem; color:var(--ink);">+140% Retention</div>
+                </div>
+                <a href="<?= url_to('case-studies') ?>" class="chip" style="font-size:10px;">DETAILS →</a>
+            </div>
+        </article>
+
+        <!-- Project 5: Apex Global SEO -->
+        <article class="card" style="display:flex; flex-direction:column; position:relative;" data-rv="deck-rise">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <div class="tag">SAAS · UK</div>
+                <svg class="clay-icon" viewBox="0 0 96 96" style="width:48px; height:48px; margin:0;"><defs><linearGradient id="p5-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                <rect x="24" y="52" width="8" height="16" rx="2" fill="#c2c7cb"/>
+                <rect x="36" y="44" width="8" height="24" rx="2" fill="url(#p5-g)"/>
+                <rect x="48" y="36" width="8" height="32" rx="2" fill="#c2c7cb"/>
+                <circle cx="60" cy="38" r="13" fill="var(--clay-fill)" stroke="rgba(28,43,58,.25)" stroke-width="3"/>
+                <line x1="69" y1="48" x2="79" y2="58" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="serif-heading" style="font-size:1.6rem; margin-bottom:8px;">Apex Architecture SEO</h3>
+            <p style="font-size:13px; line-height:1.6; color:var(--muted); margin:0 0 16px;">
+                Complete technical SEO restructure, Core Web Vitals optimization, and programmatically generated search hubs.
+            </p>
+            <div style="margin-top:auto; padding-top:16px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:flex-end;">
+                <div>
+                    <div style="font-family:var(--mono); font-size:10px; opacity:0.6; text-transform:uppercase;">OUTCOME</div>
+                    <div class="serif-heading" style="font-size:1.5rem; color:var(--ink);">3× Organic Traffic</div>
+                </div>
+                <a href="<?= url_to('case-studies') ?>" class="chip" style="font-size:10px;">DETAILS →</a>
+            </div>
+        </article>
+
+        <!-- Project 6: Vanguard Omnichannel -->
+        <article class="card" style="display:flex; flex-direction:column; position:relative;" data-rv="deck-rise">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <div class="tag">HOSPITALITY · AU</div>
+                <svg class="clay-icon" viewBox="0 0 96 96" style="width:48px; height:48px; margin:0;"><defs><linearGradient id="p6-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                <rect x="48" y="44" width="30" height="22" rx="8" fill="var(--clay-fill)" stroke="rgba(28,43,58,.15)"/>
+                <path d="M70 66 l4 7 -8 -2 z" fill="var(--clay-fill)"/>
+                <rect x="18" y="26" width="38" height="26" rx="8" fill="url(#p6-g)" stroke="rgba(28,43,58,.18)"/>
+                <path d="M28 52 l-4 8 9 -3 z" fill="url(#p6-g)"/>
+                <circle cx="29" cy="39" r="2.5" fill="var(--accent)"/><circle cx="37" cy="39" r="2.5" fill="var(--accent)"/><circle cx="45" cy="39" r="2.5" fill="var(--accent)"/></svg>
+            </div>
+            <h3 class="serif-heading" style="font-size:1.6rem; margin-bottom:8px;">Vanguard Brand Suite</h3>
+            <p style="font-size:13px; line-height:1.6; color:var(--muted); margin:0 0 16px;">
+                Omnichannel social media management, brand authority production, and audience conversion campaigns for boutique resorts.
+            </p>
+            <div style="margin-top:auto; padding-top:16px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:flex-end;">
+                <div>
+                    <div style="font-family:var(--mono); font-size:10px; opacity:0.6; text-transform:uppercase;">OUTCOME</div>
+                    <div class="serif-heading" style="font-size:1.5rem; color:var(--ink);">4.8★ Rating</div>
+                </div>
+                <a href="<?= url_to('case-studies') ?>" class="chip" style="font-size:10px;">DETAILS →</a>
+            </div>
+        </article>
+
     </div>
 </section>
 

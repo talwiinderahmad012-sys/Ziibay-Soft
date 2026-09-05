@@ -29,7 +29,7 @@ class Locations extends BaseController
                           ->findAll();
                           
         $data = [
-            'locale' => $country['locale'] ?? null,
+            'locale' => null,
             'title' => 'Global Service Locations | Ziibay Soft',
             'meta_description' => 'Explore Ziibay Soft\'s international service locations. We provide web development, software engineering, and digital solutions globally.',
             'countries' => $countries,

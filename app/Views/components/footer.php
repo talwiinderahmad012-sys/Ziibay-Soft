@@ -5,7 +5,7 @@
         <h2 class="serif-heading" style="font-size:clamp(2.2rem,5vw,3.8rem); line-height:1.15; margin-bottom:24px;">
             want software?<br>let's create!
         </h2>
-        <a href="<?= url_to('contact') ?>" class="chip">→ GET A FREE CONSULTATION</a>
+        <a href="<?= url_to('contact') ?>" class="chip cta shine-hover" style="background:var(--ink);color:#ffffff;border:1px solid var(--gold);">→ GET A FREE CONSULTATION</a>
     </div>
 
     <!-- Footer Columns -->
@@ -31,7 +31,6 @@
                 <a href="<?= url_to('about') ?>" style="text-decoration:none; font-size:13px;">About Us</a>
                 <a href="<?= url_to('portfolio') ?>" style="text-decoration:none; font-size:13px;">Portfolio</a>
                 <a href="<?= url_to('case-studies') ?>" style="text-decoration:none; font-size:13px;">Case Studies</a>
-                <a href="<?= url_to('blog') ?>" style="text-decoration:none; font-size:13px;">Insights & Blog</a>
                 <a href="<?= url_to('faq') ?>" style="text-decoration:none; font-size:13px;">FAQ</a>
             </div>
         </div>

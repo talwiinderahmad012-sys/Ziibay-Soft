@@ -22,7 +22,7 @@
     </div>
 
     <div class="mac-wrap" data-rv>
-        <svg class="mac-img" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 635">
+        <svg class="mac-img" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 740">
   <defs>
     <!-- Base Grain -->
     <filter id="grain">
@@ -74,65 +74,65 @@
     </filter>
   </defs>
 
-  <!-- Ground Shadow attached directly under Mac base (y=540) -->
-  <ellipse cx="320" cy="575" rx="190" ry="18" fill="rgba(30,52,72,0.22)" filter="url(#blurShadow)" />
+  <!-- Ground Shadow attached directly under Mac base -->
+  <ellipse cx="440" cy="625" rx="380" ry="24" fill="rgba(30,52,72,0.22)" filter="url(#blurShadow)" />
 
   <!-- Main Body -->
   <g filter="url(#grain)">
-    <!-- Base Chassis -->
-    <rect x="140" y="80" width="360" height="460" rx="32" fill="url(#bodyGrad)" />
+    <!-- Base Chassis (Wide body) -->
+    <rect x="20" y="80" width="840" height="480" rx="32" fill="url(#bodyGrad)" />
     <!-- Highlight Left -->
-    <rect x="140" y="80" width="40" height="460" rx="32" fill="url(#highlight)" />
+    <rect x="20" y="80" width="60" height="480" rx="32" fill="url(#highlight)" />
     <!-- Shade Right -->
-    <rect x="460" y="80" width="40" height="460" rx="32" fill="url(#shade)" />
+    <rect x="800" y="80" width="60" height="480" rx="32" fill="url(#shade)" />
     
     <!-- Top Ridge & Vents -->
-    <rect x="160" y="70" width="320" height="20" rx="8" fill="#e0e0de" />
-    <rect x="280" y="65" width="80" height="10" rx="2" fill="#b0b3b5" />
-    <rect x="290" y="66" width="60" height="2" fill="#808385" />
-    <rect x="290" y="70" width="60" height="2" fill="#808385" />
-    <rect x="290" y="74" width="60" height="2" fill="#808385" />
+    <rect x="40" y="70" width="800" height="20" rx="8" fill="#e0e0de" />
+    <rect x="400" y="65" width="80" height="10" rx="2" fill="#b0b3b5" />
+    <rect x="410" y="66" width="60" height="2" fill="#808385" />
+    <rect x="410" y="70" width="60" height="2" fill="#808385" />
+    <rect x="410" y="74" width="60" height="2" fill="#808385" />
 
     <!-- Ambient Occlusion Bezel Shadow -->
-    <rect x="170" y="140" width="300" height="240" rx="16" fill="#000" opacity="0.3" filter="url(#blurShadow)" />
+    <rect x="70" y="140" width="740" height="240" rx="16" fill="#000" opacity="0.3" filter="url(#blurShadow)" />
 
     <!-- Recessed Screen Bezel -->
-    <rect x="170" y="130" width="300" height="240" rx="20" fill="#1a1d20" />
+    <rect x="70" y="130" width="740" height="240" rx="20" fill="#1a1d20" />
     
     <!-- Outer Glow behind glass -->
-    <rect x="190" y="150" width="260" height="200" rx="12" fill="url(#screenGlow)" filter="url(#softGlow)" />
+    <rect x="90" y="150" width="700" height="200" rx="12" fill="url(#screenGlow)" filter="url(#softGlow)" />
 
-    <!-- Glass Screen -->
-    <rect x="190" y="150" width="260" height="200" rx="12" fill="url(#screenGlass)" />
+    <!-- Glass Screen (Wide) -->
+    <rect x="90" y="150" width="700" height="200" rx="12" fill="url(#screenGlass)" />
     <!-- Vignette -->
-    <rect x="190" y="150" width="260" height="200" rx="12" fill="#000" opacity="0.4" />
+    <rect x="90" y="150" width="700" height="200" rx="12" fill="#000" opacity="0.4" />
     <!-- Scanlines Overlay -->
-    <rect x="190" y="150" width="260" height="200" rx="12" fill="url(#scanlines)" />
+    <rect x="90" y="150" width="700" height="200" rx="12" fill="url(#scanlines)" />
     
     <!-- Inner Glass reflection -->
-    <path d="M 195 155 Q 320 180 445 155 L 445 200 Q 320 220 195 200 Z" fill="#ffffff" opacity="0.05" />
+    <path d="M 95 155 Q 440 180 785 155 L 785 200 Q 440 220 95 200 Z" fill="#ffffff" opacity="0.05" />
 
     <!-- Terminal Live Text & Cursor inside SVG -->
     <g id="crt-terminal-group">
-      <text id="crt" font-family="'Space Mono', monospace" font-size="11.5" fill="#cfe3f4" x="202" y="172" style="letter-spacing:0.5px; text-shadow:0 0 6px rgba(140,200,240,0.7);"></text>
-      <rect id="crt-cursor" x="202" y="162" width="6" height="11" fill="#cfe3f4" style="animation: blink 1s steps(1) infinite;"></rect>
+      <text id="crt" font-family="'Space Mono', monospace" font-size="11.5" fill="#cfe3f4" x="146" y="176" style="letter-spacing:0.5px; text-shadow:0 0 6px rgba(140,200,240,0.7);"></text>
+      <rect id="crt-cursor" x="146" y="166" width="6" height="11" fill="#cfe3f4" style="animation: blink 1s steps(1) infinite;"></rect>
     </g>
 
-    <!-- Bottom Drive Area -->
-    <rect x="360" y="440" width="100" height="8" rx="2" fill="#000" opacity="0.15" filter="url(#blurShadow)" />
-    <rect x="360" y="440" width="100" height="8" rx="2" fill="#303335" />
-    <rect x="365" y="442" width="90" height="2" fill="#101315" />
+    <!-- Bottom Drive Area (Floppy slot right x≈560 width≈220) -->
+    <rect x="560" y="448" width="220" height="8" rx="2" fill="#000" opacity="0.15" filter="url(#blurShadow)" />
+    <rect x="560" y="448" width="220" height="8" rx="2" fill="#303335" />
+    <rect x="565" y="451" width="210" height="2" fill="#101315" />
     
     <!-- Eject Lever -->
-    <rect x="465" y="440" width="12" height="8" rx="1" fill="#a0a3a5" />
+    <rect x="786" y="448" width="16" height="8" rx="1" fill="#a0a3a5" />
 
-    <!-- Logo Emboss -->
-    <rect x="180" y="440" width="20" height="20" rx="4" fill="#d0d3d5" />
+    <!-- Logo Emboss (left x≈60) -->
+    <rect x="60" y="440" width="24" height="24" rx="4" fill="#d0d3d5" />
     <!-- Rainbow Logo -->
-    <rect x="184" y="444" width="12" height="3" fill="#61BB46" />
-    <rect x="184" y="447" width="12" height="3" fill="#FDB827" />
-    <rect x="184" y="450" width="12" height="3" fill="#F5821F" />
-    <rect x="184" y="453" width="12" height="3" fill="#E03A3E" />
+    <rect x="64" y="444" width="16" height="4" fill="#61BB46" />
+    <rect x="64" y="448" width="16" height="4" fill="#FDB827" />
+    <rect x="64" y="452" width="16" height="4" fill="#F5821F" />
+    <rect x="64" y="456" width="16" height="4" fill="#E03A3E" />
   </g>
 </svg>
     </div>
@@ -159,77 +159,7 @@
     </div>
 </section>
 
-<!-- S2. WHY CHOOSE -->
-<section style="padding:64px 24px; max-width:1200px; margin:0 auto;">
-    <div class="connected-boxes">
-        <div style="background:var(--canvas); padding-right:16px;">
-            <div class="stat-val">( Scalable )</div>
-            <div class="stat-lbl">future-proof codebases</div>
-        </div>
-        <div style="background:var(--canvas); padding-left:16px; text-align:right;">
-            <div class="stat-val">( Optimized )</div>
-            <div class="stat-lbl">Core Web Vitals</div>
-        </div>
-    </div>
-
-    <div style="text-align:center; margin-bottom:32px;" data-rv="blur-rise">
-        <div class="eyebrow" style="margin-bottom:12px;">WHERE AND HOW WE ENGINEER VALUE</div>
-        <h2 class="serif-heading section-title">built for performance</h2>
-    </div>
-
-    <div style="display:flex; gap:24px; flex-wrap:wrap; justify-content:center;">
-        <!-- Card 1 -->
-        <div data-rv="deck-rise" style="flex:1; min-width:300px; border:1px solid var(--line); border-radius:8px; padding:28px; position:relative;">
-            <svg class="clay-icon" viewBox="0 0 96 96"><defs>
-            <linearGradient id="zi1a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient>
-            <linearGradient id="zi1b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef1f2"/><stop offset="1" stop-color="#c2c7cb"/></linearGradient>
-            </defs>
-            <g stroke="rgba(30,52,72,.18)" stroke-width="1">
-            <rect x="22" y="60" width="52" height="13" rx="5" fill="url(#zi1b)"/>
-            <rect x="27" y="44" width="42" height="13" rx="5" fill="url(#zi1a)"/>
-            <rect x="32" y="28" width="32" height="13" rx="5" fill="url(#zi1b)"/>
-            </g>
-            <path d="M48 20 V8 M48 8 l-5 6 M48 8 l5 6" stroke="#5d84a0" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <h3 style="font-weight:600; font-size:18px; margin-bottom:10px;">Scalable Architecture</h3>
-            <p style="opacity:0.7; line-height:1.6; margin-bottom:32px;">Future-proof codebases designed to grow with your business, handling increased traffic and complexity seamlessly.</p>
-            <div class="serif-heading" style="font-size:40px; opacity:0.2; position:absolute; bottom:16px; left:28px;">01</div>
-        </div>
-        <!-- Card 2 -->
-        <div data-rv="deck-rise" style="flex:1; min-width:300px; border:1px solid var(--line); border-radius:8px; padding:28px; position:relative; transform:translateY(12px); transition-delay:0.15s;">
-            <svg class="clay-icon" viewBox="0 0 96 96"><defs>
-            <linearGradient id="zi2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient>
-            </defs>
-            <circle cx="48" cy="50" r="30" fill="url(#zi2)" stroke="rgba(30,52,72,.18)"/>
-            <path d="M28 56 a20 20 0 0 1 40 0" fill="none" stroke="#9db8cc" stroke-width="5" stroke-linecap="round"/>
-            <path d="M30 52 l3 1 M48 36 v3 M66 52 l-3 1" stroke="#7d94a8" stroke-width="2" stroke-linecap="round"/>
-            <line x1="48" y1="56" x2="60" y2="40" stroke="#1E3448" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="48" cy="56" r="3.5" fill="#1E3448"/></svg>
-            <h3 style="font-weight:600; font-size:18px; margin-bottom:10px;">High Performance</h3>
-            <p style="opacity:0.7; line-height:1.6; margin-bottom:32px;">Optimized for Core Web Vitals, blazing-fast load times, and seamless user experiences across all devices.</p>
-            <div class="serif-heading" style="font-size:40px; opacity:0.2; position:absolute; bottom:16px; left:28px;">02</div>
-        </div>
-        <!-- Card 3 -->
-        <div data-rv="deck-rise" style="flex:1; min-width:300px; border:1px solid var(--line); border-radius:8px; padding:28px; position:relative; transform:translateY(24px); transition-delay:0.3s;">
-            <svg class="clay-icon" viewBox="0 0 96 96"><defs>
-            <linearGradient id="zi3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient>
-            </defs>
-            <g fill="#c2c7cb">
-            <rect x="36" y="16" width="5" height="10" rx="2"/><rect x="46" y="16" width="5" height="10" rx="2"/><rect x="56" y="16" width="5" height="10" rx="2"/>
-            <rect x="36" y="70" width="5" height="10" rx="2"/><rect x="46" y="70" width="5" height="10" rx="2"/><rect x="56" y="70" width="5" height="10" rx="2"/>
-            <rect x="16" y="36" width="10" height="5" rx="2"/><rect x="16" y="46" width="10" height="5" rx="2"/><rect x="16" y="56" width="10" height="5" rx="2"/>
-            <rect x="70" y="36" width="10" height="5" rx="2"/><rect x="70" y="46" width="10" height="5" rx="2"/><rect x="70" y="56" width="10" height="5" rx="2"/>
-            </g>
-            <rect x="24" y="24" width="48" height="48" rx="9" fill="url(#zi3)" stroke="rgba(30,52,72,.18)"/>
-            <rect x="37" y="37" width="22" height="22" rx="5" fill="#eef1f3" stroke="rgba(30,52,72,.15)"/>
-            <circle cx="48" cy="48" r="3" fill="#5d84a0"/></svg>
-            <h3 style="font-weight:600; font-size:18px; margin-bottom:10px;">Modern Tech Stack</h3>
-            <p style="opacity:0.7; line-height:1.6; margin-bottom:32px;">Leveraging the latest frameworks and secure technologies to deliver robust, maintainable digital products.</p>
-            <div class="serif-heading" style="font-size:40px; opacity:0.2; position:absolute; bottom:16px; left:28px;">03</div>
-        </div>
-    </div>
-</section>
-
-<!-- S3. GLOBAL DELIVERY -->
+<!-- S2. GLOBAL DELIVERY -->
 <section class="dark-panel" style="padding:64px 24px; text-align:center; overflow:hidden;">
     <div class="stat-corner tl">
         <div class="stat-val">( 03 )</div>
@@ -249,14 +179,94 @@
       </div>
       <div class="orbit back"></div>
       <div class="orbit front"></div>
-      <i class="sat" data-label="UNITED STATES"></i>
-      <i class="sat" data-label="UNITED KINGDOM"></i>
-      <i class="sat" data-label="AUSTRALIA"></i>
-      <i class="sat" data-label="WORLDWIDE"></i>
+      <i class="sat" data-label="NEW YORK · USA"></i>
+      <i class="sat" data-label="LONDON · UK"></i>
+      <i class="sat" data-label="SYDNEY · AUSTRALIA"></i>
+      <i class="sat" data-label="BERLIN · GERMANY"></i>
+      <i class="sat" data-label="PARIS · FRANCE"></i>
+      <i class="sat" data-label="AMSTERDAM · NETHERLANDS"></i>
+      <i class="sat" data-label="MADRID · SPAIN"></i>
+      <i class="sat" data-label="MILAN · ITALY"></i>
+      <i class="sat" data-label="STOCKHOLM · SWEDEN"></i>
+      <i class="sat" data-label="TORONTO · CANADA"></i>
+      <i class="sat" data-label="DUBAI · UAE"></i>
+      <i class="sat" data-label="SINGAPORE · SINGAPORE"></i>
+      <i class="sat" data-label="TOKYO · JAPAN"></i>
+      <i class="sat" data-label="AUCKLAND · NEW ZEALAND"></i>
     </div>
 
     <div style="margin-top:24px;">
-        <a href="<?= base_url('locations') ?>" class="chip">→ EXPLORE LOCATIONS</a>
+        <a href="<?= url_to('locations') ?>" class="chip">→ EXPLORE LOCATIONS</a>
+    </div>
+</section>
+
+<!-- S3. WHY CHOOSE -->
+<section class="section-polished" style="max-width:1200px; margin:0 auto;">
+    <div class="connected-boxes">
+        <div style="background:var(--canvas); padding-right:16px;">
+            <div class="stat-val">( Scalable )</div>
+            <div class="stat-lbl">future-proof codebases</div>
+        </div>
+        <div style="background:var(--canvas); padding-left:16px; text-align:right;">
+            <div class="stat-val">( Optimized )</div>
+            <div class="stat-lbl">Core Web Vitals</div>
+        </div>
+    </div>
+
+    <div style="text-align:center; margin-bottom:32px;" data-rv="blur-rise">
+        <div class="eyebrow" style="margin-bottom:12px;">WHERE AND HOW WE ENGINEER VALUE</div>
+        <h2 class="serif-heading section-title">built for performance</h2>
+    </div>
+
+    <div style="display:flex; gap:24px; flex-wrap:wrap; justify-content:center;">
+        <!-- Card 1 -->
+        <div data-rv="deck-rise" class="card" style="flex:1; min-width:300px; position:relative;">
+            <svg class="clay-icon" viewBox="0 0 96 96"><defs>
+            <linearGradient id="zi1a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient>
+            <linearGradient id="zi1b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eef1f2"/><stop offset="1" stop-color="#c2c7cb"/></linearGradient>
+            </defs>
+            <g stroke="rgba(28,43,58,.18)" stroke-width="1">
+            <rect x="22" y="60" width="52" height="13" rx="5" fill="url(#zi1b)"/>
+            <rect x="27" y="44" width="42" height="13" rx="5" fill="url(#zi1a)"/>
+            <rect x="32" y="28" width="32" height="13" rx="5" fill="url(#zi1b)"/>
+            </g>
+            <path d="M48 20 V8 M48 8 l-5 6 M48 8 l5 6" stroke="var(--accent)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3 style="font-weight:600; font-size:18px; margin-bottom:10px;">Scalable Architecture</h3>
+            <p style="opacity:0.7; line-height:1.6; margin-bottom:32px;">Future-proof codebases designed to grow with your business, handling increased traffic and complexity seamlessly.</p>
+            <div class="serif-heading" style="font-size:40px; opacity:0.2; position:absolute; bottom:16px; left:28px;">01</div>
+        </div>
+        <!-- Card 2 -->
+        <div data-rv="deck-rise" class="card" style="flex:1; min-width:300px; position:relative; transform:translateY(12px); transition-delay:0.15s;">
+            <svg class="clay-icon" viewBox="0 0 96 96"><defs>
+            <linearGradient id="zi2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient>
+            </defs>
+            <circle cx="48" cy="50" r="30" fill="url(#zi2)" stroke="rgba(28,43,58,.18)"/>
+            <path d="M28 56 a20 20 0 0 1 40 0" fill="none" stroke="var(--accent-soft)" stroke-width="5" stroke-linecap="round"/>
+            <path d="M30 52 l3 1 M48 36 v3 M66 52 l-3 1" stroke="var(--accent-soft)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="48" y1="56" x2="60" y2="40" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="48" cy="56" r="3.5" fill="var(--ink)"/></svg>
+            <h3 style="font-weight:600; font-size:18px; margin-bottom:10px;">High Performance</h3>
+            <p style="opacity:0.7; line-height:1.6; margin-bottom:32px;">Optimized for Core Web Vitals, blazing-fast load times, and seamless user experiences across all devices.</p>
+            <div class="serif-heading" style="font-size:40px; opacity:0.2; position:absolute; bottom:16px; left:28px;">02</div>
+        </div>
+        <!-- Card 3 -->
+        <div data-rv="deck-rise" class="card" style="flex:1; min-width:300px; position:relative; transform:translateY(24px); transition-delay:0.3s;">
+            <svg class="clay-icon" viewBox="0 0 96 96"><defs>
+            <linearGradient id="zi3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient>
+            </defs>
+            <g fill="#c2c7cb">
+            <rect x="36" y="16" width="5" height="10" rx="2"/><rect x="46" y="16" width="5" height="10" rx="2"/><rect x="56" y="16" width="5" height="10" rx="2"/>
+            <rect x="36" y="70" width="5" height="10" rx="2"/><rect x="46" y="70" width="5" height="10" rx="2"/><rect x="56" y="70" width="5" height="10" rx="2"/>
+            <rect x="16" y="36" width="10" height="5" rx="2"/><rect x="16" y="46" width="10" height="5" rx="2"/><rect x="16" y="56" width="10" height="5" rx="2"/>
+            <rect x="70" y="36" width="10" height="5" rx="2"/><rect x="70" y="46" width="10" height="5" rx="2"/><rect x="70" y="56" width="10" height="5" rx="2"/>
+            </g>
+            <rect x="24" y="24" width="48" height="48" rx="9" fill="url(#zi3)" stroke="rgba(28,43,58,.18)"/>
+            <rect x="37" y="37" width="22" height="22" rx="5" fill="var(--clay-fill)" stroke="rgba(28,43,58,.15)"/>
+            <circle cx="48" cy="48" r="3" fill="var(--accent)"/></svg>
+            <h3 style="font-weight:600; font-size:18px; margin-bottom:10px;">Modern Tech Stack</h3>
+            <p style="opacity:0.7; line-height:1.6; margin-bottom:32px;">Leveraging the latest frameworks and secure technologies to deliver robust, maintainable digital products.</p>
+            <div class="serif-heading" style="font-size:40px; opacity:0.2; position:absolute; bottom:16px; left:28px;">03</div>
+        </div>
     </div>
 </section>
 
@@ -269,93 +279,117 @@
     </div>
 
     <div class="xrow">
-        <!-- 1 -->
-        <div class="xcard">
-            <div class="chip tag" style="align-self:flex-start;">WEB DEVELOPMENT</div>
-            <div class="xcontent" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-                <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
-                <rect x="18" y="24" width="60" height="48" rx="7" fill="url(#zw1)" stroke="rgba(30,52,72,.18)"/>
-                <line x1="18" y1="36" x2="78" y2="36" stroke="rgba(30,52,72,.18)"/>
-                <circle cx="26" cy="30" r="2" fill="#c2c7cb"/><circle cx="32" cy="30" r="2" fill="#c2c7cb"/><circle cx="38" cy="30" r="2" fill="#5d84a0"/>
-                <rect x="24" y="42" width="22" height="16" rx="3" fill="#dfe7ec"/>
-                <rect x="50" y="43" width="22" height="3" rx="1.5" fill="#c2c7cb"/><rect x="50" y="50" width="18" height="3" rx="1.5" fill="#c2c7cb"/><rect x="50" y="57" width="12" height="3" rx="1.5" fill="#c2c7cb"/></svg>
-                <p style="font-size:12px; opacity:0.8; margin-bottom:16px;">Custom, high-performance web applications, enterprise portals, and robust backend systems built for scale and security. From lightning-fast marketing sites to complex SaaS platforms, we engineer every layer — UI, API, database and DevOps — for reliability, SEO-readiness and Core Web Vitals.</p>
-                <a href="<?= url_to('service-detail', 'web-development') ?>" style="color:var(--crt); font-family:var(--mono); font-size:10px; text-decoration:none;">EXPLORE SERVICE →</a>
+        <!-- 01 WEB DEVELOPMENT -->
+        <article class="xcard" data-x>
+            <div class="tag">WEB DEVELOPMENT</div>
+            <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+            <rect x="18" y="24" width="60" height="48" rx="7" fill="url(#zw1)" stroke="rgba(28,43,58,.18)"/>
+            <line x1="18" y1="36" x2="78" y2="36" stroke="rgba(28,43,58,.18)"/>
+            <circle cx="26" cy="30" r="2" fill="#c2c7cb"/><circle cx="32" cy="30" r="2" fill="#c2c7cb"/><circle cx="38" cy="30" r="2" fill="var(--accent)"/>
+            <rect x="24" y="42" width="22" height="16" rx="3" fill="var(--clay-fill)"/>
+            <rect x="50" y="43" width="22" height="3" rx="1.5" fill="#c2c7cb"/><rect x="50" y="50" width="18" height="3" rx="1.5" fill="#c2c7cb"/><rect x="50" y="57" width="12" height="3" rx="1.5" fill="#c2c7cb"/></svg>
+            <h3>Web Development</h3>
+            <p class="x-short">Custom, high-performance web applications, enterprise portals, and robust backend systems.</p>
+            <div class="x-num">01</div>
+            <div class="more">
+                <p>Custom, high-performance web applications, enterprise portals, and robust backend systems built for scale and security. From lightning-fast marketing sites to complex SaaS platforms, we engineer every layer — UI, API, database and DevOps — for reliability, SEO-readiness and Core Web Vitals.</p>
+                <ul>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Enterprise web portals & SaaS platforms</li>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Robust APIs & headless CMS architecture</li>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>SEO-first performance & Core Web Vitals</li>
+                </ul>
+                <a href="<?= url_to('service-detail', 'web-development') ?>" class="mono-link">EXPLORE SERVICE →</a>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:auto;">
-                <div style="width:20px; height:1px; background:var(--ink); transform:rotate(45deg); transform-origin:left bottom;"></div>
-                <div class="serif-heading" style="font-size:3rem;">01</div>
+        </article>
+
+        <!-- 02 SOFTWARE DEVELOPMENT -->
+        <article class="xcard" data-x>
+            <div class="tag">SOFTWARE DEVELOPMENT</div>
+            <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+            <g fill="#c2c7cb"><rect x="45" y="18" width="6" height="10" rx="2"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(45 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(90 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(135 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(180 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(225 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(270 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(315 48 48)"/></g>
+            <circle cx="48" cy="48" r="22" fill="url(#zw2)" stroke="rgba(28,43,58,.18)"/>
+            <circle cx="48" cy="48" r="8" fill="var(--clay-fill)" stroke="rgba(28,43,58,.15)"/></svg>
+            <h3>Software Development</h3>
+            <p class="x-short">Bespoke software solutions tailored to automate your workflows and manage data securely.</p>
+            <div class="x-num">02</div>
+            <div class="more">
+                <p>Bespoke software solutions tailored to automate your workflows, manage data securely, and solve complex business challenges. We deliver ERPs, CRMs, dashboards and automation pipelines with role-based access, audit trails and seamless third-party integrations.</p>
+                <ul>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Custom CRM, ERP & internal operations tools</li>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>High-throughput backend databases & APIs</li>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Automated workflow & data pipelines</li>
+                </ul>
+                <a href="<?= url_to('service-detail', 'software-development') ?>" class="mono-link">EXPLORE SERVICE →</a>
             </div>
-        </div>
-        <!-- 2 -->
-        <div class="xcard">
-            <div class="chip tag" style="align-self:flex-start;">SOFTWARE DEVELOPMENT</div>
-            <div class="xcontent" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-                <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
-                <g fill="#c2c7cb"><rect x="45" y="18" width="6" height="10" rx="2"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(45 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(90 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(135 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(180 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(225 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(270 48 48)"/><rect x="45" y="18" width="6" height="10" rx="2" transform="rotate(315 48 48)"/></g>
-                <circle cx="48" cy="48" r="22" fill="url(#zw2)" stroke="rgba(30,52,72,.18)"/>
-                <circle cx="48" cy="48" r="8" fill="#eef1f3" stroke="rgba(30,52,72,.15)"/></svg>
-                <p style="font-size:12px; opacity:0.8; margin-bottom:16px;">Bespoke software solutions tailored to automate your workflows, manage data securely, and solve complex business challenges. We deliver ERPs, CRMs, dashboards and automation pipelines with role-based access, audit trails and seamless third-party integrations.</p>
-                <a href="<?= url_to('service-detail', 'software-development') ?>" style="color:var(--crt); font-family:var(--mono); font-size:10px; text-decoration:none;">EXPLORE SERVICE →</a>
+        </article>
+
+        <!-- 03 APP DEVELOPMENT -->
+        <article class="xcard" data-x>
+            <div class="tag">APP DEVELOPMENT</div>
+            <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+            <rect x="32" y="18" width="32" height="60" rx="8" fill="url(#zw3)" stroke="rgba(28,43,58,.18)"/>
+            <rect x="36" y="28" width="24" height="38" rx="3" fill="var(--clay-fill)"/>
+            <rect x="42" y="22" width="12" height="2.5" rx="1.25" fill="#c2c7cb"/>
+            <circle cx="48" cy="72" r="2.5" fill="var(--accent)"/></svg>
+            <h3>App Development</h3>
+            <p class="x-short">Native and cross-platform mobile applications for iOS and Android.</p>
+            <div class="x-num">03</div>
+            <div class="more">
+                <p>Native and cross-platform mobile applications designed for intuitive user experiences and high performance on iOS and Android. One codebase, app-store-ready builds, offline-first data, push notifications and buttery 60fps interactions.</p>
+                <ul>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>iOS & Android native/cross-platform apps</li>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Offline-first data caching & synchronization</li>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Push notifications & in-app engagement</li>
+                </ul>
+                <a href="<?= url_to('service-detail', 'app-development') ?>" class="mono-link">EXPLORE SERVICE →</a>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:auto;">
-                <div style="width:20px; height:1px; background:var(--ink); transform:rotate(45deg); transform-origin:left bottom;"></div>
-                <div class="serif-heading" style="font-size:3rem;">02</div>
+        </article>
+
+        <!-- 04 SEO SERVICES -->
+        <article class="xcard" data-x>
+            <div class="tag">SEO SERVICES</div>
+            <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+            <rect x="24" y="52" width="8" height="16" rx="2" fill="#c2c7cb"/>
+            <rect x="36" y="44" width="8" height="24" rx="2" fill="url(#zw4)"/>
+            <rect x="48" y="36" width="8" height="32" rx="2" fill="#c2c7cb"/>
+            <circle cx="60" cy="38" r="13" fill="var(--clay-fill)" stroke="rgba(28,43,58,.25)" stroke-width="3"/>
+            <line x1="69" y1="48" x2="79" y2="58" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/></svg>
+            <h3>SEO Services</h3>
+            <p class="x-short">Data-driven SEO strategies to dominate search engine results.</p>
+            <div class="x-num">04</div>
+            <div class="more">
+                <p>Data-driven SEO strategies to dominate search engine results and drive high-quality organic traffic. Technical audits, keyword architecture, content strategy and authority building — measured in rankings, clicks and revenue.</p>
+                <ul>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Technical SEO audits & architectural fixes</li>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>High-intent keyword targeting & content hubs</li>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Authority backlink acquisition & rank tracking</li>
+                </ul>
+                <a href="<?= url_to('service-detail', 'seo') ?>" class="mono-link">EXPLORE SERVICE →</a>
             </div>
-        </div>
-        <!-- 3 -->
-        <div class="xcard">
-            <div class="chip tag" style="align-self:flex-start;">APP DEVELOPMENT</div>
-            <div class="xcontent" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-                <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
-                <rect x="32" y="18" width="32" height="60" rx="8" fill="url(#zw3)" stroke="rgba(30,52,72,.18)"/>
-                <rect x="36" y="28" width="24" height="38" rx="3" fill="#dfe7ec"/>
-                <rect x="42" y="22" width="12" height="2.5" rx="1.25" fill="#c2c7cb"/>
-                <circle cx="48" cy="72" r="2.5" fill="#5d84a0"/></svg>
-                <p style="font-size:12px; opacity:0.8; margin-bottom:16px;">Native and cross-platform mobile applications designed for intuitive user experiences and high performance on iOS and Android. One codebase, app-store-ready builds, offline-first data, push notifications and buttery 60fps interactions.</p>
-                <a href="<?= url_to('service-detail', 'app-development') ?>" style="color:var(--crt); font-family:var(--mono); font-size:10px; text-decoration:none;">EXPLORE SERVICE →</a>
+        </article>
+
+        <!-- 05 SOCIAL MEDIA MANAGEMENT -->
+        <article class="xcard" data-x>
+            <div class="tag">SOCIAL MEDIA MANAGEMENT</div>
+            <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+            <rect x="48" y="44" width="30" height="22" rx="8" fill="var(--clay-fill)" stroke="rgba(28,43,58,.15)"/>
+            <path d="M70 66 l4 7 -8 -2 z" fill="var(--clay-fill)"/>
+            <rect x="18" y="26" width="38" height="26" rx="8" fill="url(#zw5)" stroke="rgba(28,43,58,.18)"/>
+            <path d="M28 52 l-4 8 9 -3 z" fill="url(#zw5)"/>
+            <circle cx="29" cy="39" r="2.5" fill="var(--accent)"/><circle cx="37" cy="39" r="2.5" fill="var(--accent)"/><circle cx="45" cy="39" r="2.5" fill="var(--accent)"/></svg>
+            <h3>Social Media Management</h3>
+            <p class="x-short">Engaging social media campaigns that build brand authority.</p>
+            <div class="x-num">05</div>
+            <div class="more">
+                <p>Engaging social media campaigns that build brand authority and foster community growth. Content calendars, creative production, paid amplification and analytics that turn followers into customers.</p>
+                <ul>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Multi-platform content calendars & copywriting</li>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>High-converting creative assets & short-form video</li>
+                    <li><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Performance tracking & community management</li>
+                </ul>
+                <a href="<?= url_to('service-detail', 'social-media-management') ?>" class="mono-link">EXPLORE SERVICE →</a>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:auto;">
-                <div style="width:20px; height:1px; background:var(--ink); transform:rotate(45deg); transform-origin:left bottom;"></div>
-                <div class="serif-heading" style="font-size:3rem;">03</div>
-            </div>
-        </div>
-        <!-- 4 -->
-        <div class="xcard">
-            <div class="chip tag" style="align-self:flex-start;">SEO SERVICES</div>
-            <div class="xcontent" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-                <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
-                <rect x="24" y="52" width="8" height="16" rx="2" fill="#c2c7cb"/>
-                <rect x="36" y="44" width="8" height="24" rx="2" fill="url(#zw4)"/>
-                <rect x="48" y="36" width="8" height="32" rx="2" fill="#c2c7cb"/>
-                <circle cx="60" cy="38" r="13" fill="#eef1f3" stroke="rgba(30,52,72,.25)" stroke-width="3"/>
-                <line x1="69" y1="48" x2="79" y2="58" stroke="#5d84a0" stroke-width="5" stroke-linecap="round"/></svg>
-                <p style="font-size:12px; opacity:0.8; margin-bottom:16px;">Data-driven SEO strategies to dominate search engine results and drive high-quality organic traffic. Technical audits, keyword architecture, content strategy and authority building — measured in rankings, clicks and revenue.</p>
-                <a href="<?= url_to('service-detail', 'seo') ?>" style="color:var(--crt); font-family:var(--mono); font-size:10px; text-decoration:none;">EXPLORE SERVICE →</a>
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:auto;">
-                <div style="width:20px; height:1px; background:var(--ink); transform:rotate(45deg); transform-origin:left bottom;"></div>
-                <div class="serif-heading" style="font-size:3rem;">04</div>
-            </div>
-        </div>
-        <!-- 5 -->
-        <div class="xcard">
-            <div class="chip tag" style="align-self:flex-start;">SOCIAL MEDIA MANAGEMENT</div>
-            <div class="xcontent" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-                <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
-                <rect x="48" y="44" width="30" height="22" rx="8" fill="#dfe7ec" stroke="rgba(30,52,72,.15)"/>
-                <path d="M70 66 l4 7 -8 -2 z" fill="#dfe7ec"/>
-                <rect x="18" y="26" width="38" height="26" rx="8" fill="url(#zw5)" stroke="rgba(30,52,72,.18)"/>
-                <path d="M28 52 l-4 8 9 -3 z" fill="url(#zw5)"/>
-                <circle cx="29" cy="39" r="2.5" fill="#5d84a0"/><circle cx="37" cy="39" r="2.5" fill="#5d84a0"/><circle cx="45" cy="39" r="2.5" fill="#5d84a0"/></svg>
-                <p style="font-size:12px; opacity:0.8; margin-bottom:16px;">Engaging social media campaigns that build brand authority and foster community growth. Content calendars, creative production, paid amplification and analytics that turn followers into customers.</p>
-                <a href="<?= url_to('service-detail', 'social-media-management') ?>" style="color:var(--crt); font-family:var(--mono); font-size:10px; text-decoration:none;">EXPLORE SERVICE →</a>
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:auto;">
-                <div style="width:20px; height:1px; background:var(--ink); transform:rotate(45deg); transform-origin:left bottom;"></div>
-                <div class="serif-heading" style="font-size:3rem;">05</div>
-            </div>
-        </div>
+        </article>
     </div>
 </section>
 
@@ -372,18 +406,18 @@
             <div class="c-card side">
                 <div class="os-header">↗ GROWTH SERVICE</div>
                 <div style="padding:24px 20px; flex:1; display:flex; flex-direction:column;">
-                    <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw4_car" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                    <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw4_car" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
                     <rect x="24" y="52" width="8" height="16" rx="2" fill="#c2c7cb"/>
                     <rect x="36" y="44" width="8" height="24" rx="2" fill="url(#zw4_car)"/>
                     <rect x="48" y="36" width="8" height="32" rx="2" fill="#c2c7cb"/>
-                    <circle cx="60" cy="38" r="13" fill="#eef1f3" stroke="rgba(30,52,72,.25)" stroke-width="3"/>
-                    <line x1="69" y1="48" x2="79" y2="58" stroke="#5d84a0" stroke-width="5" stroke-linecap="round"/></svg>
+                    <circle cx="60" cy="38" r="13" fill="var(--clay-fill)" stroke="rgba(28,43,58,.25)" stroke-width="3"/>
+                    <line x1="69" y1="48" x2="79" y2="58" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/></svg>
                     <h3 style="font-family:var(--serif); font-size:22px; margin-bottom:10px; color:var(--ink); text-align:center;">SEO Services</h3>
                     <p style="font-size:13px; line-height:1.6; color:var(--ink); opacity:0.85; margin-bottom:18px; text-align:center;">Organic growth architecture and search performance. We build technically flawless, content-rich websites that climb rankings and keep climbing.</p>
                     <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:20px;">
-                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Technical SEO audits & Core Web Vitals tuning</div>
-                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Keyword architecture & content strategy</div>
-                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Authority building & digital PR</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Technical SEO audits & Core Web Vitals tuning</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Keyword architecture & content strategy</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Authority building & digital PR</div>
                     </div>
                 </div>
                 <div style="border-top:1px solid var(--line); padding:14px 20px; display:flex; justify-content:space-between; align-items:center;">
@@ -396,18 +430,18 @@
             <div class="c-card center">
                 <div class="os-header">↗ GROWTH SERVICE</div>
                 <div style="padding:24px 20px; flex:1; display:flex; flex-direction:column;">
-                    <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw5_car" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
-                    <rect x="48" y="44" width="30" height="22" rx="8" fill="#dfe7ec" stroke="rgba(30,52,72,.15)"/>
-                    <path d="M70 66 l4 7 -8 -2 z" fill="#dfe7ec"/>
+                    <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw5_car" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                    <rect x="48" y="44" width="30" height="22" rx="8" fill="var(--clay-fill)" stroke="rgba(28,43,58,.15)"/>
+                    <path d="M70 66 l4 7 -8 -2 z" fill="var(--clay-fill)"/>
                     <rect x="18" y="26" width="38" height="26" rx="8" fill="url(#zw5_car)"/>
                     <path d="M28 52 l-4 8 9 -3 z" fill="url(#zw5_car)"/>
-                    <circle cx="29" cy="39" r="2.5" fill="#5d84a0"/><circle cx="37" cy="39" r="2.5" fill="#5d84a0"/><circle cx="45" cy="39" r="2.5" fill="#5d84a0"/></svg>
+                    <circle cx="29" cy="39" r="2.5" fill="var(--accent)"/><circle cx="37" cy="39" r="2.5" fill="var(--accent)"/><circle cx="45" cy="39" r="2.5" fill="var(--accent)"/></svg>
                     <h3 style="font-family:var(--serif); font-size:22px; margin-bottom:10px; color:var(--ink); text-align:center;">Social Media Management</h3>
                     <p style="font-size:13px; line-height:1.6; color:var(--ink); opacity:0.85; margin-bottom:18px; text-align:center;">Audience engagement and brand distribution channels. We run your brand's voice across every platform that matters.</p>
                     <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:20px;">
-                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Content calendars & creative production</div>
-                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Community management & paid amplification</div>
-                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Monthly analytics & growth reports</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Content calendars & creative production</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Community management & paid amplification</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Monthly analytics & growth reports</div>
                     </div>
                 </div>
                 <div style="border-top:1px solid var(--line); padding:14px 20px; display:flex; justify-content:space-between; align-items:center;">
@@ -420,19 +454,19 @@
             <div class="c-card side">
                 <div class="os-header">↗ GROWTH SERVICE</div>
                 <div style="padding:24px 20px; flex:1; display:flex; flex-direction:column;">
-                    <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw6" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
-                    <g stroke="rgba(30,52,72,.18)">
+                    <svg class="clay-icon" viewBox="0 0 96 96"><defs><linearGradient id="zw6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="1" stop-color="#d3d7da"/></linearGradient></defs>
+                    <g stroke="rgba(28,43,58,.18)">
                     <rect x="20" y="20" width="26" height="26" rx="6" fill="url(#zw6)"/>
-                    <rect x="50" y="20" width="26" height="26" rx="6" fill="#dfe7ec"/>
-                    <rect x="20" y="50" width="26" height="26" rx="6" fill="#dfe7ec"/>
+                    <rect x="50" y="20" width="26" height="26" rx="6" fill="var(--clay-fill)"/>
+                    <rect x="20" y="50" width="26" height="26" rx="6" fill="var(--clay-fill)"/>
                     <rect x="50" y="50" width="26" height="26" rx="6" fill="url(#zw6)"/>
                     </g></svg>
                     <h3 style="font-family:var(--serif); font-size:22px; margin-bottom:10px; color:var(--ink); text-align:center;">All Capabilities</h3>
                     <p style="font-size:13px; line-height:1.6; color:var(--ink); opacity:0.85; margin-bottom:18px; text-align:center;">Full spectrum of our engineering & growth offerings — one team, one roadmap, one accountable partner.</p>
                     <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:20px;">
-                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Web / Software / App Development</div>
-                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>SEO Services & Social Media Management</div>
-                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:#5d84a0; margin-right:6px;">—</span>Dedicated engineering + growth pods</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Web / Software / App Development</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>SEO Services & Social Media Management</div>
+                        <div style="font:12px var(--sans); color:var(--muted); line-height:1.5;"><span style="font-family:var(--mono); color:var(--accent); margin-right:6px;">—</span>Dedicated engineering + growth pods</div>
                     </div>
                 </div>
                 <div style="border-top:1px solid var(--line); padding:14px 20px; display:flex; justify-content:space-between; align-items:center;">
@@ -602,8 +636,8 @@ document.addEventListener('DOMContentLoaded', () => {
         " >> echo 'High-Performance Software'",
         "Ziibay Soft Ready"
     ];
-    const startX = 202;
-    const startY = 172;
+    const startX = 146;
+    const startY = 176;
     const dy = 15.5;
     const charWidth = 6.9;
 
@@ -666,7 +700,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let start = null;
         function step(timestamp) {
             if (!start) start = timestamp;
-            const t = (timestamp - start) / 40000 * 2 * Math.PI; // ~40s rev
+            const t = (timestamp - start) / 60000 * 2 * Math.PI; // ~60s rev
             sats.forEach((sat, i) => {
                 const a = t + i * (2 * Math.PI / sats.length);
                 const x = 50 + 66 * Math.cos(a);
@@ -751,6 +785,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Expandable xcards (click to expand)
+    document.querySelectorAll('[data-x]').forEach(c => {
+        c.addEventListener('click', (e) => {
+            if (e.target.closest('a')) return;
+            const open = c.classList.contains('open');
+            document.querySelectorAll('[data-x].open').forEach(o => o.classList.remove('open'));
+            if (!open) c.classList.add('open');
+        });
+    });
 });
 </script>
 <style>

@@ -1,117 +1,129 @@
 <?= $this->extend('layouts/main') ?>
 
-<?= $this->section('title') ?><?= esc($title) ?><?= $this->endSection() ?>
-<?= $this->section('meta_description') ?><?= esc($meta_description) ?><?= $this->endSection() ?>
-<?= $this->section('canonical') ?><?= esc($canonical_url) ?><?= $this->endSection() ?>
+<?= $this->section('schema') ?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Frequently Asked Questions | Ziibay Soft",
+  "description": "Everything you need to know about working with Ziibay Soft, our pricing model, timelines, and post-launch SLAs.",
+  "url": "<?= base_url('faq') ?>"
+}
+</script>
+<?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 
-<!-- Hero Section -->
-<section class="pt-24 pb-16 bg-surface/30 border-b border-border/70 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-4xl">
-        <div class="text-caption text-primary mb-3">KNOWLEDGE PROTOCOLS</div>
-        <h1 class="h1 text-text mb-6">Frequently Asked <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-blue">Questions</span></h1>
-        <p class="text-body text-lg text-text-muted mb-8 max-w-2xl mx-auto">
-            Everything you need to know about working with Ziibay Soft.
-        </p>
-        
-        <!-- Search -->
-        <form action="<?= base_url('faq') ?>" method="GET" class="max-w-xl mx-auto relative">
-            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-text-dim text-xs">
-                <i class="fa-solid fa-search"></i>
-            </div>
-            <input type="text" name="q" value="<?= esc($search) ?>" placeholder="Search FAQs..." class="w-full pl-10 pr-4 py-3 bg-surface border border-border rounded-lg text-text text-sm focus:outline-none focus:border-primary transition-all shadow-tech">
-        </form>
-    </div>
-</section>
+<!-- 1. HERO -->
+<section style="padding:48px 16px 32px;">
+    <div class="framed-panel" style="position:relative; padding:72px 24px 56px; text-align:center;">
+        <span class="corner-stat tl">( 08 ) verified protocols</span>
+        <span class="corner-stat tr">( 100% ) in-house</span>
+        <span class="corner-stat bl">( 24h ) response time</span>
+        <span class="corner-stat br">( 2026 ) standard</span>
 
-<!-- FAQs Section -->
-<section class="py-16 min-h-[400px]">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <?php if (!empty($search)): ?>
-            <div class="mb-8 text-center text-text-muted text-sm">
-                <p>Showing results for "<strong class="text-text"><?= esc($search) ?></strong>"</p>
-                <a href="<?= base_url('faq') ?>" class="tech-link text-xs font-mono mt-2 inline-block">Clear Search &rarr;</a>
-            </div>
-        <?php endif; ?>
-
-        <?php if (empty($faqs)): ?>
-            <div class="text-center py-16 tech-panel border-dashed border-2 border-border/70 rounded-xl">
-                <i class="fa-regular fa-circle-question text-3xl text-text-dim mb-3"></i>
-                <h3 class="text-lg font-bold text-text mb-1">No FAQs found</h3>
-                <p class="text-small text-text-muted mb-6">We couldn't find any questions matching your criteria.</p>
-                <a href="<?= base_url('contact') ?>" class="btn-primary py-3 px-6 text-xs">Ask us directly</a>
-            </div>
-        <?php else: ?>
-            <div class="space-y-3" x-data="{ activeAccordion: null }">
-                <?php foreach ($faqs as $index => $faq): ?>
-                    <div class="tech-card rounded-xl overflow-hidden transition-all duration-200">
-                        <button 
-                            @click="activeAccordion = activeAccordion === <?= $index ?> ? null : <?= $index ?>"
-                            class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                            :aria-expanded="activeAccordion === <?= $index ?>"
-                            aria-controls="faq-<?= $index ?>"
-                        >
-                            <span class="font-bold text-sm md:text-base text-text pr-4"><?= esc($faq['question']) ?></span>
-                            <span class="text-primary transform transition-transform duration-200 flex-shrink-0 text-xs" :class="{ 'rotate-180': activeAccordion === <?= $index ?> }">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </span>
-                        </button>
-                        <div 
-                            id="faq-<?= $index ?>"
-                            x-show="activeAccordion === <?= $index ?>" 
-                            x-collapse
-                            style="display: none;"
-                        >
-                            <div class="px-6 pb-5 text-text-muted text-sm border-t border-border/40 pt-3 leading-relaxed">
-                                <?= $faq['answer'] ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
-
-        <!-- Contact CTA -->
-        <div class="mt-16 text-center tech-panel p-8 rounded-xl">
-            <div class="text-caption text-primary mb-1">NEED ASSISTANCE?</div>
-            <h3 class="h3 text-text mb-2">Still have questions?</h3>
-            <p class="text-small text-text-muted mb-6">Can't find the answer you're looking for? Please chat to our engineering team.</p>
-            <div class="flex justify-center gap-3">
-                <a href="<?= base_url('contact') ?>" class="btn-primary py-3 px-6 text-xs">Get in Touch</a>
-                <a href="https://wa.me/<?= esc(config('App')->whatsappNumber ?? '1234567890') ?>" target="_blank" class="btn-secondary py-3 px-6 text-xs flex items-center">
-                    <i class="fa-brands fa-whatsapp text-emerald-500 mr-2 text-sm"></i> WhatsApp
-                </a>
+        <div style="max-width:840px; margin:0 auto;" data-rv="blur-rise">
+            <div class="eyebrow" style="margin-bottom:14px;">KNOWLEDGE BASE</div>
+            <h1 class="serif-heading" style="font-size:clamp(2.4rem, 6vw, 4.4rem); line-height:1.1; margin-bottom:20px;">
+                frequently asked
+            </h1>
+            <p style="font-size:16px; line-height:1.7; color:var(--muted); max-width:680px; margin:0 auto 28px;">
+                Clear answers regarding our engineering pricing model, delivery timelines, intellectual property, and continuous post-launch support.
+            </p>
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+                <a href="<?= url_to('contact') ?>" class="chip">→ ASK A CUSTOM QUESTION</a>
+                <a href="<?= url_to('services') ?>" class="chip">VIEW SERVICES</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- FAQ Schema -->
-<?php if (!empty($faqs)): ?>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    <?php 
-    $schemaFaqs = [];
-    foreach ($faqs as $faq) {
-        $schemaFaqs[] = '{
-            "@type": "Question",
-            "name": ' . json_encode(strip_tags($faq['question'])) . ',
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": ' . json_encode(strip_tags($faq['answer'])) . '
-            }
-        }';
-    }
-    echo implode(",\n", $schemaFaqs);
-    ?>
-  ]
-}
-</script>
-<?php endif; ?>
+<!-- 2. FAQS LIST -->
+<section style="padding:24px 16px 56px;">
+    <div style="max-width:880px; margin:0 auto; display:flex; flex-direction:column; gap:16px;">
+
+        <!-- 1. Pricing Model -->
+        <details class="framed-panel" style="background:var(--card); padding:24px 28px; cursor:pointer; border-radius:8px;" open data-rv="deck-rise">
+            <summary style="font-family:var(--sans); font-weight:700; font-size:1.1rem; color:var(--ink); outline:none; display:flex; justify-content:space-between; align-items:center;">
+                <span>How does Ziibay Soft structure project pricing?</span>
+                <span style="font-family:var(--mono); font-size:16px; margin-left:12px;">+</span>
+            </summary>
+            <p style="font-size:14px; line-height:1.7; color:var(--muted); margin:16px 0 0; padding-top:16px; border-top:1px solid var(--line);">
+                We operate on transparent, milestone-gated fixed quotes for scoped deliverables, and flexible dedicated-team retainers for evolving product engineering. Every quote includes detailed architecture specifications, clear acceptance criteria, and zero hidden licensing fees.
+            </p>
+        </details>
+
+        <!-- 2. Timeline -->
+        <details class="framed-panel" style="background:var(--card); padding:24px 28px; cursor:pointer; border-radius:8px;" data-rv="deck-rise">
+            <summary style="font-family:var(--sans); font-weight:700; font-size:1.1rem; color:var(--ink); outline:none; display:flex; justify-content:space-between; align-items:center;">
+                <span>What is the typical timeline for an end-to-end build?</span>
+                <span style="font-family:var(--mono); font-size:16px; margin-left:12px;">+</span>
+            </summary>
+            <p style="font-size:14px; line-height:1.7; color:var(--muted); margin:16px 0 0; padding-top:16px; border-top:1px solid var(--line);">
+                Standard custom web applications and MVPs typically deploy within 4 to 8 weeks. Complex enterprise SaaS platforms, custom ERPs, and native mobile suites average 8 to 16 weeks, broken down into iterative two-week sprint milestones with live staging previews.
+            </p>
+        </details>
+
+        <!-- 3. Post-Launch Support -->
+        <details class="framed-panel" style="background:var(--card); padding:24px 28px; cursor:pointer; border-radius:8px;" data-rv="deck-rise">
+            <summary style="font-family:var(--sans); font-weight:700; font-size:1.1rem; color:var(--ink); outline:none; display:flex; justify-content:space-between; align-items:center;">
+                <span>What kind of post-launch maintenance and SLA support do you provide?</span>
+                <span style="font-family:var(--mono); font-size:16px; margin-left:12px;">+</span>
+            </summary>
+            <p style="font-size:14px; line-height:1.7; color:var(--muted); margin:16px 0 0; padding-top:16px; border-top:1px solid var(--line);">
+                Every deployment includes a 30-day complimentary warranty period. Post-launch, we offer structured monthly SLA tiers covering continuous security patching, database optimization, 24/7 uptime monitoring, server maintenance, and proactive feature enhancements.
+            </p>
+        </details>
+
+        <!-- 4. IP Ownership -->
+        <details class="framed-panel" style="background:var(--card); padding:24px 28px; cursor:pointer; border-radius:8px;" data-rv="deck-rise">
+            <summary style="font-family:var(--sans); font-weight:700; font-size:1.1rem; color:var(--ink); outline:none; display:flex; justify-content:space-between; align-items:center;">
+                <span>Do I own 100% of the code and intellectual property?</span>
+                <span style="font-family:var(--mono); font-size:16px; margin-left:12px;">+</span>
+            </summary>
+            <p style="font-size:14px; line-height:1.7; color:var(--muted); margin:16px 0 0; padding-top:16px; border-top:1px solid var(--line);">
+                Yes. Upon final milestone payment, 100% of all intellectual property, source code repositories, design assets, and database schemas are transferred directly to your organization with full commercial rights.
+            </p>
+        </details>
+
+        <!-- 5. Timezone Collaboration -->
+        <details class="framed-panel" style="background:var(--card); padding:24px 28px; cursor:pointer; border-radius:8px;" data-rv="deck-rise">
+            <summary style="font-family:var(--sans); font-weight:700; font-size:1.1rem; color:var(--ink); outline:none; display:flex; justify-content:space-between; align-items:center;">
+                <span>How do you handle remote communication across international timezones?</span>
+                <span style="font-family:var(--mono); font-size:16px; margin-left:12px;">+</span>
+            </summary>
+            <p style="font-size:14px; line-height:1.7; color:var(--muted); margin:16px 0 0; padding-top:16px; border-top:1px solid var(--line);">
+                We structure dedicated engineering pods with guaranteed 4–6 hour business day overlap for US (EST/PST), UK (GMT), and Australian (AEST) clients. We use Slack, GitHub, Jira, and weekly video syncs to ensure total visibility.
+            </p>
+        </details>
+
+        <!-- 6. Technology Selection -->
+        <details class="framed-panel" style="background:var(--card); padding:24px 28px; cursor:pointer; border-radius:8px;" data-rv="deck-rise">
+            <summary style="font-family:var(--sans); font-weight:700; font-size:1.1rem; color:var(--ink); outline:none; display:flex; justify-content:space-between; align-items:center;">
+                <span>How do you choose the technology stack for a new project?</span>
+                <span style="font-family:var(--mono); font-size:16px; margin-left:12px;">+</span>
+            </summary>
+            <p style="font-size:14px; line-height:1.7; color:var(--muted); margin:16px 0 0; padding-top:16px; border-top:1px solid var(--line);">
+                We evaluate technical constraints, concurrency demands, time-to-market, and long-term maintainability. We specialize in robust, production-proven stacks including PHP (Laravel/CodeIgniter), TypeScript (Next.js/React/Node), Go, Python, Flutter, and cloud-native databases (PostgreSQL/MySQL/Redis).
+            </p>
+        </details>
+
+    </div>
+</section>
+
+<!-- 3. CONTACT CTA -->
+<section style="padding:16px 16px 48px;">
+    <div class="framed-panel" style="padding:40px 24px; text-align:center; max-width:880px; margin:0 auto;" data-rv="blur-rise">
+        <div class="eyebrow" style="margin-bottom:10px;">STILL HAVE QUESTIONS?</div>
+        <h3 class="serif-heading" style="font-size:1.8rem; margin-bottom:16px;">speak with our principal engineer</h3>
+        <p style="font-size:14px; color:var(--muted); max-width:540px; margin:0 auto 24px;">
+            Book a 30-minute discovery call to discuss your architecture, specifications, or compliance questions.
+        </p>
+        <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+            <a href="<?= url_to('contact') ?>" class="chip">→ INITIALIZE CONSULTATION</a>
+            <a href="mailto:hello@ziibaysoft.com" class="chip">EMAIL US</a>
+        </div>
+    </div>
+</section>
 
 <?= $this->endSection() ?>

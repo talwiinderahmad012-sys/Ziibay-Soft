@@ -43,11 +43,11 @@ $routes->group('services', static function ($routes) {
 
 // Location SEO Engine Routing (Programmatic)
 // Public Location Routes
-$routes->get('locations', 'Locations::index');
-$routes->get('locations/(:segment)', 'Locations::country/$1');
-$routes->get('locations/(:segment)/(:segment)', 'Locations::region/$1/$2');
-$routes->get('locations/(:segment)/(:segment)/(:segment)', 'Locations::city/$1/$2/$3');
-$routes->get('locations/(:segment)/(:segment)/(:segment)/(:segment)', 'Locations::service/$1/$2/$3/$4');
+$routes->get('locations', 'Locations::index', ['as' => 'locations']);
+$routes->get('locations/(:segment)', 'Locations::country/$1', ['as' => 'location-country']);
+$routes->get('locations/(:segment)/(:segment)', 'Locations::region/$1/$2', ['as' => 'location-region']);
+$routes->get('locations/(:segment)/(:segment)/(:segment)', 'Locations::city/$1/$2/$3', ['as' => 'location-city']);
+$routes->get('locations/(:segment)/(:segment)/(:segment)/(:segment)', 'Locations::service/$1/$2/$3/$4', ['as' => 'location-service']);
 
 // Admin Routes
 $routes->group('admin', static function ($routes) {

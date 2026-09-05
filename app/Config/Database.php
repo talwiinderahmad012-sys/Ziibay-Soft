@@ -50,6 +50,38 @@ class Database extends Config
         ],
     ];
 
+    /**
+     * Second database connection: EDB Postgres on 127.0.0.1:5432.
+     * Used via model: $db = \Config\Database::connect('postgres');
+     *
+     * @var array<string, mixed>
+     */
+    public array $postgres = [
+        'DSN'          => '',
+        'hostname'     => '127.0.0.1',
+        'username'     => 'postgres',
+        'password'     => 'postgres',
+        'database'     => 'ziibay_soft',
+        'DBDriver'     => 'Postgre',
+        'DBPrefix'     => '',
+        'pConnect'     => false,
+        'DBDebug'      => true,
+        'charset'      => 'utf8',
+        'DBCollat'     => '',
+        'swapPre'      => '',
+        'encrypt'      => false,
+        'compress'     => false,
+        'strictOn'     => false,
+        'failover'     => [],
+        'port'         => 5432,
+        'numberNative' => false,
+        'dateFormat'   => [
+            'date'     => 'Y-m-d',
+            'datetime' => 'Y-m-d H:i:s',
+            'time'     => 'H:i:s',
+        ],
+    ];
+
     //    /**
     //     * Sample database connection for SQLite3.
     //     *

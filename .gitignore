@@ -26,3 +26,6 @@ samples videos/
 scratch*.php
 test_db*.php
 generate_*.php
+
+# Agent workspace data
+.workbuddy-ai/

@@ -71,8 +71,29 @@
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- 21st.dev Inspired Interaction System -->
+    <!-- Global Universal Reveal & Interaction Engine -->
     <script>
+        document.documentElement.classList.add('js');
+        const rv = new IntersectionObserver(es => es.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('in');
+                rv.unobserve(e.target);
+            }
+        }), { threshold: .15, rootMargin: '0px 0px -8% 0px' });
+
+        function watch() {
+            document.querySelectorAll(
+                '[data-rv],[data-stagger],.card,.tech-card,.svc-card,.xcard,.c-card,.info-card,.wf-col,.framed-panel'
+            ).forEach(el => {
+                if (!el.classList.contains('in')) rv.observe(el);
+            });
+        }
+        document.addEventListener('DOMContentLoaded', watch);
+        window.addEventListener('load', watch);
+        setTimeout(() => document.querySelectorAll(
+            '[data-rv],.card,.tech-card,.svc-card,.xcard,.c-card,.info-card,.wf-col'
+        ).forEach(el => el.classList.add('in')), 2500);
+
         document.addEventListener('DOMContentLoaded', () => {
             // Heading Blur-in Reveal (runs globally on all pages)
             const hio = new IntersectionObserver(es => es.forEach(e => {
@@ -80,50 +101,46 @@
             }), { threshold: .25 });
             document.querySelectorAll('h1, h2').forEach(el => hio.observe(el));
 
-            // 1. Scroll Choreography (Intersection Observer)
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-revealed');
-                        // Optional: stop observing once revealed
-                        // observer.unobserve(entry.target); 
+            // Numbers count-up
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (!prefersReducedMotion) {
+                document.querySelectorAll('.stat-val').forEach(el => {
+                    const text = el.innerText;
+                    const numMatch = text.match(/(\d+)/);
+                    if (numMatch) {
+                        const target = parseInt(numMatch[1]);
+                        let start = 0;
+                        const update = setInterval(() => {
+                            start += Math.ceil(target / 20);
+                            if (start >= target) {
+                                el.innerText = text.replace(numMatch[1], target);
+                                clearInterval(update);
+                            } else {
+                                let padded = start.toString();
+                                if (numMatch[1].startsWith('0')) padded = padded.padStart(numMatch[1].length, '0');
+                                el.innerText = text.replace(numMatch[1], padded);
+                            }
+                        }, 50);
                     }
                 });
-            }, observerOptions);
-
-            document.querySelectorAll('.reveal-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
-
-            // 2. Spotlight Effect for Cards
-            const spotlightCards = document.querySelectorAll('.spotlight-card');
-            spotlightCards.forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
-                });
-            });
-
-            // 3. Navbar Scroll Transform
-            const navbar = document.getElementById('main-navbar');
-            if (navbar) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 50) {
-                        navbar.classList.add('nav-scrolled');
-                    } else {
-                        navbar.classList.remove('nav-scrolled');
-                    }
-                }, { passive: true });
             }
+
+            // Corner Stat gold highlight
+            document.querySelectorAll('.corner-stat').forEach(el => {
+                if (!el.querySelector('.gold-val')) {
+                    el.innerHTML = el.innerHTML.replace(/\(\s*([^\)]+)\s*\)/g, '(<span class="gold-val" style="color:var(--gold);font-weight:700;"> $1 </span>)');
+                }
+            });
+
+            // Expandable Cards [data-x]
+            document.querySelectorAll('[data-x]').forEach(c => {
+                c.addEventListener('click', (e) => {
+                    if (e.target.closest('a')) return;
+                    const open = c.classList.contains('open');
+                    document.querySelectorAll('[data-x].open').forEach(o => o.classList.remove('open'));
+                    if (!open) c.classList.add('open');
+                });
+            });
         });
     </script>
 </body>

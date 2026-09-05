@@ -1,87 +1,122 @@
 <?= $this->extend('layouts/main') ?>
 
-<?= $this->section('title') ?><?= esc($title) ?><?= $this->endSection() ?>
-<?= $this->section('meta_description') ?><?= esc($meta_description) ?><?= $this->endSection() ?>
-<?= isset($canonical_url) ? $this->section('canonical') . esc($canonical_url) . $this->endSection() : '' ?>
+<?= $this->section('schema') ?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "<?= esc($location['name']) ?> Service Hub | Ziibay Soft",
+  "description": "<?= esc($meta_description) ?>",
+  "url": "<?= esc($canonical_url ?? current_url()) ?>"
+}
+</script>
+<?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 
-<section class="pt-32 pb-16 bg-surface transition-colors duration-300 relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
-    <div class="container mx-auto px-4 relative z-10 text-center">
-        <!-- Breadcrumbs -->
-        <nav class="flex justify-center text-sm text-text-muted mb-8" aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-1 md:space-x-3">
-                <?php foreach($breadcrumbs as $index => $crumb): ?>
-                    <li class="inline-flex items-center">
-                        <?php if($index > 0): ?>
-                            <svg class="w-3 h-3 text-text-muted mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                            </svg>
-                        <?php endif; ?>
-                        <?php if($crumb['url']): ?>
-                            <a href="<?= $crumb['url'] ?>" class="hover:text-brand-primary transition-colors"><?= esc($crumb['name']) ?></a>
-                        <?php else: ?>
-                            <span class="text-text font-medium"><?= esc($crumb['name']) ?></span>
-                        <?php endif; ?>
-                    </li>
-                <?php endforeach; ?>
-            </ol>
-        </nav>
+<!-- 1. HERO -->
+<section style="padding:48px 16px 32px;">
+    <div class="framed-panel" style="position:relative; padding:72px 24px 56px; text-align:center;">
+        <span class="corner-stat tl">( Dedicated ) engineering pod</span>
+        <span class="corner-stat tr">( 100% ) in-house</span>
+        <span class="corner-stat bl">( Local ) compliance</span>
+        <span class="corner-stat br">( Timezone ) aligned</span>
 
-        <h1 class="text-4xl md:text-5xl font-bold text-text mb-6">Services in <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-secondary"><?= esc($location['name']) ?></span></h1>
-        
-        <?php if($location['description']): ?>
-            <div class="text-xl text-text-muted max-w-3xl mx-auto prose dark:prose-invert">
-                <?= $location['description'] ?>
+        <div style="max-width:840px; margin:0 auto;" data-rv="blur-rise">
+            <div class="chip" style="margin-bottom:16px;">
+                <?php 
+                    if (str_contains(strtolower($location['name']), 'united states')) echo 'NEW YORK · SAN FRANCISCO · AUSTIN';
+                    elseif (str_contains(strtolower($location['name']), 'united kingdom')) echo 'LONDON · MANCHESTER · EDINBURGH';
+                    elseif (str_contains(strtolower($location['name']), 'australia')) echo 'SYDNEY · MELBOURNE · BRISBANE';
+                    else echo strtoupper($location['name']) . ' · REGIONAL HUB';
+                ?>
             </div>
-        <?php endif; ?>
-    </div>
-</section>
-
-<section class="py-16 bg-surface transition-colors duration-300">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-text mb-10 text-center">Regions & States</h2>
-        <?php if (empty($regions)): ?>
-            <p class="text-center text-text-muted">Regional pages for <?= esc($location['name']) ?> are being prepared.</p>
-        <?php else: ?>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <?php foreach($regions as $region): ?>
-            <a href="<?= base_url('locations/' . $location['slug'] . '/' . $region['slug']) ?>" class="group block relative rounded-2xl overflow-hidden shadow-lg border border-border bg-surface-secondary hover:border-brand-primary/50 transition-all duration-300 p-6">
-                <h3 class="text-xl font-bold text-text group-hover:text-brand-primary transition-colors"><?= esc($region['name']) ?></h3>
-            </a>
-            <?php endforeach; ?>
-        </div>
-        <?php endif; ?>
-    </div>
-</section>
-
-<?php if (! empty($countryServices ?? [])): ?>
-<!-- Services offered in this country through published location pages -->
-<section class="py-16 transition-colors duration-300 border-t border-border">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-text mb-3 text-center">Services Available in <?= esc($location['name']) ?></h2>
-        <p class="text-text-muted text-center mb-10 max-w-2xl mx-auto">Delivered remotely by our international team, with dedicated local pages where available.</p>
-        <div class="flex flex-wrap justify-center gap-4">
-            <?php foreach ($countryServices as $cs): ?>
-            <a href="<?= base_url('services/' . esc($cs['slug'])) ?>" class="px-6 py-3 rounded-xl border border-border bg-surface text-text font-medium hover:border-primary hover:text-primary transition-colors">
-                <?= esc($cs['name']) ?>
-            </a>
-            <?php endforeach; ?>
+            
+            <h1 class="serif-heading" style="font-size:clamp(2.4rem, 6vw, 4.4rem); line-height:1.1; margin-bottom:20px;">
+                <?= esc(strtolower($location['name'])) ?> delivery
+            </h1>
+            <p style="font-size:16px; line-height:1.7; color:var(--muted); max-width:680px; margin:0 auto 28px;">
+                Providing organizations across <?= esc($location['name']) ?> with enterprise software engineering, web application development, and technical growth infrastructure.
+            </p>
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+                <a href="<?= url_to('contact') ?>" class="chip">→ DISCUSS <?= strtoupper(esc($location['name'])) ?> PROJECT</a>
+                <a href="<?= url_to('services') ?>" class="chip">VIEW SERVICES</a>
+            </div>
         </div>
     </div>
 </section>
-<?php endif; ?>
 
-<!-- Conversion path -->
-<section class="py-16 bg-surface transition-colors duration-300 border-t border-border">
-    <div class="container mx-auto px-4 text-center max-w-3xl">
-        <h2 class="text-3xl font-bold text-text mb-4">Working with businesses in <?= esc($location['name']) ?></h2>
-        <p class="text-text-muted mb-8">Tell us about your project and we will suggest the right approach, timeline, and budget.</p>
-        <a href="<?= base_url('contact') ?>" class="inline-flex items-center px-8 py-4 rounded-xl font-bold text-text-onprimary bg-primary hover:bg-primary-hover transition-colors">
-            Get a Free Consultation
-            <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
+<!-- 2. LOCAL CONTEXT -->
+<section style="padding:24px 16px 48px;">
+    <div class="framed-panel" style="padding:40px 32px; max-width:1100px; margin:0 auto;" data-rv="blur-rise">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:32px; align-items:center;">
+            <div>
+                <div class="eyebrow" style="margin-bottom:10px;">REGIONAL EXPERTISE</div>
+                <h2 class="serif-heading" style="font-size:clamp(1.8rem, 3.5vw, 2.4rem); margin-bottom:12px;">
+                    engineered for <?= esc($location['name']) ?> markets
+                </h2>
+            </div>
+            <div style="font-size:14px; line-height:1.8; color:var(--muted);">
+                <p style="margin-bottom:12px; color:var(--ink);">
+                    We understand that deploying digital products in <?= esc($location['name']) ?> demands strict adherence to local regulatory standards, low-latency regional hosting, and seamless business-hours communication.
+                </p>
+                <p style="margin:0;">
+                    Whether you are an ambitious scale-up or an established enterprise, our distributed engineering pods ensure synchronous collaboration and reliable, milestone-driven delivery.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. HOW WE DELIVER (3 BULLET CARDS) -->
+<section style="padding:16px 16px 48px;">
+    <div style="text-align:center; margin-bottom:36px;" data-rv="blur-rise">
+        <div class="eyebrow" style="margin-bottom:10px;">REMOTE EXCELLENCE</div>
+        <h2 class="serif-heading" style="font-size:clamp(2rem, 4.5vw, 3rem);">how we deliver</h2>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px; max-width:1200px; margin:0 auto;">
+        <!-- Card 1: Timezone Overlap -->
+        <article class="framed-panel" style="background:var(--card); padding:32px 24px; display:flex; flex-direction:column; position:relative;" data-rv="deck-rise">
+            <div class="chip" style="align-self:flex-start; margin-bottom:14px;">STANDARD 01</div>
+            <h3 class="serif-heading" style="font-size:1.4rem; margin-bottom:10px;">Guaranteed Timezone Overlap</h3>
+            <p style="font-size:13px; line-height:1.6; color:var(--muted); margin:0;">
+                Our engineers schedule sprint standups, milestone reviews, and Slack/Teams collaboration directly aligned with your local business hours.
+            </p>
+        </article>
+
+        <!-- Card 2: Dedicated Pod -->
+        <article class="framed-panel" style="background:var(--card); padding:32px 24px; display:flex; flex-direction:column; position:relative;" data-rv="deck-rise">
+            <div class="chip" style="align-self:flex-start; margin-bottom:14px;">STANDARD 02</div>
+            <h3 class="serif-heading" style="font-size:1.4rem; margin-bottom:10px;">Dedicated Engineering Pod</h3>
+            <p style="font-size:13px; line-height:1.6; color:var(--muted); margin:0;">
+                You receive a committed team of senior architects, frontend engineers, and QA specialists who work exclusively on your product.
+            </p>
+        </article>
+
+        <!-- Card 3: Local Compliance -->
+        <article class="framed-panel" style="background:var(--card); padding:32px 24px; display:flex; flex-direction:column; position:relative;" data-rv="deck-rise">
+            <div class="chip" style="align-self:flex-start; margin-bottom:14px;">STANDARD 03</div>
+            <h3 class="serif-heading" style="font-size:1.4rem; margin-bottom:10px;">Strict Local Compliance</h3>
+            <p style="font-size:13px; line-height:1.6; color:var(--muted); margin:0;">
+                We enforce data governance and security protocols appropriate for your jurisdiction (GDPR, HIPAA, SOC-2, and Australian Privacy Principles).
+            </p>
+        </article>
+    </div>
+</section>
+
+<!-- 4. SERVICES AVAILABLE IN REGION -->
+<section style="padding:16px 16px 48px;">
+    <div class="framed-panel" style="padding:36px 24px; text-align:center; max-width:900px; margin:0 auto;" data-rv="blur-rise">
+        <div class="eyebrow" style="margin-bottom:12px;">AVAILABLE CAPABILITIES</div>
+        <h3 class="serif-heading" style="font-size:1.6rem; margin-bottom:20px;">services deployed in <?= esc(strtolower($location['name'])) ?></h3>
+        <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
+            <a href="<?= url_to('service-detail', 'web-development') ?>" class="chip">WEB DEVELOPMENT →</a>
+            <a href="<?= url_to('service-detail', 'software-development') ?>" class="chip">SOFTWARE ENGINEERING →</a>
+            <a href="<?= url_to('service-detail', 'app-development') ?>" class="chip">MOBILE APPS →</a>
+            <a href="<?= url_to('service-detail', 'seo') ?>" class="chip">TECHNICAL SEO →</a>
+            <a href="<?= url_to('service-detail', 'social-media-management') ?>" class="chip">GROWTH MANAGEMENT →</a>
+        </div>
     </div>
 </section>
 
